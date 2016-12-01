@@ -5,7 +5,7 @@
 </template>
 
 <script>
-console.log('xxxx');
+console.log('xxxx')
 export default{
   name: 'test'
 }
