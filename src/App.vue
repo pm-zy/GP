@@ -1,17 +1,22 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+  <div>
+     <router-view
+      class='view'
+      keep-alive
+      transition
+      transition-mode='out-in'>
+    </router-view>
   </div>
+ 
 </template>
 
 <script>
-import Hello from './components/Hello'
+// import Hello from './components/Hello'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    // Hello
   }
 }
 </script>
