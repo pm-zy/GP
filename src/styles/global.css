@@ -1,0 +1,13 @@
+/*#464068*/
+.left-container{
+	float: left;
+	overflow: hidden;
+	left: 0;
+	right: 0;
+	width: 180px;
+	height: 100vh;
+	background-color: #464068;
+}
+.right-container{
+	margin-left: 180px;
+}

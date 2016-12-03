@@ -8,6 +8,10 @@ Vue.use(VueRouter)
 import App from './App.vue'
 // 引用路由配置文件
 import routes from './configs/router'
+
+import './styles/normalize.css'
+import './styles/bootstrap.css'
+import './styles/global.css'
 // 使用配置文件规则
 const router = new VueRouter({
   routes
