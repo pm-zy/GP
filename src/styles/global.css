@@ -1,4 +1,7 @@
 /*#464068*/
+* {
+	box-sizing: border-box;
+}
 .left-container{
 	float: left;
 	overflow: hidden;
