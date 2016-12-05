@@ -2,6 +2,9 @@
 * {
 	box-sizing: border-box;
 }
+a{
+	text-decoration-style: none;
+}
 .left-container{
 	float: left;
 	overflow: hidden;
