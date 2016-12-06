@@ -46,7 +46,7 @@
 		line-height: 49px;
 		border-bottom: 1px #ccc solid;
 	}
-	..header-content a > i{
+	.header-content a > i{
 		color: #777;
 	}
 	.space-nav {
