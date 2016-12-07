@@ -12,7 +12,7 @@
 					<li><a href="/about"><i class="fa fa-question-circle fa-lg"></i></a></li>
 					<li>
 						<a href="/user/123">
-							<img  class="user-picture-sm" src="../assets/logo.png" />
+							<img  class="user-picture-sm" src="../assets/github.png" />
 						</a>
 					</li>
 				</ul>
@@ -35,9 +35,11 @@
 
 <style type="text/css">
 	.header-content {
+		background-color: #fff;
 		color: #333;
 		line-height: 49px;
-		border-bottom: 1px #ccc solid;
+		/*border-bottom: 1px #ccc solid;*/
+		box-shadow: 0 3px 3px #ccc;
 	}
 	.header-content a > i{
 		color: #777;
@@ -61,5 +63,6 @@
 	.user-picture-sm {
 		width: 32px;
 		height: 32px;
+		border-radius: 50%;
 	}
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<div id="index">
 		<TopBar path='主页'></TopBar>
-		<router-view></router-view>
+		<div class="body"></div>
 	</div>
 
 </template>

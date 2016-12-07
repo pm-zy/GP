@@ -5,6 +5,11 @@
 a{
 	text-decoration-style: none;
 }
+body{
+	width: 100vw;
+	height: 100vh;
+	background-image: url(../assets/bg.jpeg);
+}
 .left-container{
 	/*float: left;*/
 	position: fixed;
@@ -26,4 +31,8 @@ a{
 	background-color: #3c375a;
 	color: white;
 	text-align: center;
+}
+.body{
+	height: 100%;
+	width: 100%;
 }
