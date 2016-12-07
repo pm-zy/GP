@@ -6,7 +6,8 @@ a{
 	text-decoration-style: none;
 }
 .left-container{
-	float: left;
+	/*float: left;*/
+	position: fixed;
 	overflow: hidden;
 	left: 0;
 	right: 0;

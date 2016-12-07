@@ -11,8 +11,8 @@ import routes from './configs/router'
 
 import './styles/normalize.css'
 import './styles/bootstrap.css'
-import './styles/global.css'
 import './styles/font-awesome.css'
+import './styles/global.css'
 // 使用配置文件规则
 const router = new VueRouter({
   routes

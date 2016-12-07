@@ -1,5 +1,5 @@
 <template>
-	<div class="header-container">
+	<div class="header-container" id="header">
 		<div class="logo">LOGO</div>
 		<div class="header-content">
 			<span class="space-nav">
@@ -23,13 +23,18 @@
 </template>
 <script type="text/javascript">
 	export default {
+		data() {
+			return {
 
+			}
+		}
 	}
 </script>
 
 <style type="text/css">
 	.header-container {
 		width: 100%;
+		height: 50px;
 		overflow: hidden;
 	}
 	.logo {
