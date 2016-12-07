@@ -1,36 +1,37 @@
 <template>
 	<div class="left-container">
+		<div class="logo">LOGO</div>
 		<ul class="panel-menu">
-			<a href="/index">
+			<router-link to="/">
 				<li>
 					<i class="fa fa-coffee fa-lg fa-fw"></i>
 					<span>主页</span>
 				</li>
-			</a>
-			<a href="/class">
+			</router-link>
+			<router-link to="/class">
 				<li>
 					<i class="fa fa-group fa-lg fa-fw"></i>
 					<span>班级</span>
 				</li>
-			</a>
-			<a href="/homework">
+			</router-link>
+			<router-link to="/homework">
 				<li>
 					<i class="fa fa-book fa-lg fa-fw"></i>
 					<span>作业</span>
 				</li>
-			</a>
-			<a href="">
+			</router-link>
+			<router-link to="/exam">
 				<li>
 					<i class="fa fa-edit fa-lg fa-fw"></i>
 					<span>考试</span>
 				</li>
-			</a>
-			<a href="/problem">
+			</router-link>
+			<router-link to="/problem">
 				<li>
 					<i class="fa fa-cube fa-lg fa-fw"></i>
 					<span>题库</span>
 				</li>
-			</a>
+			</router-link>
 		</ul>
 	</div>
 	
@@ -43,9 +44,12 @@
 </script>
 
 <style>
+	.router-link-active {
+		color: #84b045;
+	}
 	.panel-menu{
 		color: white;
-		margin-top: 50px;
+		margin-top: 100px;
 		list-style: none;
 	}
 	.panel-menu a {

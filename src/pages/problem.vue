@@ -1,15 +1,13 @@
 <template>
-	<div id="index">
-		<TopBar path='主页'></TopBar>
+	<div >
+		<TopBar path='题库'></TopBar>
 		<router-view></router-view>
 	</div>
 
 </template>
-// <script type="text/javascript">
+<script>
 import TopBar from '../components/topBar'
 import Vue from 'vue';
-// import LeftPanel from '../components/leftPanel'
-// Vue.use(Header);
 	export default {
 		components: {
 			TopBar

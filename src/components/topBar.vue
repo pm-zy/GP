@@ -1,10 +1,10 @@
 <template>
-	<div class="header-container" id="header">
-		<div class="logo">LOGO</div>
+	<div id="header">
+		
 		<div class="header-content">
 			<span class="space-nav">
 				<i class="fa fa-home fa-lg"></i>
-				西安邮电大学 > 在线评测平台
+				西安邮电大学 > 在线评测平台 > {{path}}
 			</span>
 			<div class="header-right">
 				<ul class="nav-right">
@@ -22,7 +22,9 @@
 	</div>
 </template>
 <script type="text/javascript">
+
 	export default {
+		props: ['path'],
 		data() {
 			return {
 
@@ -32,21 +34,7 @@
 </script>
 
 <style type="text/css">
-	.header-container {
-		width: 100%;
-		height: 50px;
-		overflow: hidden;
-	}
-	.logo {
-		float: left;
-		line-height: 50px;
-		width: 180px;
-		background-color: #3c375a;
-		color: white;
-		text-align: center;
-	}
 	.header-content {
-		margin-left: 180px;
 		color: #333;
 		line-height: 49px;
 		border-bottom: 1px #ccc solid;

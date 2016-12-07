@@ -16,5 +16,14 @@ a{
 	background-color: #464068;
 }
 .right-container{
+	height: 100%;
 	margin-left: 180px;
+}
+.logo {
+	float: left;
+	line-height: 50px;
+	width: 180px;
+	background-color: #3c375a;
+	color: white;
+	text-align: center;
 }
