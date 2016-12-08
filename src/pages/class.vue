@@ -1,7 +1,9 @@
 <template>
-	<div id="index">
+	<div class="body of-hd">
 		<TopBar path='班级'></TopBar>
-		<router-view></router-view>
+		<div class="left-menu">
+			
+		</div>
 	</div>
 
 </template>
@@ -14,4 +16,12 @@ import Vue from 'vue';
 		}
 	}
 </script>
+
+<style>
+	.left-menu {
+		height: 100%;
+		width: 180px;
+		background-color: #f7f7f7;
+	}
+</style>
 

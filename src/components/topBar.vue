@@ -38,8 +38,7 @@
 		background-color: #fff;
 		color: #333;
 		line-height: 49px;
-		/*border-bottom: 1px #ccc solid;*/
-		box-shadow: 0 3px 3px #ccc;
+		border-bottom: 1px #ccc solid;
 	}
 	.header-content a > i{
 		color: #777;
