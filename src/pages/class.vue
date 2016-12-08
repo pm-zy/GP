@@ -1,6 +1,6 @@
 <template>
 	<div class="body of-hd">
-		<TopBar path='班级'></TopBar>
+		<TopBar path='班级'>gjgjhjhj</TopBar>
 		<div class="left-menu of-hd">
 			<div class="left-menu-header">
 				<span>我的班级</span>
@@ -32,7 +32,8 @@ import TopBar from '../components/topBar'
 import Vue from 'vue';
 	export default {
 		components: {
-			TopBar
+			TopBar,
+			// BackTop
 		}
 	}
 </script>
