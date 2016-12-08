@@ -1,8 +1,28 @@
 <template>
 	<div class="body of-hd">
 		<TopBar path='班级'></TopBar>
-		<div class="left-menu">
-			
+		<div class="left-menu of-hd">
+			<div class="left-menu-header">
+				<span>我的班级</span>
+			</div>
+			<ul class="left-menu-content">
+				<li>
+					<router-link to='/class/sss'>
+						<i class="fa fa-globe fa-lg fa-fw"></i>
+						<span>我加入的</span>
+					</router-link>
+				</li>
+				
+				<li>
+					<router-link to='/class/sss'>
+						<i class="fa fa-key fa-lg fa-fw"></i>
+						<span>我创建的</span>
+					</router-link>
+				</li>
+			</ul>
+		</div>
+		<div class="main-content">
+			<router-view name='class'></router-view>
 		</div>
 	</div>
 
@@ -18,10 +38,43 @@ import Vue from 'vue';
 </script>
 
 <style>
+	/*.router-link-active{
+		background-color: #f9fafc;
+	}*/
 	.left-menu {
 		height: 100%;
 		width: 180px;
-		background-color: #f7f7f7;
+		float: left;
+		background-color: #f0f2f4;
+	}
+	.left-menu-header {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		font-size: 22px;
+		color: #999;
+		border-bottom: 1px solid #d5d5d5;
+	}
+	.main-content { 
+		width: 100%;
+		height: 100%;
+	}
+	.left-menu-content{
+		list-style: none;
+		padding: 0;
+		margin-top: 20px;
+	}
+	ul.left-menu-content li {
+		color: #4a4a4a;
+		height: 50px;
+		width: 180px;
+		text-align: center;
+		line-height: 50px;
+		font-size: 13px;
+	}
+	ul.left-menu-content li span {
+		margin-left: 15px;
 	}
 </style>
 

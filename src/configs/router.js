@@ -27,7 +27,11 @@ export default [{
     }, {
         path: '/about',
         component: pmAbout
-    },
+    }, {
+        path: '/class/sss',
+        name: 'class',
+        component: pmClass
+    }, 
 
 
 ]
