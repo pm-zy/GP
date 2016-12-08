@@ -3,7 +3,8 @@ import pmClass from '../pages/class.vue'
 import pmHomework from '../pages/homework.vue'
 import pmExam from '../pages/exam.vue'
 import pmProblem from '../pages/problem.vue'
-
+import pmUser from '../pages/user.vue'
+import pmAbout from '../pages/about.vue'
 // 配置路由
 export default [{
         path: '/',
@@ -20,6 +21,12 @@ export default [{
     }, {
         path: '/problem',
         component: pmProblem
+    },{
+        path: '/user/:id',
+        component: pmUser
+    }, {
+        path: '/about',
+        component: pmAbout
     },
 
 

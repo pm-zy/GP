@@ -33,24 +33,37 @@
 				</li>
 			</router-link>
 		</ul>
+		<router-link class='panel-user' :to="'/user/'+ user.userId">
+			<i class="fa fa-user-circle-o fa-lg fa-fw"></i>
+			<span>个人空间</span>
+		</router-link>
 	</div>
 	
 </template>
 
 <script>
 	export default {
+		data () {
+			return {
+				user: {
+					userId: 123,
+					userName: 'pm'
+				}
+			}
+		}
 
 	}
 </script>
 
 <style>
-	.router-link-active {
+	.router-link-active, .panel-user:hover, .panel-user:focus {
 		color: #84b045;
 	}
 	.panel-menu{
 		color: white;
 		margin-top: 100px;
 		list-style: none;
+		border-bottom: 1px solid #3c375a;
 	}
 	.panel-menu a {
 		color: white;
@@ -64,8 +77,17 @@
 	.panel-menu li{
 		width: 180px;
 	}
-	.panel-menu li > span{
+	.panel-menu li > span, .panel-user > span {
 		font-size: 14px;
 		margin-left: 30px;
+	}
+	.panel-user {
+		display: block;
+		color: white;
+		text-align: center;
+		margin-top: 25px;
+	}
+	.panel-user:hover, .panel-user:focus {
+		text-decoration: none;
 	}
 </style>

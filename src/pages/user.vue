@@ -1,6 +1,6 @@
 <template>
-	<div id="index">
-		<TopBar path='主页'></TopBar>
+	<div >
+		<TopBar path='我的空间'></TopBar>
 		<div class="body"></div>
 	</div>
 
@@ -8,7 +8,13 @@
 <script type="text/javascript">
 import TopBar from '../components/topBar'
 import Vue from 'vue';
+
 	export default {
+		data() {
+			return {
+				
+			}
+		},
 		components: {
 			TopBar
 		}

@@ -9,11 +9,11 @@
 			<div class="header-right">
 				<ul class="nav-right">
 					<li>1</li>
-					<li><a href="/about"><i class="fa fa-question-circle fa-lg"></i></a></li>
+					<li><router-link to="/about"><i class="fa fa-question-circle fa-lg"></i></router-link></li>
 					<li>
-						<a href="/user/123">
+						<router-link to="/user/123">
 							<img  class="user-picture-sm" src="../assets/github.png" />
-						</a>
+						</router-link>
 					</li>
 				</ul>
 			</div>
