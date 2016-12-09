@@ -33,15 +33,11 @@ import Vue from 'vue';
 	export default {
 		components: {
 			TopBar,
-			// BackTop
 		}
 	}
 </script>
 
 <style>
-	/*.router-link-active{
-		background-color: #f9fafc;
-	}*/
 	.left-menu {
 		height: 100%;
 		width: 180px;
