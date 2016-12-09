@@ -22,17 +22,32 @@
 			</ul>
 		</div>
 		<div class="main-content">
-			<router-view name='class'></router-view>
+		<classList class-info= "data.classInfo"></classList>
 		</div>
 	</div>
 
 </template>
 <script>
+import ClassList from '../components/classList'
 import TopBar from '../components/topBar'
 import Vue from 'vue';
 	export default {
 		components: {
 			TopBar,
+		},
+		data (){
+			return {
+				classInfo: {
+					courseclassid: 1,
+					courclassname: '计科1302',
+					courclasssize: 30,
+					status: 1,
+					courclassdescription: '计科期中摸底考',
+					userid: 1,
+					code: 1,
+					courclassnum: 10
+				}
+			}
 		}
 	}
 </script>

@@ -11,7 +11,7 @@ export default [{
         component: pmIndex
     }, {
         path: '/class',
-        component: pmClass
+        component: pmClass,
     }, {
         path: '/homework',
         component: pmHomework
@@ -27,10 +27,6 @@ export default [{
     }, {
         path: '/about',
         component: pmAbout
-    }, {
-        path: '/class/sss',
-        name: 'class',
-        component: pmClass
     }, 
 
 
