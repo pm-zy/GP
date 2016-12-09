@@ -5,24 +5,21 @@
 			<div class="left-menu-header">
 				<span>我的班级</span>
 			</div>
-			<ul class="left-menu-content">
-				<li>
-					<router-link to='/class/sss'>
-						<i class="fa fa-globe fa-lg fa-fw"></i>
-						<span>我加入的</span>
-					</router-link>
-				</li>
-				
-				<li>
-					<router-link to='/class/sss'>
-						<i class="fa fa-key fa-lg fa-fw"></i>
-						<span>我创建的</span>
-					</router-link>
-				</li>
-			</ul>
+			<div class="left-menu-content">
+				<input type="radio" name="infoType" v-model="infoType" value="join" id="radio-join" />
+				<label for="radio-join">
+					<i class="fa fa-globe fa-lg fa-fw"></i>
+					<span>我加入的</span>
+				</label>
+				<input type="radio" name="infoType" v-model="infoType" value="create" id="radio-create" />
+				<label for="radio-create">
+					<i class="fa fa-key fa-lg fa-fw"></i>
+					<span>我创建的</span>
+				</label>
+			</div>
 		</div>
 		<div class="main-content">
-		<classList class-info= "data.classInfo"></classList>
+			<ClassList class-info="data.classInfo"></ClassList>
 		</div>
 	</div>
 
@@ -34,10 +31,12 @@ import Vue from 'vue';
 	export default {
 		components: {
 			TopBar,
+			ClassList
 		},
 		data (){
 			return {
-				classInfo: {
+				infoType: 'join',
+				classInfo: [{
 					courseclassid: 1,
 					courclassname: '计科1302',
 					courclasssize: 30,
@@ -46,7 +45,7 @@ import Vue from 'vue';
 					userid: 1,
 					code: 1,
 					courclassnum: 10
-				}
+				}]
 			}
 		}
 	}
@@ -77,7 +76,14 @@ import Vue from 'vue';
 		padding: 0;
 		margin-top: 20px;
 	}
-	ul.left-menu-content li {
+	.left-menu-content input {
+		display: none;
+	}
+	.left-menu-content input:checked + label{
+		background-color: #f9fafc;
+	}
+	.left-menu-content label {
+		display: block;
 		color: #4a4a4a;
 		height: 50px;
 		width: 180px;
@@ -85,7 +91,7 @@ import Vue from 'vue';
 		line-height: 50px;
 		font-size: 13px;
 	}
-	ul.left-menu-content li span {
+	.left-menu-content label span {
 		margin-left: 15px;
 	}
 </style>
