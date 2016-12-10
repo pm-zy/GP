@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<div class="main-content">
-			<ClassList class-info="data.classInfo"></ClassList>
+			<ClassList :class-info="classInfo"></ClassList>
 		</div>
 	</div>
 
@@ -41,6 +41,15 @@ import Vue from 'vue';
 					courclassname: '计科1302',
 					courclasssize: 30,
 					status: 1,
+					courclassdescription: '计科期中摸底考',
+					userid: 1,
+					code: 1,
+					courclassnum: 10
+				}, {
+					courseclassid: 1,
+					courclassname: '计科1302',
+					courclasssize: 30,
+					status: 0,
 					courclassdescription: '计科期中摸底考',
 					userid: 1,
 					code: 1,
