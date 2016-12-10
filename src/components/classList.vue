@@ -2,7 +2,18 @@
 	<div class="class-list">
 		<ul class="class-list-ul">
 			<li v-for="item in classInfo">
-				
+				<div class="color-bar"></div>
+				<div class="class-item-content">
+					<div class="class-item-title">
+						<span class="class-item-name">{{item.courclassname}}</span>
+						<span class="class-item-desc">{{item.courclassdescription}}</span>
+					</div>
+					<div class="class-item-info">
+						<span>可容纳人数：<strong :class="{'class-open': item.status==1}">{{item.courclasssize}}</strong></span>
+						<span>已选人数：<strong :class="{'class-open': item.status==1}">{{item.courclassnum}}</strong></span>
+						<span>班级编号：{{item.courseclassid}}</span>
+					</div>
+				</div>
 			</li>
 		</ul>
 	</div>
@@ -14,5 +25,48 @@
 	}
 </script>
 <style>
-	
+	.class-list {
+		/*border: 2px #ccc solid;*/
+		margin-top: 50px;
+		margin-left: 180px;
+	}
+	.class-list-ul {
+		list-style: none;
+	}
+	.class-list-ul li {
+		background-color: #fff;
+		box-shadow: 1px 3px 3px #ccc;
+		display: block;
+		height: 68px;
+		width: 80%;
+		margin: 6px auto;
+		line-height: 34px;
+	}
+	.color-bar {
+		background-color: #ee8a96;
+		width: 5px;
+		height: 100%;
+		float: left;
+	}
+	.class-item-content {
+		margin-left: 15px;
+	}
+	.class-item-title {
+		font-size: 15px;
+		color: #4a4a4a;
+	}
+	.class-item-name {
+		font-weight: 700;
+		color: #3798e9;
+		width: 150px;
+		display: inline-block;
+	}
+	.class-item-info span{
+		color: #999;
+		width: 30%;
+		display: inline-block;
+	}
+	.class-open {
+		color: #46bf7c
+	}
 </style>
