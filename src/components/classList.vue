@@ -2,7 +2,7 @@
 	<div class="class-list">
 		<ul class="class-list-ul">
 			<li v-for="item in classInfo">
-				<div class="color-bar"></div>
+				<div class="color-bar" :class="{'color-bar-active': item.status==1}"></div>
 				<div class="class-item-content">
 					<div class="class-item-title">
 						<span class="class-item-name">{{item.courclassname}}</span>
@@ -48,6 +48,9 @@
 		height: 100%;
 		float: left;
 	}
+	.color-bar-active {
+		background-color: #a1ceeb;
+	}
 	.class-item-content {
 		margin-left: 15px;
 	}
@@ -67,6 +70,6 @@
 		display: inline-block;
 	}
 	.class-open {
-		color: #46bf7c
+		color: #3798e9
 	}
 </style>
