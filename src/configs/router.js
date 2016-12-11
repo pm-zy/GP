@@ -8,6 +8,9 @@ import pmAbout from '../pages/about.vue'
 // 配置路由
 export default [{
         path: '/',
+        redirect: '/index'
+    }, {
+        path: '/index',
         component: pmIndex
     }, {
         path: '/class',

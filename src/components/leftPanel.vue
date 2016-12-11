@@ -2,7 +2,7 @@
 	<div class="left-container">
 		<div class="logo">LOGO</div>
 		<ul class="panel-menu">
-			<router-link to="/">
+			<router-link to="/index">
 				<li>
 					<i class="fa fa-coffee fa-lg fa-fw"></i>
 					<span>主页</span>
@@ -56,9 +56,7 @@
 </script>
 
 <style>
-	.router-link-active, .panel-user:hover, .panel-user:focus {
-		color: #84b045;
-	}
+	
 	.panel-menu{
 		color: white;
 		margin-top: 100px;
@@ -89,5 +87,8 @@
 	}
 	.panel-user:hover, .panel-user:focus {
 		text-decoration: none;
+	}
+	a.router-link-active, .panel-user:hover, .panel-user:focus {
+		color: #84b045;
 	}
 </style>
