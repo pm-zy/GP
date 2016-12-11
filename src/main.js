@@ -6,11 +6,8 @@ import './styles/bootstrap.css'
 import './styles/font-awesome.css'
 import './styles/global.css'
 
-
 import App from './App.vue'
 import routes from './configs/router'
-
-
 
 Vue.use(VueRouter)
 
