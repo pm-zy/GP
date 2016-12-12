@@ -21,7 +21,7 @@ import TopBar from '../components/topBar'
 </script>
 <style>
 	.about-container {
-		width: 400PX;
+		width: 400px;
 		height: 500px;
 		padding-top: 50px;
 		background-color: rgba(255,255,255,0.6);
