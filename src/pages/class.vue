@@ -16,22 +16,27 @@
 					<i class="fa fa-key fa-lg fa-fw"></i>
 					<span>我创建的</span>
 				</label>
+				<hr />
+				<router-link tag='label' to="/class/join" >
+					<i class="fa fa-plus fa-lg fa-fw"></i>
+					<span>加入班级</span>
+				</router-link>
 			</div>
 		</div>
 		<div class="main-content">
 			<ClassList :class-info="classInfo"></ClassList>
 		</div>
+		<router-view></router-view>
 	</div>
-
 </template>
 <script>
 import ClassList from '../components/classList'
 import TopBar from '../components/topBar'
-import Vue from 'vue';
+// import JoinClass from '../components/joinClass'
 	export default {
 		components: {
 			TopBar,
-			ClassList
+			ClassList,
 		},
 		data (){
 			return {
@@ -144,6 +149,9 @@ import Vue from 'vue';
 			span {
 				margin-left: 15px;
 			}
+		}
+		hr {
+			border-top: 1px #ddd solid;
 		}
 	}
 </style>
