@@ -37,6 +37,32 @@ import Vue from 'vue';
 			return {
 				infoType: 'join',
 				classInfo: [{
+						courseclassid: 1,
+						courclassname: '计科1302',
+						courclasssize: 30,
+						status: 1,
+						courclassdescription: '计科期中摸底考',
+						userid: 1,
+						code: 1,
+						courclassnum: 10
+					}, {
+						courseclassid: 1,
+						courclassname: '计科1302',
+						courclasssize: 30,
+						status: 0,
+						courclassdescription: '计科期中摸底考',
+						userid: 1,
+						code: 1,
+						courclassnum: 10
+					}],
+			}
+		},
+		watch: {
+			infoType: 'switchType'
+		},
+		methods: {
+			switchType: function (type) {
+				var fakeData = [{
 					courseclassid: 1,
 					courclassname: '计科1302',
 					courclasssize: 30,
@@ -54,7 +80,24 @@ import Vue from 'vue';
 					userid: 1,
 					code: 1,
 					courclassnum: 10
+				}];
+				var fakeData2 = [{
+					courseclassid: 1,
+					courclassname: '计科1302',
+					courclasssize: 30,
+					status: 1,
+					courclassdescription: '计科期中摸底考',
+					userid: 1,
+					code: 1,
+					courclassnum: 10
 				}]
+				var that = this;
+				if(type == 'join') {
+					this.classInfo = fakeData;
+				} 
+				else {
+					this.classInfo = fakeData2;
+				}
 			}
 		}
 	}
