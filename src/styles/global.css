@@ -28,7 +28,6 @@ body{
 }
 /*详细样式*/
 .left-container{
-	/*float: left;*/
 	position: fixed;
 	overflow: hidden;
 	left: 0;
@@ -48,4 +47,13 @@ body{
 	background-color: #3c375a;
 	color: white;
 	text-align: center;
+}
+.color-bar {
+	background-color: #ee8a96;
+	width: 5px;
+	height: 100%;
+	float: left;
+}
+.color-bar-active {
+	background-color: #a1ceeb;
 }

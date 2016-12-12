@@ -55,25 +55,25 @@
 	}
 </script>
 
-<style>
-	
+<style lang="less">
+	@hover-green: #84b045;
 	.panel-menu{
 		color: white;
 		margin-top: 100px;
 		list-style: none;
 		border-bottom: 1px solid #3c375a;
-	}
-	.panel-menu a {
-		color: white;
-		line-height: 40px;
-		height: 40px;
-	}
-	.panel-menu a:hover, .panel-menu a:focus {
-		color: #84b045; 
-		text-decoration: none;
-	}
-	.panel-menu li{
-		width: 180px;
+		a {
+			color: white;
+			line-height: 40px;
+			height: 40px;
+			&:hover , &:focus {
+				color: @hover-green; 
+				text-decoration: none;
+			}
+		}
+		li {
+			width: 180px;
+		}
 	}
 	.panel-menu li > span, .panel-user > span {
 		font-size: 14px;
@@ -84,11 +84,11 @@
 		color: white;
 		text-align: center;
 		margin-top: 25px;
-	}
-	.panel-user:hover, .panel-user:focus {
-		text-decoration: none;
+		&:hover, &:focus {
+			text-decoration: none;
+		}
 	}
 	a.router-link-active, .panel-user:hover, .panel-user:focus {
-		color: #84b045;
+		color: @hover-green;
 	}
 </style>

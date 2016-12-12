@@ -103,21 +103,21 @@ import Vue from 'vue';
 	}
 </script>
 
-<style>
+<style lang="less">
 	.left-menu {
 		height: 100%;
 		width: 180px;
 		float: left;
 		background-color: #f0f2f4;
-	}
-	.left-menu-header {
-		width: 100%;
-		height: 50px;
-		line-height: 50px;
-		text-align: center;
-		font-size: 22px;
-		color: #999;
-		border-bottom: 1px solid #d5d5d5;
+		.left-menu-header {
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			font-size: 22px;
+			color: #999;
+			border-bottom: 1px solid #d5d5d5;
+		}
 	}
 	.main-content { 
 		width: 100%;
@@ -127,24 +127,24 @@ import Vue from 'vue';
 		list-style: none;
 		padding: 0;
 		margin-top: 20px;
-	}
-	.left-menu-content input {
-		display: none;
-	}
-	.left-menu-content input:checked + label{
-		background-color: #f9fafc;
-	}
-	.left-menu-content label {
-		display: block;
-		color: #4a4a4a;
-		height: 50px;
-		width: 180px;
-		text-align: center;
-		line-height: 50px;
-		font-size: 13px;
-	}
-	.left-menu-content label span {
-		margin-left: 15px;
+		input {
+			display: none;
+			&:checked + label {
+				background-color: #f9fafc;
+			}
+		}
+		label {
+			display: block;
+			color: #4a4a4a;
+			height: 50px;
+			width: 180px;
+			text-align: center;
+			line-height: 50px;
+			font-size: 13px;
+			span {
+				margin-left: 15px;
+			}
+		}
 	}
 </style>
 

@@ -24,50 +24,42 @@
 
 	}
 </script>
-<style>
+<style lang="less">
 	.class-list {
-		/*border: 2px #ccc solid;*/
 		margin-top: 50px;
 		margin-left: 180px;
 	}
 	.class-list-ul {
 		list-style: none;
-	}
-	.class-list-ul li {
-		background-color: #fff;
-		box-shadow: 1px 3px 3px #ccc;
-		display: block;
-		height: 68px;
-		width: 80%;
-		margin: 6px auto;
-		line-height: 34px;
-	}
-	.color-bar {
-		background-color: #ee8a96;
-		width: 5px;
-		height: 100%;
-		float: left;
-	}
-	.color-bar-active {
-		background-color: #a1ceeb;
+		li {
+			background-color: #fff;
+			box-shadow: 1px 3px 3px #ccc;
+			display: block;
+			height: 68px;
+			width: 80%;
+			margin: 6px auto;
+			line-height: 34px;
+		}
 	}
 	.class-item-content {
 		margin-left: 15px;
-	}
-	.class-item-title {
-		font-size: 15px;
-		color: #4a4a4a;
-	}
-	.class-item-name {
-		font-weight: 700;
-		color: #3798e9;
-		width: 150px;
-		display: inline-block;
-	}
-	.class-item-info span{
-		color: #999;
-		width: 30%;
-		display: inline-block;
+		.class-item-title {
+			font-size: 15px;
+			color: #4a4a4a;
+			.class-item-name {
+				font-weight: 700;
+				color: #3798e9;
+				width: 150px;
+				display: inline-block;
+			}
+		}
+		.class-item-info {
+			span {
+				color: #999;
+				width: 30%;
+				display: inline-block;
+			}
+		}
 	}
 	.class-open {
 		color: #3798e9
