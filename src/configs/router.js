@@ -5,6 +5,7 @@ import pmExam from '../pages/exam.vue'
 import pmProblem from '../pages/problem.vue'
 import pmUser from '../pages/user.vue'
 import pmAbout from '../pages/about.vue'
+import cmpJoin from "../components/joinClass"
 // 配置路由
 export default [{
         path: '/',
@@ -15,6 +16,10 @@ export default [{
     }, {
         path: '/class',
         component: pmClass,
+        children: [{
+            path: 'join',
+            component: cmpJoin
+        }]
     }, {
         path: '/homework',
         component: pmHomework
