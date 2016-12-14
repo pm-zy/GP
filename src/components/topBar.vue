@@ -4,7 +4,7 @@
 		<div class="header-content">
 			<span class="space-nav">
 				<i class="fa fa-home fa-lg"></i>
-				西安邮电大学 > 在线评测平台 > {{path}}
+				西安邮电大学 > 编程能力综合训练平台 > {{path}}
 			</span>
 			<div class="header-right">
 				<ul class="nav-right">

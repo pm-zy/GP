@@ -1,6 +1,6 @@
 <template>
 	<div class="body of-hd">
-		<TopBar path='班级'>gjgjhjhj</TopBar>
+		<TopBar path='班级'></TopBar>
 		<div class="left-menu of-hd">
 			<div class="left-menu-header">
 				<span>我的班级</span>
