@@ -1,7 +1,7 @@
 <template>
 	<div class="class-join-list">
-		<ul class="class-join-list-ul">
-			<li v-if="classInfo && classInfo.length > 0" v-for="item in classInfo">
+		<ul v-show="classInfo && classInfo.length > 0" class="class-join-list-ul">
+			<li v-for="item in classInfo">
 				<div class="color-bar" :class="{'color-bar-active': item.status==1}"></div>
 				<div class="class-item-content">
 					<div class="class-item-title">
