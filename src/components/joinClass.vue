@@ -10,11 +10,34 @@
 				<button class="btn btn-primary" name="">找一找</button>
 				<router-link class='join-return' to="/class">返回</router-link>
 			</div>
+			<div class="search-result">
+				<ClassJoinList :class-info="classInfo" ></ClassJoinList>
+			</div>
 		</div>
 	</div>
 </template>
 <script>
+	import ClassJoinList from './classJoinList'
+
 	export default {
+		components: {
+			ClassJoinList
+		},
+		data() {
+			return {
+				classInfo: [{
+					courseclassid: 1,
+					courclassname: '计科1302',
+					courclasssize: 30,
+					status: 0,
+					courclassdescription: '计科期中摸底考',
+					userid: 1,
+					code: 1,
+					courclassnum: 10
+				}]
+
+			}
+		}
 
 	}
 </script>
@@ -57,6 +80,10 @@
 					display: inline-block;
 					line-height: 15px;
 				}
+			}
+			.search-result{
+				width: 700px;
+
 			}
 		}
 	}

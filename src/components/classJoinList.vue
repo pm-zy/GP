@@ -1,7 +1,7 @@
 <template>
-	<div class="class-list">
-		<ul class="class-list-ul">
-			<li v-for="item in classInfo">
+	<div class="class-join-list">
+		<ul class="class-join-list-ul">
+			<li v-if="classInfo && classInfo.length > 0" v-for="item in classInfo">
 				<div class="color-bar" :class="{'color-bar-active': item.status==1}"></div>
 				<div class="class-item-content">
 					<div class="class-item-title">
@@ -14,6 +14,7 @@
 						<span>班级编号：{{item.courseclassid}}</span>
 					</div>
 				</div>
+				<button class="btn btn-primary">加入班级</button>
 			</li>
 		</ul>
 	</div>
@@ -26,18 +27,21 @@
 	}
 </script>
 <style lang="less">
-	.class-list {
-	}
-	.class-list-ul {
+	.class-join-list-ul {
+		padding: 0;
 		list-style: none;
 		li {
 			background-color: #fff;
 			box-shadow: 1px 3px 3px #ccc;
-			display: block;
+			display: inline-block;
 			height: 68px;
 			width: 80%;
 			margin: 6px auto;
 			line-height: 34px;
+			button {
+				margin-top: 10px;
+				float: right;
+			}
 		}
 	}
 	.class-item-content {

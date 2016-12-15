@@ -127,6 +127,10 @@ import TopBar from '../components/topBar'
 	.main-content { 
 		width: 100%;
 		height: 100%;
+		ul {
+			margin-left: 180px;
+			margin-top: 50px;
+		}
 	}
 	.left-menu-content{
 		list-style: none;
