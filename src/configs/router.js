@@ -5,7 +5,8 @@ import pmExam from '../pages/exam.vue'
 import pmProblem from '../pages/problem.vue'
 import pmUser from '../pages/user.vue'
 import pmAbout from '../pages/about.vue'
-import cmpJoin from "../components/joinClass"
+import cmpJoin from '../components/joinClass'
+import pmMessage from '../pages/message.vue'
 // 配置路由
 export default [{
         path: '/',
@@ -35,7 +36,10 @@ export default [{
     }, {
         path: '/about',
         component: pmAbout
-    }, 
+    }, {
+        path: '/message',
+        component: pmMessage
+    }
 
 
 ]

@@ -37,6 +37,10 @@
 			<i class="fa fa-user-circle-o fa-lg fa-fw"></i>
 			<span>个人空间</span>
 		</router-link>
+		<router-link class='panel-user' to="/message" >
+			<i class="fa fa-envelope fa-lg fa-fw"></i>
+			<span>我的消息</span>
+		</router-link>
 	</div>
 	
 </template>
