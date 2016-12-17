@@ -13,6 +13,15 @@ import Vue from 'vue';
 	export default {
 		components: {
 			TopBar
+		},
+		data() {
+			return {
+				menu: {
+					title: '收件箱'，
+					icon: 'fa-evelope',
+					to: '/'
+				}
+			}
 		}
 	}
 </script>
