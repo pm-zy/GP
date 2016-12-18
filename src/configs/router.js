@@ -38,7 +38,11 @@ export default [{
         component: pmAbout
     }, {
         path: '/message',
-        component: pmMessage
+        component: pmMessage,
+        children: [{
+            path: 'received',
+            
+        }]
     }
 
 
