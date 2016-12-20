@@ -7,6 +7,7 @@ import pmUser from '../pages/user.vue'
 import pmAbout from '../pages/about.vue'
 import cmpJoin from '../components/joinClass'
 import pmMessage from '../pages/message.vue'
+import TEST from '../components/Hello.vue'
 // 配置路由
 export default [{
         path: '/',
@@ -41,8 +42,12 @@ export default [{
         component: pmMessage,
         children: [{
             path: 'received',
-            
-        }]
+			component: TEST
+        }, {
+			path: 'send',
+			component: TEST,
+		}],
+		redirect: '/message/received'
     }
 
 
