@@ -24,10 +24,26 @@ export default [{
         }]
     }, {
         path: '/homework',
-        component: pmHomework
+        component: pmHomework,
+        children: [{
+            path: 'undone',
+            component: TEST
+        }, {
+            path: 'done',
+            component: TEST
+        }],
+        redirect: '/homework/undone'
     }, {
         path: '/exam',
-        component: pmExam
+        component: pmExam,
+        children: [{
+            path: 'undone',
+            component: TEST
+        }, {
+            path: 'done',
+            component: TEST
+        }],
+        redirect: '/exam/undone'
     }, {
         path: '/problem',
         component: pmProblem

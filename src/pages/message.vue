@@ -2,7 +2,7 @@
 	<div class="body of-hd" >
 		<TopBar path='我的消息'></TopBar>
 		<VerticalNav :nav-data="menu" title='我的消息'></VerticalNav>
-		<router-view name="message"></router-view>
+		<router-view ></router-view>
 	</div>
 
 </template>

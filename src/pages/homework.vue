@@ -18,13 +18,13 @@ import VerticalNav from '../components/verticalNav'
 		data() {
 			return {
 				menu: [{
-					title: '已完成',
-					icon: 'fa-envelope',
-					to: '/homework/completed'
-				}, {
 					title: '未完成',
-					icon: 'fa-send',
-					to: '/homework/ing'
+					icon: 'fa-circle-o-notch',
+					to: '/homework/undone'
+				}, {
+					title: '已完成',
+					icon: 'fa-check-square-o',
+					to: '/homework/done'
 				}]
 			}
 		}
