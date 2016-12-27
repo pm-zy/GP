@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-    <LeftPanel></LeftPanel>
+    <LeftPanel v-show="showLeft"></LeftPanel>
     <div class="right-container">
        <router-view
         class='view'
@@ -15,11 +15,36 @@
 <script>
 // import Hello from './components/Hello'
 import LeftPanel from './components/leftPanel'
-
+// let showLeft = true;
   export default {
     name: 'app',
     components: {
       LeftPanel
+    },
+    watch: {
+      '$route': function () {
+        let path = this.$route.path;
+        if(path.match('login') || path.match(/(exam\/{1}[0-9]*)$/) || path.match(/(work\/{1}[0-9]*)$/)) {
+          this.showLeft = false;
+        }
+        else {
+          this.showLeft = true
+        }
+      }
+    },
+    mounted: function () {
+      let path = this.$route.path;
+        if(path.match('login') || path.match(/(exam\/{1}[0-9]*)$/) || path.match(/(work\/{1}[0-9]*)$/)) {
+          this.showLeft = false;
+        }
+        else {
+          this.showLeft = true
+        }
+    },
+    data () {
+      return {
+        showLeft: true
+      }
     }
   }
 

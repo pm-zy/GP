@@ -50,6 +50,14 @@ export default [{
     },{
         path: '/user/:id',
         component: pmUser
+    },
+    {
+        path: '/exam/:id',
+        component: pmUser
+    },
+    {
+        path: '/homework/:id',
+        component: pmUser
     }, {
         path: '/about',
         component: pmAbout

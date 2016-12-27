@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import store from 'vuex/store'
+import store from './vuex/store'
 
 import './styles/normalize.css'
 import './styles/bootstrap.css'

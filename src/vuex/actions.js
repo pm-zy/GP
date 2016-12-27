@@ -1,3 +1,3 @@
-export const demoAction = ({ commit }) {
-	commit( 'demoMutation')
-}
+// export const demoAction = ({ commit }) {
+// 	//commit( 'demoMutation')
+// }
