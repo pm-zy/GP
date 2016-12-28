@@ -10,6 +10,7 @@ import pmMessage from '../pages/message.vue'
 import pmLogin from '../pages/login.vue'
 import pmExamDetail from '../pages/examDetail.vue'
 import pmHomeworkDetail from '../pages/homeworkDetail.vue'
+import pm404 from '../pages/404.vue'
 import TEST from '../components/Hello.vue'
 // 配置路由
 export default [{
@@ -78,6 +79,9 @@ export default [{
     }, {
         path: '/login',
         component: pmLogin
+    }, {
+        path: '/404',
+        component: pm404
     }
 
 
