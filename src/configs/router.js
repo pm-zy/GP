@@ -7,6 +7,9 @@ import pmUser from '../pages/user.vue'
 import pmAbout from '../pages/about.vue'
 import cmpJoin from '../components/joinClass'
 import pmMessage from '../pages/message.vue'
+import pmLogin from '../pages/login.vue'
+import pmExamDetail from '../pages/examDetail.vue'
+import pmHomeworkDetail from '../pages/homeworkDetail.vue'
 import TEST from '../components/Hello.vue'
 // 配置路由
 export default [{
@@ -53,11 +56,11 @@ export default [{
     },
     {
         path: '/exam/:id',
-        component: pmUser
+        component: pmExamDetail
     },
     {
         path: '/homework/:id',
-        component: pmUser
+        component: pmHomeworkDetail
     }, {
         path: '/about',
         component: pmAbout
@@ -72,6 +75,9 @@ export default [{
 			component: TEST,
 		}],
 		redirect: '/message/received'
+    }, {
+        path: '/login',
+        component: pmLogin
     }
 
 
