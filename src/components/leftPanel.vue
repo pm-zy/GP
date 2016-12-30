@@ -14,16 +14,11 @@
 					<span>班级</span>
 				</li>
 			</router-link>
-			<router-link to="/homework">
-				<li>
-					<i class="fa fa-book fa-lg fa-fw"></i>
-					<span>作业</span>
-				</li>
-			</router-link>
-			<router-link to="/exam">
+			
+			<router-link to="/task">
 				<li>
 					<i class="fa fa-edit fa-lg fa-fw"></i>
-					<span>考试</span>
+					<span>任务</span>
 				</li>
 			</router-link>
 			<router-link to="/problem">

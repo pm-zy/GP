@@ -6,10 +6,12 @@ import pmProblem from '../pages/problem.vue'
 import pmUser from '../pages/user.vue'
 import pmAbout from '../pages/about.vue'
 import cmpJoin from '../components/joinClass'
+import cmpTask from '../components/taskList'
 import pmMessage from '../pages/message.vue'
 import pmLogin from '../pages/login.vue'
 import pmExamDetail from '../pages/examDetail.vue'
 import pmHomeworkDetail from '../pages/homeworkDetail.vue'
+import pmTask from '../pages/task.vue'
 import pm404 from '../pages/404.vue'
 import TEST from '../components/Hello.vue'
 // 配置路由
@@ -82,7 +84,21 @@ export default [{
     }, {
         path: '/404',
         component: pm404
-    }
+    }, {
+        path: '/task',
+        component: pmTask,
+        children: [{
+            path: 'undone',
+            component: cmpTask
+        }, {
+            path: 'done',
+            component: cmpTask
+        }],
+        redirect: '/task/undone'
+    }, {
+        path: '*',
+        redirect: '/404'
+    }, 
 
 
 ]
