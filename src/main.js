@@ -14,12 +14,12 @@ import routes from './configs/router'
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  routes
+	routes
 })
 
 new Vue({
-  router,
-  store,
-  el: '#app',
-  render: (h) => h(App)
+	router,
+	store,
+	el: '#app',
+	render: (h) => h(App)
 })
