@@ -24,7 +24,7 @@ import LeftPanel from './components/leftPanel'
     watch: {
       '$route': function () {
         let path = this.$route.path;
-        if(path.match('login') || path.match(/(task\/{1}[0-9]*)$/)) {
+        if(path.match('login') || path.match(/(task\/{1}[0-9]*)$/) || path.match('register')) {
           this.showLeft = false;
         }
         else {
@@ -34,7 +34,7 @@ import LeftPanel from './components/leftPanel'
     },
     mounted: function () {
       let path = this.$route.path;
-        if(path.match('login') || path.match(/(task\/{1}[0-9]*)$/)) {
+        if(path.match('login') || path.match(/(task\/{1}[0-9]*)$/) || path.match('register')) {
           this.showLeft = false;
         }
         else {

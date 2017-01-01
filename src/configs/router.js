@@ -13,6 +13,7 @@ import pmExamDetail from '../pages/examDetail.vue'
 import pmHomeworkDetail from '../pages/homeworkDetail.vue'
 import pmTask from '../pages/task.vue'
 import pm404 from '../pages/404.vue'
+import pmRegister from '../pages/register.vue'
 import TEST from '../components/Hello.vue'
 // 配置路由
 export default [{
@@ -82,6 +83,9 @@ export default [{
         path: '/login',
         component: pmLogin
     }, {
+        path: '/register',
+        component: pmRegister
+    }, {
         path: '/404',
         component: pm404
     }, {
@@ -98,7 +102,7 @@ export default [{
     }, {
         path: '*',
         redirect: '/404'
-    }, 
+    },
 
 
 ]
