@@ -1,7 +1,7 @@
 <template>
-	<div>
-		<div class="body">
-			register
+	<div class="body-full-width">
+		<div class="register-body">
+			 
 		</div>
 	</div>
 

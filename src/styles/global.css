@@ -57,3 +57,9 @@ body{
 .color-bar-active {
 	background-color: #a1ceeb;
 }
+.body-full-width {
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
