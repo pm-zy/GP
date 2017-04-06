@@ -8,6 +8,7 @@ import pmAbout from '../pages/about.vue'
 import cmpJoin from '../components/joinClass'
 import cmpTask from '../components/taskList'
 import cmpMessage from '../components/messageList'
+import cmpMessageDetail from '../components/messageDetail'
 import pmMessage from '../pages/message.vue'
 import pmLogin from '../pages/login.vue'
 import pmExamDetail from '../pages/examDetail.vue'
@@ -78,8 +79,11 @@ export default [{
         }, {
 			path: 'unread',
 			component: cmpMessage,
+		}, {
+			path: 'detail',
+			component: cmpMessageDetail,
 		}],
-		redirect: '/message/read'
+		redirect: '/message/unread'
     }, {
         path: '/login',
         component: pmLogin

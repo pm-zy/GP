@@ -2,11 +2,13 @@
 	<div class="message-list">
 		<ul class="message-list-ul">
 			<li v-for="item in messages">
-				<div class="color-bar" :class="{'color-bar-active': messageStatus}"></div>
-				<div class="message-item-content">
-					<span class="message-item-title">{{item.title}}</span>
-					<span class="message-item-desc">{{item.content}}</span>
-				</div>
+                <router-link to="/message/detail">
+        			<div class="color-bar" :class="{'color-bar-active': messageStatus}"></div>
+        			<div class="message-item-content">
+        				<span class="message-item-title">{{item.title}}</span>
+        				<span class="message-item-desc">{{item.content}}</span>
+        			</div>
+                </router-link>
 			</li>
 		</ul>
 	</div>
@@ -55,9 +57,12 @@
 </script>
 
 <style lang="less">
+    a:hover {
+        text-decoration: none;
+    }
 	.message-list {
 	    width: 80%;
-        margin: 50px 50px;
+        margin: 50px auto;
 	}
 	.message-list-ul {
 		list-style: none;
@@ -69,6 +74,9 @@
 			width: 80%;
 			margin: 6px auto;
 			line-height: 34px;
+            &:hover {
+                background-color: #eeeeFF
+            }
 		}
 	}
 	.message-item-content {
