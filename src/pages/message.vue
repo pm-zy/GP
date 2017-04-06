@@ -18,16 +18,15 @@ import VerticalNav from '../components/verticalNav'
 		data() {
 			return {
 				menu: [{
-					title: '收件箱',
+					title: '未读消息',
 					icon: 'fa-envelope',
-					to: '/message/received'
+					to: '/message/unread'
 				}, {
-					title: '发件箱',
-					icon: 'fa-send',
-					to: '/message/send'
+					title: '已读消息',
+					icon: 'fa-envelope-open',
+					to: '/message/read'
 				}]
 			}
 		}
 	}
 </script>
-

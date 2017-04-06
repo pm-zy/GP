@@ -7,6 +7,7 @@ import pmUser from '../pages/user.vue'
 import pmAbout from '../pages/about.vue'
 import cmpJoin from '../components/joinClass'
 import cmpTask from '../components/taskList'
+import cmpMessage from '../components/messageList'
 import pmMessage from '../pages/message.vue'
 import pmLogin from '../pages/login.vue'
 import pmExamDetail from '../pages/examDetail.vue'
@@ -72,13 +73,13 @@ export default [{
         path: '/message',
         component: pmMessage,
         children: [{
-            path: 'received',
-			component: TEST
+            path: 'read',
+			component: cmpMessage
         }, {
-			path: 'send',
-			component: TEST,
+			path: 'unread',
+			component: cmpMessage,
 		}],
-		redirect: '/message/received'
+		redirect: '/message/read'
     }, {
         path: '/login',
         component: pmLogin
