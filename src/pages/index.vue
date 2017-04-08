@@ -3,6 +3,7 @@
 		<TopBar path='主页'></TopBar>
 		<div class="body">
 			<div class="index-menu-container">
+				<h2>西安邮电大学 在线编程训练平台</h2>
 				<div class="first-line">
 					<div class="index-menu-item">
 						<router-link to="/class">
@@ -64,6 +65,12 @@ import Vue from 'vue';
 		padding: 50px;
 		i.fa-3 {
 			font-size: 3em;
+		}
+		h2 {
+			color: #aaa;
+			font-size: 16px;
+			margin-top: -30px;
+			margin-left: -30px;
 		}
 		.index-menu-item {
 			list-style: none;
