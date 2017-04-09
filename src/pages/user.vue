@@ -10,6 +10,7 @@
 					<h2>{{nickname}}</h2>
 					<p class="org">{{org}}</p>
 					<p v-if="userType == 1" class="student">学生</p>
+					<input type="button" class="logout" value="退出登录" @click='logout'>
 				</div>
 			</div>
 		</div>
@@ -19,6 +20,7 @@
 <script type="text/javascript">
 import TopBar from '../components/topBar'
 import Vue from 'vue';
+import { logout } from '../vuex/actions'
 
 	export default {
 		data() {
@@ -33,6 +35,20 @@ import Vue from 'vue';
 		},
 		components: {
 			TopBar
+		},
+		methods: {
+			logout: function() {
+				this.$store.dispatch('logout');
+
+			}
+		},
+		vuex: {
+			getters: {
+				logout
+			},
+			actions: {
+				logout
+			}
 		}
 	}
 </script>
@@ -55,6 +71,20 @@ import Vue from 'vue';
 				color: #abcdef;
 				font-weight: bold;
 
+			}
+			.logout {
+				background: none;
+				border: 1px #5A4BB4 solid;
+				border-radius: 10px;
+				color: #5A4BB4;
+				font-size: 18px;
+				height: 45px;
+				width: 100px;
+				line-height: 45px;
+				&:hover {
+					border: 1px #84b045 solid;
+					color: #84b045;
+				}
 			}
 		}
 		.pic {
