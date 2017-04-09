@@ -21,6 +21,7 @@
 import TopBar from '../components/topBar'
 import Vue from 'vue';
 import { logout } from '../vuex/actions'
+import { mapActions } from 'vuex'
 
 	export default {
 		data() {
@@ -36,12 +37,14 @@ import { logout } from '../vuex/actions'
 		components: {
 			TopBar
 		},
-		methods: {
-			logout: function() {
-				this.$store.dispatch('logout');
-
-			}
-		},
+		methods: 
+			// logout: function() {
+			// 	this.$store.dispatch('logout');
+			//
+			// },
+			mapActions([
+				'logout'
+			]),
 		vuex: {
 			getters: {
 				logout
