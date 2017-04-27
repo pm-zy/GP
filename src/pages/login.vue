@@ -5,10 +5,10 @@
 				<img src="../assets/logo.png" alt="">
 			</div>
 			<form class="login-form form">
-				<input type="text" class="form-control" name="" placeholder="用户名" />
-				<input type="password" class="form-control" name="" placeholder="密码" />
+				<input type="text" class="form-control" name="" placeholder="用户名" v-model="userName" />
+				<input type="password" class="form-control" name="" placeholder="密码" v-model="password" />
 				<a href="#" class="role-a">教师登陆</a><br />
-				<button class="btn btn-primary" name="button">学生登陆</button>
+				<button class="btn btn-primary" name="button" @click="login">学生登陆</button>
 				<button class="btn btn-success" name="button">注册</button>
 			</form>
 		</div>
@@ -16,10 +16,36 @@
 
 </template>
 <script>
+import { login } from '../vuex/actions'
+import store from '../vuex/store'
 	export default {
-		components: {
-
-		}
+		data() {
+			console.log(this.$state)
+			if(store.getters.userInfo.email) {
+				alert('已登录');
+				this.$router.replace('/');
+			}
+			return {
+				userName: store.getters.userInfo.nickname,
+				password: ''
+			}
+		},
+		methods: {
+			login: function() {
+				// 获取数据
+				let userData = {
+					nickname: 'PM' + new Date().getTime(),
+			        email: 'i@varpm.com',
+			        telNum: '18829295436',
+			        personId: '0001',
+			        org: '西安邮电大学 计算机学院 计科1303',
+			        userType: 1
+				}
+				store.commit('changeUser', userData);
+				this.$router.replace('/')
+				console.log('tz')
+			},
+		},
 	}
 </script>
 <style lang="less">

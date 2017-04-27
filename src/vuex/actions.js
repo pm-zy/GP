@@ -7,3 +7,7 @@ export default {
         commit('logout')
     }
 }
+
+// export default {
+//     login ({commit}, )
+// }

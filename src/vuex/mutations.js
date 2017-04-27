@@ -12,6 +12,6 @@ export default {
 	},
 	changeUser (state, payload) {
 		state.userInfo = payload;
-		cconsole.log('mutation: changeUser')
+		console.log('mutation: changeUser')
 	}
 }

@@ -37,22 +37,24 @@ import { mapActions } from 'vuex'
 		components: {
 			TopBar
 		},
-		methods: 
-			// logout: function() {
-			// 	this.$store.dispatch('logout');
-			//
-			// },
-			mapActions([
-				'logout'
-			]),
-		vuex: {
-			getters: {
-				logout
+		methods: {
+			logout: function() {
+				this.$store.dispatch('logout');
+
 			},
-			actions: {
-				logout
-			}
 		}
+
+		// 	mapActions([
+		// 		'logout'
+		// 	]),
+		// vuex: {
+		// 	getters: {
+		// 		logout
+		// 	},
+		// 	actions: {
+		// 		logout
+		// 	}
+		// }
 	}
 </script>
 <style lang="less">
