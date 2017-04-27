@@ -42,18 +42,6 @@ import store from '../vuex/store'
 				this.$router.replace('/login');
 			},
 		},
-
-		// 	mapActions([
-		// 		'logout'
-		// 	]),
-		// vuex: {
-		// 	getters: {
-		// 		logout
-		// 	},
-		// 	actions: {
-		// 		logout
-		// 	}
-		// }
 	}
 </script>
 <style lang="less">
