@@ -31,12 +31,10 @@
 							个人空间
 						</router-link>
 					</div>
-				</ul>
-
+				</div>
 			</div>
 		</div>
 	</div>
-
 </template>
 <script type="text/javascript">
 import TopBar from '../components/topBar'
