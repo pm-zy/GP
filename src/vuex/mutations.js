@@ -12,6 +12,7 @@ export default {
 	},
 	changeUser (state, payload) {
 		state.userInfo = payload;
+		state.login.status = true;
 		console.log('mutation: changeUser')
 	}
 }

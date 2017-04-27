@@ -26,7 +26,7 @@ import store from '../vuex/store'
 				this.$router.replace('/');
 			}
 			return {
-				userName: store.getters.userInfo.nickname,
+				userName: store.getters.getUserInfo.nickname,
 				password: ''
 			}
 		},
@@ -43,7 +43,6 @@ import store from '../vuex/store'
 				}
 				store.commit('changeUser', userData);
 				this.$router.replace('/')
-				console.log('tz')
 			},
 		},
 	}

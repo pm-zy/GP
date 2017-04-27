@@ -22,17 +22,16 @@ import TopBar from '../components/topBar'
 import Vue from 'vue';
 import { logout } from '../vuex/actions'
 import { mapActions } from 'vuex'
+import store from '../vuex/store'
 
 	export default {
 		data() {
-			return {
-				nickname: 'PM',
-				email: 'i@varpm.com',
-				telNum: '18829295436',
-				personId: '0001',
-				org: '西安邮电大学 计算机学院 计科1303',
-				userType: 1
+			if(!store.getters.getLoginStatus.status) {
+				alert('请先登录');
+				console.log(store.getters.getLoginStatus.status);
+				this.$router.replace('/login');
 			}
+			return store.getters.getUserInfo
 		},
 		components: {
 			TopBar
@@ -40,9 +39,9 @@ import { mapActions } from 'vuex'
 		methods: {
 			logout: function() {
 				this.$store.dispatch('logout');
-
+				this.$router.replace('/login');
 			},
-		}
+		},
 
 		// 	mapActions([
 		// 		'logout'

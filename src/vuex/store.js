@@ -11,8 +11,11 @@ export default new Vuex.Store({
 	mutations,
 	actions,
 	getters: {
-		userInfo: state => {
+		getUserInfo: state => {
 			return state.userInfo;
+		},
+		getLoginStatus: data => {
+			return state.login
 		}
 	}
 })
