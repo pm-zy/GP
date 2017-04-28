@@ -21,13 +21,6 @@ export default {
 			this.$router.replace('/login');
 		}
 		return {}
-	},
-	beforeUpdate: () => {
-		if(!store.getters.getLoginStatus.status) {
-			alert('请先登录');
-			console.log(store.getters.getLoginStatus.status);
-			this.$router.replace('/login');
-		}
 	}
 }
 </script>

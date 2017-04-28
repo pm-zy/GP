@@ -9,8 +9,10 @@
 				<div class="user-info">
 					<h2>{{nickname}}</h2>
 					<p class="org">{{org}}</p>
+					<p>{{personId}}</p>
 					<p v-if="userType == 1" class="student">学生</p>
-					<input type="button" class="logout" value="退出登录" @click='logout'>
+					<input type="button" class="logout" value="退出登录" @click='logout'><br/>
+					<a @click='modifyPassword'>修改密码</a>
 				</div>
 			</div>
 		</div>
@@ -25,28 +27,33 @@ import { logout } from '../vuex/actions'
 import { mapActions } from 'vuex'
 import store from '../vuex/store'
 
-	export default {
-		data() {
-			if(!store.getters.getLoginStatus.status) {
-				alert('请先登录');
-				console.log(store.getters.getLoginStatus.status);
-				this.$router.replace('/login');
-				return {};
-			}
-			return store.getters.getUserInfo
+export default {
+	data() {
+		if(!store.getters.getLoginStatus.status) {
+			alert('请先登录');
+			console.log(store.getters.getLoginStatus.status);
+			this.$router.replace('/login');
+			return {};
+		}
+		return store.getters.getUserInfo
+	},
+	components: {
+		TopBar
+	},
+	methods: {
+		logout: function() {
+			this.$store.dispatch('logout');
+			this.$router.replace('/login');
 		},
-		components: {
-			TopBar
-		},
-		methods: {
-			logout: function() {
-				this.$store.dispatch('logout');
-				this.$router.replace('/login');
-			},
-		},
-	}
+		modifyPassword: function() {
+			let url = `/user/${this.personId}/modifyPassword`;
+			this.$router.replace(url)
+		}
+	},
+}
 </script>
 <style lang="less">
+	@hover-green: #84b045;
 	.user-container {
 		width: 80%;
 		margin: 20px auto;
@@ -78,6 +85,14 @@ import store from '../vuex/store'
 				&:hover {
 					border: 1px #84b045 solid;
 					color: #84b045;
+				}
+			}
+			a {
+				line-height: 40px;
+				font-size: 16px;
+				&:hover {
+					cursor: pointer;
+					color: @hover-green
 				}
 			}
 		}
