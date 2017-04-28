@@ -39,6 +39,11 @@ export default {
 		ClassList,
 	},
 	data() {
+		if(!store.getters.getLoginStatus.status) {
+			alert('请先登录');
+			console.log(store.getters.getLoginStatus.status);
+			this.$router.replace('/login');
+		}
 		return {
 			infoType: 'join',
 			classInfo: [{
