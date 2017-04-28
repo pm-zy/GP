@@ -26,6 +26,12 @@ body{
 	height: 100%;
 	width: 100%;
 }
+.pm-fl-right {
+	float: right;
+}
+.pm-fl-left {
+	float: left;
+}
 /*详细样式*/
 .left-container{
 	position: fixed;
@@ -62,4 +68,7 @@ body{
 	position: fixed;
 	top: 0;
 	left: 0;
+}
+.filter {
+	filter: blur(5px);
 }

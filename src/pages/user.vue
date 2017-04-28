@@ -29,6 +29,7 @@ import store from '../vuex/store'
 
 export default {
 	data() {
+		document.getElementsByClassName('body')[1].style.filter=""
 		if(!store.getters.getLoginStatus.status) {
 			alert('请先登录');
 			console.log(store.getters.getLoginStatus.status);
@@ -39,6 +40,9 @@ export default {
 	},
 	components: {
 		TopBar
+	},
+	beforeUpdate: function() {
+		document.getElementsByClassName('body')[1].style.filter=""
 	},
 	methods: {
 		logout: function() {
