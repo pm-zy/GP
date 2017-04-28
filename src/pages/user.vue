@@ -14,6 +14,7 @@
 				</div>
 			</div>
 		</div>
+		<router-view></router-view>
 	</div>
 
 </template>
@@ -30,6 +31,7 @@ import store from '../vuex/store'
 				alert('请先登录');
 				console.log(store.getters.getLoginStatus.status);
 				this.$router.replace('/login');
+				return {};
 			}
 			return store.getters.getUserInfo
 		},

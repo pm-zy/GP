@@ -9,6 +9,7 @@ import cmpJoin from '../components/joinClass'
 import cmpTask from '../components/taskList'
 import cmpMessage from '../components/messageList'
 import cmpMessageDetail from '../components/messageDetail'
+import cmpModifyPassword from '../components/modifyPassword'
 import pmMessage from '../pages/message.vue'
 import pmLogin from '../pages/login.vue'
 import pmExamDetail from '../pages/examDetail.vue'
@@ -58,7 +59,11 @@ export default [{
         component: pmProblem
     },{
         path: '/user/:id',
-        component: pmUser
+        component: pmUser,
+        children: [{
+            path: 'modifyPassword',
+            component: cmpModifyPassword
+        }]
     },
     {
         path: '/exam/:id',

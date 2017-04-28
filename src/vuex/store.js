@@ -14,7 +14,7 @@ export default new Vuex.Store({
 		getUserInfo: state => {
 			return state.userInfo;
 		},
-		getLoginStatus: data => {
+		getLoginStatus: state => {
 			return state.login
 		}
 	}

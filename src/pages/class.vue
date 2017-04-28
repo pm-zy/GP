@@ -32,6 +32,8 @@
 <script>
 import ClassList from '../components/classList'
 import TopBar from '../components/topBar'
+import store from '../vuex/store'
+
 // import JoinClass from '../components/joinClass'
 export default {
 	components: {

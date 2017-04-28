@@ -40,8 +40,13 @@ import store from '../vuex/store'
 			        personId: '0001',
 			        org: '西安邮电大学 计算机学院 计科1303',
 			        userType: 1
-				}
-				store.commit('changeUser', userData);
+				};
+				let fakeLoginInfo = {
+		            status: 0,
+		            userToken: '770fed4ca2aabd20ae9a5dd774711de2',
+		            info: '登陆成功'
+		        }
+				store.commit('changeUser', {userInfo: userData, loginInfo: fakeLoginInfo});
 				this.$router.replace('/')
 			},
 		},

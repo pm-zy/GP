@@ -38,25 +38,27 @@
 </template>
 <script type="text/javascript">
 import TopBar from '../components/topBar'
+import store from '../vuex/store'
+
 import Vue from 'vue';
-	export default {
-		data () {
-			if(!store.getters.getLoginStatus.status) {
-				alert('请先登录');
-				console.log(store.getters.getLoginStatus.status);
-				this.$router.replace('/login');
-			}
-			return {
-				user: {
-					userId: 123,
-					userName: 'pm'
-				}
-			}
-		},
-		components: {
-			TopBar
+export default {
+	data () {
+		if(!store.getters.getLoginStatus.status) {
+			alert('请先登录');
+			console.log(store.getters.getLoginStatus.status);
+			this.$router.replace('/login');
 		}
+		return {
+			user: {
+				userId: 123,
+				userName: 'pm'
+			}
+		}
+	},
+	components: {
+		TopBar
 	}
+}
 </script>
 <style lang="less">
 	.index-menu-container {

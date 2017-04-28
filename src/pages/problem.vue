@@ -8,17 +8,26 @@
 <script>
 import TopBar from '../components/topBar'
 import Vue from 'vue';
-	export default {
-		components: {
-			TopBar
-		},
-		data() {
-			if(!store.getters.getLoginStatus.status) {
-				alert('请先登录');
-				console.log(store.getters.getLoginStatus.status);
-				this.$router.replace('/login');
-			}
-			return {}
+import store from '../vuex/store'
+
+export default {
+	components: {
+		TopBar
+	},
+	data() {
+		if(!store.getters.getLoginStatus.status) {
+			alert('请先登录');
+			console.log(store.getters.getLoginStatus.status);
+			this.$router.replace('/login');
+		}
+		return {}
+	},
+	beforeUpdate: () => {
+		if(!store.getters.getLoginStatus.status) {
+			alert('请先登录');
+			console.log(store.getters.getLoginStatus.status);
+			this.$router.replace('/login');
 		}
 	}
+}
 </script>
