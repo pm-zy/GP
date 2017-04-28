@@ -7,19 +7,18 @@
 	</div>
 </template>
 <script>
+export default {
+	data() {
+		return {
+			message: {
+                title: '作为开发者我是如何跟上时代脚步的',
+                id:'001',
+                content:'作为佛巍峨魔法快乐巍峨册封为罗马代脚步的'
+            }
 
-	export default {
-		data() {
-			return {
-				message: {
-                    title: '作为开发者我是如何跟上时代脚步的',
-                    id:'001',
-                    content:'作为佛巍峨魔法快乐巍峨册封为罗马代脚步的'
-                }
-
-			}
 		}
 	}
+}
 </script>
 <style lang="less">
 	.message-container {

@@ -13,22 +13,21 @@
 </template>
 <script type="text/javascript">
 import TopBar from '../components/topBar'
-	export default {
-		components: {
-			TopBar
-		}
+export default {
+	components: {
+		TopBar
 	}
+}
 </script>
 <style>
-	.about-container {
-		width: 400px;
-		height: 500px;
-		padding-top: 50px;
-		background-color: rgba(255,255,255,0.6);
-		box-shadow: 2px 5px 5px #aaa;
-		margin: 20px auto;
-		text-align: center;
-		color: #444;
-	}
-
+.about-container {
+	width: 400px;
+	height: 500px;
+	padding-top: 50px;
+	background-color: rgba(255,255,255,0.6);
+	box-shadow: 2px 5px 5px #aaa;
+	margin: 20px auto;
+	text-align: center;
+	color: #444;
+}
 </style>

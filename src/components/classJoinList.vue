@@ -21,50 +21,50 @@
 
 </template>
 <script>
-	export default {
-		props: ['classInfo'],
+export default {
+	props: ['classInfo'],
 
-	}
+}
 </script>
 <style lang="less">
-	.class-join-list-ul {
-		padding: 0;
-		list-style: none;
-		li {
-			background-color: #fff;
-			box-shadow: 1px 3px 3px #ccc;
+.class-join-list-ul {
+	padding: 0;
+	list-style: none;
+	li {
+		background-color: #fff;
+		box-shadow: 1px 3px 3px #ccc;
+		display: inline-block;
+		height: 68px;
+		width: 80%;
+		margin: 6px auto;
+		line-height: 34px;
+		button {
+			margin-top: 10px;
+			float: right;
+		}
+	}
+}
+.class-item-content {
+	margin-left: 15px;
+	.class-item-title {
+		font-size: 15px;
+		color: #4a4a4a;
+		.class-item-name {
+			font-weight: 700;
+			color: #3798e9;
+			width: 150px;
 			display: inline-block;
-			height: 68px;
-			width: 80%;
-			margin: 6px auto;
-			line-height: 34px;
-			button {
-				margin-top: 10px;
-				float: right;
-			}
 		}
 	}
-	.class-item-content {
-		margin-left: 15px;
-		.class-item-title {
-			font-size: 15px;
-			color: #4a4a4a;
-			.class-item-name {
-				font-weight: 700;
-				color: #3798e9;
-				width: 150px;
-				display: inline-block;
-			}
-		}
-		.class-item-info {
-			span {
-				color: #999;
-				width: 30%;
-				display: inline-block;
-			}
+	.class-item-info {
+		span {
+			color: #999;
+			width: 30%;
+			display: inline-block;
 		}
 	}
-	.class-open {
-		color: #3798e9
-	}
+}
+.class-open {
+	color: #3798e9
+}
 </style>

@@ -61,55 +61,55 @@ export default {
 }
 </script>
 <style lang="less">
-	.index-menu-container {
-		background-color: rgba(255, 255, 255, 0.5);
-		margin: 50px auto;
-		width: 800px;
-		height: 500px;
+.index-menu-container {
+	background-color: rgba(255, 255, 255, 0.5);
+	margin: 50px auto;
+	width: 800px;
+	height: 500px;
+	text-align: center;
+	padding: 50px;
+	i.fa-3 {
+		font-size: 3em;
+	}
+	h2 {
+		color: #aaa;
+		font-size: 16px;
+		margin-top: -30px;
+		margin-left: -30px;
+	}
+	.index-menu-item {
+		list-style: none;
+		display: inline-block;
+		border-radius: 5px;
+		min-width: 150px;
+		width: 150px;
+		height: 150px;
+		margin: 25px;
 		text-align: center;
-		padding: 50px;
-		i.fa-3 {
-			font-size: 3em;
-		}
-		h2 {
-			color: #aaa;
-			font-size: 16px;
-			margin-top: -30px;
-			margin-left: -30px;
-		}
-		.index-menu-item {
-			list-style: none;
-			display: inline-block;
-			border-radius: 5px;
-			min-width: 150px;
+		a {
+			padding: 40px;
+			display:inline-block;
 			width: 150px;
 			height: 150px;
-			margin: 25px;
-			text-align: center;
-			a {
-				padding: 40px;
-				display:inline-block;
-				width: 150px;
-				height: 150px;
-				line-height: 30px;
-				color: #fff;
-				font-weight: bold;
-				&:hover {
-					text-decoration: none;
-				}
+			line-height: 30px;
+			color: #fff;
+			font-weight: bold;
+			&:hover {
+				text-decoration: none;
 			}
 		}
-		.first-line div:first-child {
-			background-color: #3d5a96;
-		}
-		.first-line div:last-child {
-			background-color: #574f80;
-		}
-		.secd-line div:first-child {
-			background-color: #00ADEF;
-		}
-		.secd-line div:last-child {
-			background-color: #FBBC09;
-		}
 	}
+	.first-line div:first-child {
+		background-color: #3d5a96;
+	}
+	.first-line div:last-child {
+		background-color: #574f80;
+	}
+	.secd-line div:first-child {
+		background-color: #00ADEF;
+	}
+	.secd-line div:last-child {
+		background-color: #FBBC09;
+	}
+}
 </style>

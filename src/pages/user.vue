@@ -53,60 +53,60 @@ export default {
 }
 </script>
 <style lang="less">
-	@hover-green: #84b045;
-	.user-container {
-		width: 80%;
-		margin: 20px auto;
-		overflow: hidden;
-		.user-info  {
-			text-align: center;
-			h2 {
+@hover-green: #84b045;
+.user-container {
+	width: 80%;
+	margin: 20px auto;
+	overflow: hidden;
+	.user-info  {
+		text-align: center;
+		h2 {
 
-			}
-			.org {
-				color: #888;
-				font-size: 16px;
-			}
-			.student {
-				font-size: 18px;
-				color: #abcdef;
-				font-weight: bold;
+		}
+		.org {
+			color: #888;
+			font-size: 16px;
+		}
+		.student {
+			font-size: 18px;
+			color: #abcdef;
+			font-weight: bold;
 
-			}
-			.logout {
-				background: none;
-				border: 1px #5A4BB4 solid;
-				border-radius: 10px;
-				color: #5A4BB4;
-				font-size: 18px;
-				height: 45px;
-				width: 100px;
-				line-height: 45px;
-				&:hover {
-					border: 1px #84b045 solid;
-					color: #84b045;
-				}
-			}
-			a {
-				line-height: 40px;
-				font-size: 16px;
-				&:hover {
-					cursor: pointer;
-					color: @hover-green
-				}
+		}
+		.logout {
+			background: none;
+			border: 1px #5A4BB4 solid;
+			border-radius: 10px;
+			color: #5A4BB4;
+			font-size: 18px;
+			height: 45px;
+			width: 100px;
+			line-height: 45px;
+			&:hover {
+				border: 1px #84b045 solid;
+				color: #84b045;
 			}
 		}
-		.pic {
-			width: 100px;
-			height: 100px;
-			margin: 10px auto;
-			overflow: hidden;
-			background-color: #fff;
-			border-radius: 10px;
-			img {
-				width: 100px;
-				height: 100px;
+		a {
+			line-height: 40px;
+			font-size: 16px;
+			&:hover {
+				cursor: pointer;
+				color: @hover-green
 			}
 		}
 	}
+	.pic {
+		width: 100px;
+		height: 100px;
+		margin: 10px auto;
+		overflow: hidden;
+		background-color: #fff;
+		border-radius: 10px;
+		img {
+			width: 100px;
+			height: 100px;
+		}
+	}
+}
 </style>

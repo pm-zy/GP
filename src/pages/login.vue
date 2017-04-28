@@ -53,30 +53,30 @@ import store from '../vuex/store'
 	}
 </script>
 <style lang="less">
-	.role-a{
-		float: right;
-		margin-right: 40px;
-		text-decoration: none;
-	}
-	.login-content {
-		width: 400px;
-		margin: 10% auto;
-		text-align: center;
-		.login-form {
-			overflow: hidden;
-			input {
-				width: 320px;
-				font-size: 16px;
-				height: 40px;
-				margin: 10px auto;
-			}
-			button {
-				width: 320px;
-				height: 40px;
-				line-height: 26px;
-				font-size: 18px;
-				margin: 5px 10px;
-			}
+.role-a{
+	float: right;
+	margin-right: 40px;
+	text-decoration: none;
+}
+.login-content {
+	width: 400px;
+	margin: 10% auto;
+	text-align: center;
+	.login-form {
+		overflow: hidden;
+		input {
+			width: 320px;
+			font-size: 16px;
+			height: 40px;
+			margin: 10px auto;
+		}
+		button {
+			width: 320px;
+			height: 40px;
+			line-height: 26px;
+			font-size: 18px;
+			margin: 5px 10px;
 		}
 	}
+}
 </style>

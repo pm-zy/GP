@@ -1,33 +1,33 @@
 <template>
-<div class="body of-hd">
-	<TopBar path='班级'></TopBar>
-	<div class="left-menu of-hd">
-		<div class="left-menu-header">
-			<span>我的班级</span>
+	<div class="body of-hd">
+		<TopBar path='班级'></TopBar>
+		<div class="left-menu of-hd">
+			<div class="left-menu-header">
+				<span>我的班级</span>
+			</div>
+			<div class="left-menu-content">
+				<input type="radio" name="infoType" v-model="infoType" value="join" id="radio-join" />
+				<label for="radio-join">
+						<i class="fa fa-globe fa-lg fa-fw"></i>
+						<span>我加入的</span>
+					</label>
+				<input type="radio" name="infoType" v-model="infoType" value="create" id="radio-create" />
+				<label for="radio-create">
+						<i class="fa fa-key fa-lg fa-fw"></i>
+						<span>我创建的</span>
+					</label>
+				<hr />
+				<router-link tag='label' to="/class/join">
+					<i class="fa fa-plus fa-lg fa-fw"></i>
+					<span>加入班级</span>
+				</router-link>
+			</div>
 		</div>
-		<div class="left-menu-content">
-			<input type="radio" name="infoType" v-model="infoType" value="join" id="radio-join" />
-			<label for="radio-join">
-					<i class="fa fa-globe fa-lg fa-fw"></i>
-					<span>我加入的</span>
-				</label>
-			<input type="radio" name="infoType" v-model="infoType" value="create" id="radio-create" />
-			<label for="radio-create">
-					<i class="fa fa-key fa-lg fa-fw"></i>
-					<span>我创建的</span>
-				</label>
-			<hr />
-			<router-link tag='label' to="/class/join">
-				<i class="fa fa-plus fa-lg fa-fw"></i>
-				<span>加入班级</span>
-			</router-link>
+		<div class="main-content">
+			<ClassList :class-info="classInfo"></ClassList>
 		</div>
+		<router-view></router-view>
 	</div>
-	<div class="main-content">
-		<ClassList :class-info="classInfo"></ClassList>
-	</div>
-	<router-view></router-view>
-</div>
 </template>
 <script>
 import ClassList from '../components/classList'

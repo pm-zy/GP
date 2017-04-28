@@ -1,6 +1,6 @@
 <template>
     <div class="fixed-mask">
-        <input type="button" name="" value="返回" @click="goBack"/>
+        <input type="button" name="" class="go-back-btn" value="返回" @click="goBack"/>
     </div>
 </template>
 
@@ -34,5 +34,21 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
+    .go-back-btn {
+        background: none;
+        background-color: rgba(255, 255, 255, 0.4);
+        border: 1px #fff solid;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 18px;
+        height: 45px;
+        width: 100px;
+        line-height: 45px;
+        &:hover {
+            border: 1px #84b045 solid;
+            color: #84b045;
+            background-color: transparent;
+        }
+    }
 }
 </style>

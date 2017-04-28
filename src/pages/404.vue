@@ -7,42 +7,42 @@
 
 </template>
 <script>
-	export default {
-		components: {
-		}
+export default {
+	components: {
 	}
+}
 </script>
 <style lang='less'>
-	.body-404{
-		background-color: #00bbd4;
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: 100vw;
-		height: 100vh;
-		text-align: center;
-		h1{
-			margin-top: 20%;
-			color: #e1f8fb;
-			font-size: 200px;
-			line-height: 200px;
-			font-weight: 800;
-			text-shadow: 10px 10px 0px #80dfea;
-			i {
-				font-size: 180px;
-			}
-		}
-		p {
-			color: #e1f8fb;
-			font-size: 30px;
-			text-shadow: 2px 2px 2px #80dfea;
-		}
-		a {
-			color: #fff;
-			font-size: 20px;
-			i {
-				margin-right: 20px;
-			}
+.body-404{
+	background-color: #00bbd4;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	text-align: center;
+	h1{
+		margin-top: 20%;
+		color: #e1f8fb;
+		font-size: 200px;
+		line-height: 200px;
+		font-weight: 800;
+		text-shadow: 10px 10px 0px #80dfea;
+		i {
+			font-size: 180px;
 		}
 	}
+	p {
+		color: #e1f8fb;
+		font-size: 30px;
+		text-shadow: 2px 2px 2px #80dfea;
+	}
+	a {
+		color: #fff;
+		font-size: 20px;
+		i {
+			margin-right: 20px;
+		}
+	}
+}
 </style>

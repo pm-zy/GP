@@ -17,74 +17,74 @@
 	</div>
 </template>
 <script>
-	import ClassJoinList from './classJoinList'
+import ClassJoinList from './classJoinList'
 
-	export default {
-		components: {
-			ClassJoinList
-		},
-		data() {
-			return {
-				classInfo: [{
-					courseclassid: 1,
-					courclassname: '计科1302',
-					courclasssize: 30,
-					status: 0,
-					courclassdescription: '计科期中摸底考',
-					userid: 1,
-					code: 1,
-					courclassnum: 10
-				}]
+export default {
+	components: {
+		ClassJoinList
+	},
+	data() {
+		return {
+			classInfo: [{
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}]
 
-			}
 		}
-
 	}
+
+}
 </script>
 <style lang="less">
-	.join-container {
-		text-align: center;
-		width: 100vw;
-		height: 100vh;
-		position: fixed;
-		top: 0;
-		left: 0;
-		background-color: rgba(0,0,0,0.5);
-		padding: 50px;
-		.join-content {
-			background-color: rgba(0,0,0,0.4);
-			padding: 40px;
-			width: 700px;
-			text-align: left;
-			margin: 50px auto;
-			color: white;
-			.join-search {
-				margin-top: 20px;
-				input[type='text'] {
-					width: 400px;
-					height: 32px;
-					border: none;
-					border-radius: 5px;
-					line-height: 32px;
-					color: #444;
-					font-size: 18px;
-					padding-left: 10px;
-					margin-right: 10px;
-				}
-				button {
-					width: 100px;
-				}
-				.join-return {
-					margin-left: 10px;
-					font-size: 15px;
-					display: inline-block;
-					line-height: 15px;
-				}
+.join-container {
+	text-align: center;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.5);
+	padding: 50px;
+	.join-content {
+		background-color: rgba(0,0,0,0.4);
+		padding: 40px;
+		width: 700px;
+		text-align: left;
+		margin: 50px auto;
+		color: white;
+		.join-search {
+			margin-top: 20px;
+			input[type='text'] {
+				width: 400px;
+				height: 32px;
+				border: none;
+				border-radius: 5px;
+				line-height: 32px;
+				color: #444;
+				font-size: 18px;
+				padding-left: 10px;
+				margin-right: 10px;
 			}
-			.search-result{
-				width: 700px;
-
+			button {
+				width: 100px;
+			}
+			.join-return {
+				margin-left: 10px;
+				font-size: 15px;
+				display: inline-block;
+				line-height: 15px;
 			}
 		}
+		.search-result{
+			width: 700px;
+
+		}
 	}
+}
 </style>

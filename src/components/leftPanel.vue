@@ -14,7 +14,7 @@
 					<span>班级</span>
 				</li>
 			</router-link>
-			
+
 			<router-link to="/task">
 				<li>
 					<i class="fa fa-edit fa-lg fa-fw"></i>
@@ -37,57 +37,57 @@
 			<span>我的消息</span>
 		</router-link>
 	</div>
-	
+
 </template>
 
 <script>
-	export default {
-		data () {
-			return {
-				user: {
-					userId: 123,
-					userName: 'pm'
-				}
+export default {
+	data () {
+		return {
+			user: {
+				userId: 123,
+				userName: 'pm'
 			}
 		}
-
 	}
+
+}
 </script>
 
 <style lang="less">
-	@hover-green: #84b045;
-	.panel-menu{
+@hover-green: #84b045;
+.panel-menu{
+	color: white;
+	margin-top: 100px;
+	list-style: none;
+	border-bottom: 1px solid #3c375a;
+	a {
 		color: white;
-		margin-top: 100px;
-		list-style: none;
-		border-bottom: 1px solid #3c375a;
-		a {
-			color: white;
-			line-height: 40px;
-			height: 40px;
-			&:hover , &:focus {
-				color: @hover-green; 
-				text-decoration: none;
-			}
-		}
-		li {
-			width: 180px;
-		}
-	}
-	.panel-menu li > span, .panel-user > span {
-		font-size: 14px;
-		margin-left: 30px;
-	}
-	.panel-user {
-		display: block;
-		color: white;
-		text-align: center;
-		margin-top: 25px;
-		&:hover, &:focus {
+		line-height: 40px;
+		height: 40px;
+		&:hover , &:focus {
+			color: @hover-green;
 			text-decoration: none;
 		}
 	}
-	a.router-link-active, .panel-user:hover, .panel-user:focus {
-		color: @hover-green;
+	li {
+		width: 180px;
 	}
+}
+.panel-menu li > span, .panel-user > span {
+	font-size: 14px;
+	margin-left: 30px;
+}
+.panel-user {
+	display: block;
+	color: white;
+	text-align: center;
+	margin-top: 25px;
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+}
+a.router-link-active, .panel-user:hover, .panel-user:focus {
+	color: @hover-green;
+}
 </style>
