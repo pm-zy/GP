@@ -3,6 +3,7 @@ import pmClass from '../pages/class.vue'
 import pmHomework from '../pages/homework.vue'
 import pmExam from '../pages/exam.vue'
 import pmProblem from '../pages/problem.vue'
+import pmInfo from '../pages/info.vue'
 import pmUser from '../pages/user.vue'
 import pmAbout from '../pages/about.vue'
 import cmpJoin from '../components/joinClass'
@@ -55,8 +56,8 @@ export default [{
         }],
         redirect: '/exam/undone'
     }, {
-        path: '/problem',
-        component: pmProblem
+        path: '/info',
+        component: pmInfo
     },{
         path: '/user/:id',
         component: pmUser,
