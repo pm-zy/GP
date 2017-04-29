@@ -6,15 +6,12 @@ export default {
 		// console.log('mutation: logout')
 	},
 	changeUser(state, payload) {
-		// console.log(payload)
-		// console.log(payload)
 		state.userInfo = payload.userInfo;
 		state.login.status = !payload.loginInfo.status;
 		state.login.loginInfo = payload.loginInfo;
 		// console.log(state)
 	},
 	changeMessage(state, payload) {
-		console.log('mutation:', payload)
 		state.message = payload
 	}
 }

@@ -17,8 +17,8 @@ export default new Vuex.Store({
 		getLoginStatus: state => {
 			return state.login
 		},
-		getMassage: state => {
-			return state.massage
+		getMessage: state => {
+			return state.message
 		}
 	}
 })

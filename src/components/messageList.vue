@@ -2,13 +2,13 @@
 	<div class="message-list">
 		<ul class="message-list-ul">
 			<li v-for="item in messages">
-                <router-link  @click="changeMessage(item)">
+                <a  @click="changeMessage(item)">
         			<div class="color-bar" :class="{'color-bar-active': messageStatus}"></div>
         			<div class="message-item-content">
         				<span class="message-item-title">{{item.title}}</span>
         				<span class="message-item-desc">{{item.content}}</span>
         			</div>
-                </router-link>
+                </a>
 			</li>
 		</ul>
 	</div>
@@ -28,7 +28,6 @@ export default {
 	},
 	methods: {
 		changeMessage(item) {
-			// console.log(item)
 			store.commit('changeMessage', item);
 			this.$router.replace('/message/detail')
 		},

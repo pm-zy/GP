@@ -10,14 +10,9 @@
 import store from '../vuex/store'
 
 export default {
-	beforeCreate() {
-		console.log(store.getters.getMassage)
-
-		this.message = store.getters.getMassage;
-	},
 	data() {
 		return {
-			message: {}
+			message: store.getters.getMessage
 		}
 	}
 }
