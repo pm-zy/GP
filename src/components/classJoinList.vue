@@ -14,7 +14,7 @@
 						<span>班级编号：{{item.courseclassid}}</span>
 					</div>
 				</div>
-				<button class="btn btn-primary">加入班级</button>
+				<button class="btn btn-primary" @click="joinClass(item.courclassid)">加入班级</button>
 			</li>
 		</ul>
 	</div>
@@ -23,6 +23,11 @@
 <script>
 export default {
 	props: ['classInfo'],
+	methods: {
+		joinClass(id) {
+			// ajax
+		}
+	}
 
 }
 </script>

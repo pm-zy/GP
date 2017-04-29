@@ -2,7 +2,7 @@
 	<div class="message-list">
 		<ul class="message-list-ul">
 			<li v-for="item in messages">
-                <router-link to="/message/detail">
+                <router-link  @click="changeMessage(item)">
         			<div class="color-bar" :class="{'color-bar-active': messageStatus}"></div>
         			<div class="message-item-content">
         				<span class="message-item-title">{{item.title}}</span>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import store from '../vuex/store'
 export default {
 	mounted() {
 		this.changeData();
@@ -26,6 +27,11 @@ export default {
 		}
 	},
 	methods: {
+		changeMessage(item) {
+			// console.log(item)
+			store.commit('changeMessage', item);
+			this.$router.replace('/message/detail')
+		},
 		changeData: function () {
 			let path = this.$route.path;
 	        if(path.match(/(message\/unread)$/)) {
@@ -52,52 +58,51 @@ export default {
 	watch: {
   		'$route': 'changeData'
 		 }
-
 }
 </script>
 
 <style lang="less">
-a:hover {
-    text-decoration: none;
-}
-.message-list {
-    width: 80%;
-    margin: 50px auto;
-}
-.message-list-ul {
-	list-style: none;
-	li {
-		background-color: #fff;
-		box-shadow: 1px 3px 3px #ccc;
-		display: block;
-		height: 68px;
-		width: 80%;
-		margin: 6px auto;
-		line-height: 34px;
-        &:hover {
-            background-color: #eeeeFF
-        }
+    a:hover {
+        text-decoration: none;
+    }
+	.message-list {
+	    width: 80%;
+        margin: 50px auto;
 	}
-}
-.message-item-content {
-	margin-left: 15px;
-	font-size: 15px;
-	color: #4a4a4a;
-	.message-item-title {
-		font-weight: 700;
-		color: #3798e9;
-		display: block;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+	.message-list-ul {
+		list-style: none;
+		li {
+			background-color: #fff;
+			box-shadow: 1px 3px 3px #ccc;
+			display: block;
+			height: 68px;
+			width: 80%;
+			margin: 6px auto;
+			line-height: 34px;
+            &:hover {
+                background-color: #eeeeFF
+            }
+		}
 	}
-    .message-item-desc {
-		font-weight: normal;
-		display: block;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+	.message-item-content {
+		margin-left: 15px;
+		font-size: 15px;
+		color: #4a4a4a;
+		.message-item-title {
+			font-weight: 700;
+			color: #3798e9;
+			display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+		}
+        .message-item-desc {
+			font-weight: normal;
+			display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
 
+		}
 	}
-}
 </style>

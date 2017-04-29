@@ -6,5 +6,7 @@ export default {
         status: false,
         loginInfo: {}
     },
+    message: {
 
+    },
 }

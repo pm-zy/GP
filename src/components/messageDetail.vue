@@ -7,15 +7,17 @@
 	</div>
 </template>
 <script>
+import store from '../vuex/store'
+
 export default {
+	beforeCreate() {
+		console.log(store.getters.getMassage)
+
+		this.message = store.getters.getMassage;
+	},
 	data() {
 		return {
-			message: {
-                title: '作为开发者我是如何跟上时代脚步的',
-                id:'001',
-                content:'作为佛巍峨魔法快乐巍峨册封为罗马代脚步的'
-            }
-
+			message: {}
 		}
 	}
 }

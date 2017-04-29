@@ -1,16 +1,20 @@
 export default {
-	demoMutation (state) {
+	demoMutation(state) {
 	},
-	logout (state) {
+	logout(state) {
 		state.login.status = false;
-		console.log('mutation: logout')
+		// console.log('mutation: logout')
 	},
-	changeUser (state, payload) {
-		console.log(payload)
+	changeUser(state, payload) {
+		// console.log(payload)
 		// console.log(payload)
 		state.userInfo = payload.userInfo;
 		state.login.status = !payload.loginInfo.status;
 		state.login.loginInfo = payload.loginInfo;
-		console.log(state)
+		// console.log(state)
+	},
+	changeMessage(state, payload) {
+		console.log('mutation:', payload)
+		state.message = payload
 	}
 }
