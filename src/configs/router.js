@@ -11,6 +11,8 @@ import cmpTask from '../components/taskList'
 import cmpMessage from '../components/messageList'
 import cmpMessageDetail from '../components/messageDetail'
 import cmpModifyPassword from '../components/modifyPassword'
+import cmpDownloadList from '../components/downloadList'
+import cmpWarehouse from '../components/warehouse'
 import pmMessage from '../pages/message.vue'
 import pmLogin from '../pages/login.vue'
 import pmExamDetail from '../pages/examDetail.vue'
@@ -57,7 +59,15 @@ export default [{
         redirect: '/exam/undone'
     }, {
         path: '/info',
-        component: pmInfo
+        component: pmInfo,
+        children: [{
+            path: 'download',
+            component: cmpDownloadList
+        }, {
+            path: 'warehouse',
+            component: cmpWarehouse
+        }],
+        redirect: '/info/download'
     },{
         path: '/user/:id',
         component: pmUser,
