@@ -37,10 +37,12 @@ import store from '../vuex/store'
 					nickname: 'PM' + new Date().getTime(),
 			        email: 'i@varpm.com',
 			        telNum: '18829295436',
-			        personId: '0001',
+			        personId: new Date().getTime(),
 			        org: '西安邮电大学 计算机学院 计科1303',
 			        userType: 1
 				};
+				let  userPic = `/static/assets/${userData.personId % 21}.jpg`;
+				userData.userPic = userPic;
 				let fakeLoginInfo = {
 		            status: 0,
 		            userToken: '770fed4ca2aabd20ae9a5dd774711de2',

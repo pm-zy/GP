@@ -29,7 +29,7 @@ export default {
 				icon: 'fa-download',
 				to: '/info/download'
 			}, {
-				title: '题库',
+				title: '我的题库',
 				icon: 'fa-key',
 				to: '/info/warehouse'
 			}]

@@ -12,7 +12,7 @@
 					<li><router-link to="/about"><i class="fa fa-question-circle fa-lg"></i></router-link></li>
 					<li>
 						<router-link to="/user/123">
-							<img  class="user-picture-sm" src="../assets/github.png" />
+							<img  class="user-picture-sm" :src="user.userPic" />
 						</router-link>
 					</li>
 				</ul>
@@ -25,9 +25,14 @@
 
 export default {
 	props: ['path'],
-	data() {
+	data () {
+		if(!this.$store.getters.getLoginStatus.status) {
+			alert('请先登录');
+			console.log(this.$store.getters.getLoginStatus.status);
+			this.$router.replace('/login');
+		}
 		return {
-
+			user: this.$store.getters.getUserInfo
 		}
 	}
 }

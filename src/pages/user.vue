@@ -4,7 +4,7 @@
 		<div class="body">
 			<div class="user-container">
 				<div class="pic">
-					<img src="../assets/logo.png" alt="">
+					<img :src="userPic" alt="">
 				</div>
 				<div class="user-info">
 					<h2>{{nickname}}</h2>
