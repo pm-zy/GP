@@ -2,7 +2,7 @@
 	<div class="body-full-width">
 		<div class="login-content">
 			<div class="login-logo">
-				<img src="../assets/logo.png" alt="">
+				<img src="/static/assets/logo.png" alt="">
 			</div>
 			<form class="login-form form">
 				<input type="text" class="form-control" name="" placeholder="用户名" v-model="userName" />

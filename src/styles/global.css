@@ -10,7 +10,7 @@ a{
 body{
 	width: 100vw;
 	height: 100vh;
-	background-image: url(../assets/bg.jpeg);
+	background-image: url(/static/assets/bg.jpeg);
 }
 /*通用布局*/
 .wd-100 {

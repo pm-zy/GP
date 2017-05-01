@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "iview": "^2.0.0-rc.12",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "vue": "^2.1.0",

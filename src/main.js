@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import iView from 'iview';
+// import 'iview/dist/styles/iview.css';
+
 import store from './vuex/store'
 
 import './styles/normalize.css'
@@ -12,6 +15,7 @@ import App from './App.vue'
 import routes from './configs/router'
 
 Vue.use(VueRouter);
+Vue.use(iView);
 
 const router = new VueRouter({
 	routes
