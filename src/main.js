@@ -2,13 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import iView from 'iview';
-// import 'iview/dist/styles/iview.css';
 
 import store from './vuex/store'
 
 import './styles/normalize.css'
 import './styles/bootstrap.css'
 import './styles/font-awesome.css'
+import 'iview/dist/styles/iview.css';
 import './styles/global.css'
 
 import App from './App.vue'

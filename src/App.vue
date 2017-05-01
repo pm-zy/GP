@@ -13,40 +13,39 @@
 </template>
 
 <script>
-// import Hello from './components/Hello'
 import LeftPanel from './components/leftPanel'
 // let showLeft = true;
-  export default {
+export default {
     name: 'app',
     components: {
-      LeftPanel
+        LeftPanel
     },
     watch: {
-      '$route': function () {
-        let path = this.$route.path;
-        if(path.match('login') || path.match(/(task\/{1}[0-9]*)$/) || path.match('register')) {
-          this.showLeft = false;
+        '$route': function () {
+            let path = this.$route.path;
+            if(path.match('login') || path.match(/(task\/{1}[0-9]*)$/) || path.match('register')) {
+                this.showLeft = false;
+            }
+            else {
+                this.showLeft = true
+            }
         }
-        else {
-          this.showLeft = true
-        }
-      }
     },
     mounted: function () {
-      let path = this.$route.path;
+        let path = this.$route.path;
         if(path.match('login') || path.match(/(task\/{1}[0-9]*)$/) || path.match('register')) {
-          this.showLeft = false;
+            this.showLeft = false;
         }
         else {
-          this.showLeft = true
+            this.showLeft = true
         }
     },
     data () {
-      return {
-        showLeft: true
-      }
+        return {
+            showLeft: true
+        }
     }
-  }
+}
 
 </script>
 
