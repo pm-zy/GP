@@ -6,7 +6,7 @@
 				<h1>任务进行中</h1>
 			</header>
 			<section>
-				<div class="score">
+				<div class="task-name">
 					<p>{{task.TaskName}}</p>
 				</div>
 				<div class="user">
@@ -34,6 +34,7 @@ export default {
 		}
 	},
 	created() {
+		console.log(window.location);
 		this.getTaskInfo();
 	},
 	methods: {
@@ -83,6 +84,11 @@ export default {
 		section {
 			padding-top: 20px;
 			padding-left: 20px;
+			.task-name {
+				text-align: center;
+				font-size: 18px;
+				color: #3399ff;
+			}
 		}
 
 	}
