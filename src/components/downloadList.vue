@@ -7,7 +7,8 @@
                         <img :src="item.img" alt="图片" />
                     </div>
                     <h4>{{item.name}}</h4>
-                    <p>{{item.desc}}</p>
+                    <p>{{item.size}}</p>
+                    <p class="desc">{{item.desc}}</p>
                 </a>
             </li>
         </ul>
@@ -92,7 +93,7 @@ export default {
     ul {
         li {
             display: inline-block;
-            background-color: rgba(3, 80, 193, 0.15);
+            background-color: rgba(3, 80, 193, 0.1);
             padding: 10px 10px;
             margin: 10px 10px;
             box-sizing: border-box;
@@ -107,6 +108,10 @@ export default {
                     overflow: hidden;
                     text-align: center;
                     background-color: rgba(255, 255, 255, 0.4);
+                    img {
+                        max-width: 200px;
+                        max-height: 200px;
+                    }
                 }
                 h4 {
                     height: 2em;
@@ -117,10 +122,15 @@ export default {
                     -webkit-box-orient: vertical;
                 }
                 p {
+                    margin: 0 0;
+                    color: #84b045;
+                }
+                .desc {
+                    color: #888;
                     overflow: hidden;
                     display: -webkit-box;
                     text-overflow: ellipsis;
-                    -webkit-line-clamp: 3;
+                    -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
                 }
             }
