@@ -61,6 +61,7 @@ export default {
 	margin-top: 100px;
 	list-style: none;
 	border-bottom: 1px solid #3c375a;
+	padding-left: 40px;
 	a {
 		color: white;
 		line-height: 40px;

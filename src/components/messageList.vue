@@ -66,7 +66,7 @@ export default {
     }
 	.message-list {
 	    width: 80%;
-        margin: 50px auto;
+        margin: 50px 180px;
 	}
 	.message-list-ul {
 		list-style: none;

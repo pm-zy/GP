@@ -5,10 +5,10 @@ import iView from 'iview';
 
 import store from './vuex/store'
 
-import './styles/normalize.css'
-import './styles/bootstrap.css'
-import './styles/font-awesome.css'
 import 'iview/dist/styles/iview.css';
+import './styles/normalize.css'
+import './styles/bootstrap.min.css'
+import './styles/font-awesome.css'
 import './styles/global.css'
 
 import App from './App.vue'

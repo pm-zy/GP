@@ -1,6 +1,6 @@
 <template>
 	<div class="task-list-container">
-		<table class="task-table">
+		<table class="task-table table table-striped table-hover table-bordered">
 			<thead class="task-table-head">
 				<tr>
 					<th class="th-no">编号</th>
@@ -19,7 +19,6 @@
 					<td class="td-type">{{item.Task}}</td>
 					<td class="td-des">{{item.TaskDescribe}}</td>
 					<td class="td-score">{{item.TaskScore}}</td>
-					<td class="td-type">{{item.Task}}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -45,7 +44,7 @@ export default {
 				Task: "",
 				UserID: "04131111",
 				TaskID: 1,
-				TaskScore: "总分",
+				TaskScore: "76",
 				TaskName: "计科1301班摸底考试",
 				TaskDescribe: "1111"
 				}, {
@@ -53,7 +52,7 @@ export default {
 				Task: "",
 				UserID: "04131111",
 				TaskID: 2,
-				TaskScore: "总分",
+				TaskScore: "76",
 				TaskName: "计科1301班摸底考试",
 				TaskDescribe: "1111"
 				}]
@@ -63,7 +62,39 @@ export default {
 				Task: "",
 				UserID: "04131111",
 				TaskID: 3,
-				TaskScore: "总分",
+				TaskScore: "76",
+				TaskName: "计科1301班摸底考试已完成",
+				TaskDescribe: "已完成的考试"
+				}, {
+				CourseID: "数据结构",
+				Task: "练习",
+				UserID: "04131111",
+				TaskID: 3,
+				TaskScore: "76",
+				TaskName: "计科1301班摸底考试已完成",
+				TaskDescribe: "已完成的考试"
+				}, {
+				CourseID: "数据结构",
+				Task: "考试",
+				UserID: "04131111",
+				TaskID: 3,
+				TaskScore: "76",
+				TaskName: "计科1301班摸底考试已完成",
+				TaskDescribe: "已完成的考试"
+				}, {
+				CourseID: "数据结构",
+				Task: "练习",
+				UserID: "04131111",
+				TaskID: 3,
+				TaskScore: "76",
+				TaskName: "计科1301班摸底考试已完成",
+				TaskDescribe: "已完成的考试"
+				}, {
+				CourseID: "数据结构",
+				Task: "练习",
+				UserID: "04131111",
+				TaskID: 3,
+				TaskScore: "76",
 				TaskName: "计科1301班摸底考试已完成",
 				TaskDescribe: "已完成的考试"
 				}]
@@ -89,16 +120,12 @@ export default {
 	}
 }
 .task-table {
-
-	width: 80%;
+	width: auto;
 	margin: 20px auto;
-	padding: 10px;
 }
 .task-tr {
 	height: 42px;
-	border-bottom: 1px #ccc solid;
 	min-height: 42px;
-    vertical-align: middle;
 	font-size: 14px;
 }
 .task-list-ul {
