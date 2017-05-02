@@ -62,7 +62,7 @@ export default {
                     id: 1236,
                     url: '/fsdfsdf',
                     name: '下载3',
-                    desc: '资源下载测试',
+                    desc: '资源下载测试资源下载测试资源下载测试资源下载测试资源下载测试资源下载测试资源下载测试资源下载测试',
                     size: '5.2M'
                 }, {
                     id: 1236,
@@ -114,7 +114,7 @@ export default {
                     }
                 }
                 h4 {
-                    height: 2em;
+                    max-height: 2em;
                     overflow: hidden;
                     display: -webkit-box;
                     text-overflow: ellipsis;
@@ -130,7 +130,7 @@ export default {
                     overflow: hidden;
                     display: -webkit-box;
                     text-overflow: ellipsis;
-                    -webkit-line-clamp: 2;
+                    -webkit-line-clamp: 3;
                     -webkit-box-orient: vertical;
                 }
             }
