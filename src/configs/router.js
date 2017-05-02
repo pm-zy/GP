@@ -15,8 +15,8 @@ import cmpDownloadList from '../components/downloadList'
 import cmpWarehouse from '../components/warehouse'
 import pmMessage from '../pages/message.vue'
 import pmLogin from '../pages/login.vue'
-import pmExamDetail from '../pages/examDetail.vue'
-import pmHomeworkDetail from '../pages/homeworkDetail.vue'
+import pmUndoneDetail from '../pages/undoneDetail.vue'
+import pmDoneDetail from '../pages/doneDetail.vue'
 import pmTask from '../pages/task.vue'
 import pm404 from '../pages/404.vue'
 import pmRegister from '../pages/register.vue'
@@ -77,12 +77,12 @@ export default [{
         }]
     },
     {
-        path: '/exam/:id',
-        component: pmExamDetail
+        path: '/undone/:id',
+        component: pmUndoneDetail
     },
     {
-        path: '/homework/:id',
-        component: pmHomeworkDetail
+        path: '/done/:id',
+        component: pmDoneDetail
     }, {
         path: '/about',
         component: pmAbout
