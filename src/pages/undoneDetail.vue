@@ -4,10 +4,14 @@
 			<header>
 				<i class="fa fa-circle-o-notch "></i>
 				<h1>任务进行中</h1>
-
 			</header>
 			<section>
-				vnjlkerfngvjl
+				<div class="score">
+					<p>{{task.TaskName}}</p>
+				</div>
+				<div class="user">
+					<p>{{user.nickname}}</p>
+				</div>
 			</section>
 		</div>
 		<div class="right">
@@ -18,9 +22,36 @@
 </template>
 <script>
 export default {
-	components: {
+	data() {
+		if(!this.$store.getters.getLoginStatus.status) {
+			alert('请先登录');
+			this.$router.replace('/login');
+		}
+		return {
+			user: this.$store.getters.getUserInfo,
+			task: {},
+			taskDetail: {}
+		}
+	},
+	created() {
+		this.getTaskInfo();
+	},
+	methods: {
+		getTaskInfo() {
+			this.task = {
+				CourseID: "数据结构啊",
+				Task: "",
+				UserID: "04131111",
+				TaskID: 1,
+				TaskScore: "",
+				TaskName: "计科1301班摸底考试",
+				TaskDescribe: "1111"
+			}
+		},
+		getTaskDetail() {
 
-	}
+		}
+	},
 }
 </script>
 <style lang="less">

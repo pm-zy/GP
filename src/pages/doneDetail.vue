@@ -4,10 +4,14 @@
 			<header>
 				<i class="fa fa-check"></i>
 				<h1>已完成</h1>
-
 			</header>
 			<section>
-				fjkorjfk
+				<div class="score">
+					<p>{{task.TaskScore}}</p>
+				</div>
+				<div class="user">
+					<p>{{user.nickname}}</p>
+				</div>
 			</section>
 		</div>
 		<div class="right">
@@ -17,10 +21,38 @@
 
 </template>
 <script>
-export default {
-	components: {
 
-	}
+export default {
+	data() {
+		if(!this.$store.getters.getLoginStatus.status) {
+			alert('请先登录');
+			this.$router.replace('/login');
+		}
+		return {
+			user: this.$store.getters.getUserInfo,
+			task: {},
+			taskDetail: {}
+		}
+	},
+	created() {
+		this.getTaskInfo();
+	},
+	methods: {
+		getTaskInfo() {
+			this.task = {
+				CourseID: "数据结构",
+				Task: "练习",
+				UserID: "04131111",
+				TaskID: 3,
+				TaskScore: "76",
+				TaskName: "计科1301班摸底考试已完成",
+				TaskDescribe: "已完成的考试"
+			}
+		},
+		getTaskDetail() {
+
+		}
+	},
 }
 </script>
 <style lang="less">
@@ -43,7 +75,17 @@ export default {
 		}
 		section {
 			padding-top: 20px;
-			padding-left: 20px;
+			.score {
+				p {
+					font-size: 40px;
+					color: #00cc66;
+					text-align: center;
+				}
+			}
+			.user {
+				padding-left: 20px;
+				border-bottom: 1px #00cc66 solid;
+			}
 		}
 
 	}
