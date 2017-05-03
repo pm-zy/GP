@@ -16,6 +16,25 @@
 		</div>
 		<div class="right">
 			fwer fnjwen
+			<Radio-group v-model="phone">
+        <Radio label="apple">
+            <Icon type="social-apple"></Icon>
+            <span>Apple</span>
+        </Radio>
+        <Radio label="android">
+            <Icon type="social-android"></Icon>
+            <span>Android</span>
+        </Radio>
+        <Radio label="windows">
+            <Icon type="social-windows"></Icon>
+            <span>Windows</span>
+        </Radio>
+    </Radio-group>
+    <Radio-group v-model="animal">
+        <Radio label="金斑蝶"></Radio>
+        <Radio label="爪哇犀牛"></Radio>
+        <Radio label="印度黑羚"></Radio>
+    </Radio-group>
 		</div>
 	</div>
 
@@ -31,7 +50,9 @@ export default {
 		return {
 			user: this.$store.getters.getUserInfo,
 			task: {},
-			taskDetail: {}
+			taskDetail: {},
+			phone: '',
+		                  animal: ''
 		}
 	},
 	created() {
