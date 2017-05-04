@@ -35,6 +35,9 @@ export default {
 			taskInfo: []
 		}
 	},
+	created() {
+		console.log('create')
+	},
 	methods: {
 		changeData: function () {
 			let path = this.$route.path;
