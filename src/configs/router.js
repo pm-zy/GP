@@ -20,6 +20,7 @@ import pmDoneDetail from '../pages/doneDetail.vue'
 import pmTask from '../pages/task.vue'
 import pm404 from '../pages/404.vue'
 import pmRegister from '../pages/register.vue'
+import pmClassDetail from '../pages/classDetail.vue'
 import TEST from '../components/Hello.vue'
 // 配置路由
 export default [{
@@ -33,8 +34,11 @@ export default [{
         component: pmClass,
         children: [{
             path: 'join',
-            component: cmpJoin
+            component: cmpJoin,
         }]
+    }, {
+        path: '/class/:id',
+        component: pmClassDetail,
     }, {
         path: '/homework',
         component: pmHomework,
