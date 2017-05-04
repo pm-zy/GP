@@ -1,5 +1,5 @@
 <template>
-    <ul clas
+    <ul class="">
         <li v-for="member of members">
             {{member.nickname}}
         </li>
