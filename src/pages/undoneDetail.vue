@@ -8,6 +8,7 @@
 			<section>
 				<div class="task-name">
 					<p>{{task.TaskName}}</p>
+					<p>{{timer.min}} : {{timer.s}}</p>
 				</div>
 				<div class="user">
 					<p>{{user.nickname}}</p>
@@ -30,7 +31,7 @@
 							<Input v-model="answer[index].answer" placeholder="请输入答案" type="textarea" style="width: 300px" v-else />
 						</li>
 					</ul>
-					<Button type="primary" @click="submit">提交答案</Button>
+					<Button type="primary" @click="clickSubmit">提交答案</Button>
 				</div>
 			</div>
 		</div>
@@ -47,15 +48,34 @@ export default {
 			user: this.$store.getters.getUserInfo,
 			task: {},
 			taskDetail: [],
-			answer: []
+			answer: [],
+			timer: {
+				min: 0,
+				s: 0
+			}
 		}
 	},
 	created() {
 		console.log(window.location);
 		this.getTaskInfo();
 		this.getTaskDetail();
+		if(this.task.type == 0 && this.task.TaskTime > 0) {
+			let timeCount = this.task.TaskTime * 60;
+			let timeInterval = setInterval(() => {
+				this.formatTimer(timeCount);
+				timeCount = timeCount - 1;
+				if(timeCount === -1) {
+					clearInterval(timeInterval)
+					this.submit();
+				}
+			}, 1000);
+		}
 	},
 	methods: {
+		formatTimer(timer) {
+			this.timer.min = Math.floor(timer / 60);
+			this.timer.s = timer % 60;
+		},
 		getTaskInfo() {
 			this.task = {
 				CourseID: "数据结构啊",
@@ -64,7 +84,9 @@ export default {
 				TaskID: 1,
 				TaskScore: "",
 				TaskName: "计科1301班摸底考试",
-				TaskDescribe: "1111"
+				TaskDescribe: "1111",
+				TaskTime: 0.1,
+				type: 0
 			}
 		},
 		getTaskDetail() {
@@ -95,12 +117,16 @@ export default {
 				})
 			})
 		},
-		submit() {
-			console.log(this.answer);
+		clickSubmit() {
 			if(confirm('确认提交？')) {
-				alert('提交成功');
-				this.$router.go(-1)
+				submit();
 			}
+		},
+		submit() {
+			// ajax
+			console.log(this.answer);
+			alert('提交成功');
+			this.$router.go(-1)
 		}
 	},
 }
