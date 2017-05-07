@@ -50,7 +50,7 @@ export default {
                 this.step2.userType = 1;
             }
             else {
-                this.step2.userType = 0;  
+                this.step2.userType = 0;
             }
         }
     },
