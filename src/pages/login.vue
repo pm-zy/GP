@@ -9,7 +9,7 @@
 				<input type="password" class="form-control" name="" placeholder="密码" v-model="password" />
 				<a href="#" class="role-a">教师登陆</a><br />
 				<button class="btn btn-primary" name="button" @click="login">学生登陆</button>
-				<button class="btn btn-success" name="button">注册</button>
+				<a href="/#/register" class="a-btn btn btn-success" name="button" >注册</a>
 			</form>
 		</div>
 	</div>
@@ -78,6 +78,10 @@ import store from '../vuex/store'
 			line-height: 26px;
 			font-size: 18px;
 			margin: 5px 10px;
+		}
+		.a-btn {
+			font-size: 18px;
+    		width: 320px;
 		}
 	}
 }
