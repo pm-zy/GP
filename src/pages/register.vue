@@ -1,33 +1,17 @@
 <template>
 	<div class="body-full-width">
-		<div class="register-body">
-			<form class="form">
-				<div class="base-info">
-					<p>账号信息</p>
-					<span class="label">昵称</span>
-					<Input v-model="newUser.nickname" placeholder="请输入昵称" ></Input>
-					<span class="label">手机号</span>
-					<Input v-model="newUser.telNum"  placeholder="请输入手机号" ></Input>
-					<span class="label">邮箱</span>
-					<Input v-model="newUser.email" type="email" placeholder="请输入邮箱" ></Input>
-				</div>
-				<div class="stu-info">
-					<p>个人信息</p>
-					<span class="label">姓名</span>
-					<Input v-model="newUser.name" placeholder="请输入姓名" ></Input>
-					<span class="label">学号/工号</span>
-					<Input v-model="newUser.personId" placeholder="请输入学号或工号" ></Input>
-					<span class="label">学校</span>
-					<Input v-model="newUser.school" placeholder="请输入学校" ></Input>
-					<span class="label">学院</span>
-					<Input v-model="newUser.college" placeholder="请输入学院" ></Input>
-					<span class="label">专业</span>
-					<Input v-model="newUser.major" placeholder="请输入专业" ></Input>
-					<span class="label">班级</span>
-					<Input v-model="newUser.class" placeholder="请输入行政班级" ></Input>
-				</div>
-			</form>
+		<div class="register-nav">
+			<router-link to="firstStep" class="nav-1">
+				<div >1</div>
+			</router-link>
+			<router-link to="secondStep" class="nav-2">
+				<div >2</div>
+			</router-link>
+			<a href="javascript: void;" class="nav-3"><div>√</div></a>
+			<div class="line"></div>
+			<div class="mask"></div>
 		</div>
+		<router-view></router-view>
 	</div>
 
 </template>
@@ -51,7 +35,8 @@ export default {
 				major: '计算机科学与技术',
 				class: ''
 			},
-			userType: 0
+			userType: 0,
+			ensurePassword: ''
 		};
 	},
 	methods: {
@@ -60,28 +45,57 @@ export default {
 		},
 		register() {
 			// ajax
-		}
+		},
+
 	}
 }
 </script>
 <style lang="less">
-.register-body {
-	.form {
-		width: 800px;
-		margin: 20px auto;
-		.base-info, .stu-info {
-			padding: 20px 80px;
-		}
-		.base-info > p, .stu-info > p {
-			margin-left: -50px;
-			font-size: 18px;
-		}
-		.label {
-			color: #333;
-			font-size: 16px;
-			line-height: 28px;
-			font-weight: normal;
-		}
+.register-nav {
+	margin-top: 50px;
+	height: 100px;
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+
+	.nav-1, .nav-2, .nav-3 {
+		// width: 30%;
+	}
+	a {
+		// display: inline-block;
+		margin-top: 70px;
+	}
+	a div {
+		width: 30px;
+		height: 30px;
+		border-radius: 30px;
+		border: 1px #abcdef solid;
+		display: inline-block;
+		text-align: center;
+		line-height: 30px;
+		color: #abcdef;
+		background-color: #fff;
+	}
+	.router-link-active div {
+		background-color: #abcdef;
+		color: #fff;
+	}
+	.mask {
+		width: 100%;
+		height: 100px;
+		position: absolute;
+		top: 0;
+	}
+	.line {
+		position: absolute;
+		background-color: #abcdef;
+		height: 1px;
+		width: 100%;
+
+		top: 85px;
+		z-index: -2;
 	}
 }
 </style>

@@ -13,6 +13,8 @@ import cmpMessageDetail from '../components/messageDetail'
 import cmpModifyPassword from '../components/modifyPassword'
 import cmpDownloadList from '../components/downloadList'
 import cmpWarehouse from '../components/warehouse'
+import cmpFirstStep from '../components/firstStep'
+import cmpSecondStep from '../components/secondStep'
 import pmMessage from '../pages/message.vue'
 import pmLogin from '../pages/login.vue'
 import pmUndoneDetail from '../pages/undoneDetail.vue'
@@ -109,7 +111,15 @@ export default [{
         component: pmLogin
     }, {
         path: '/register',
-        component: pmRegister
+        component: pmRegister,
+        children: [{
+            path: 'firstStep',
+            component: cmpFirstStep
+        }, {
+            path: 'secondStep',
+            component: cmpSecondStep
+        }],
+        redirect: '/register/firstStep'
     }, {
         path: '/404',
         component: pm404

@@ -19,6 +19,12 @@ export default new Vuex.Store({
 		},
 		getMessage: state => {
 			return state.message
+		},
+		getNewUser1: state => {
+			return state.newUser1
+		},
+		getNewUser2: state => {
+			return state.newUser2
 		}
 	}
 })

@@ -13,5 +13,8 @@ export default {
 	},
 	changeMessage(state, payload) {
 		state.message = payload
+	},
+	changeNewUser(state, payload) {
+		state.newUser = payload
 	}
 }
