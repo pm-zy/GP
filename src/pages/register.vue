@@ -22,21 +22,8 @@ export default {
 	},
 	data() {
 		return {
-			newUser: {
-				name: '',
-				nickname: '',
-				userType: 1,
-				personId: '',
-				password: '',
-				email: '',
-				telNum: '',
-				school: '西安邮电大学',
-				college: '计算机学院',
-				major: '计算机科学与技术',
-				class: ''
-			},
-			userType: 0,
-			ensurePassword: ''
+
+			
 		};
 	},
 	methods: {
