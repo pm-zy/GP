@@ -2,18 +2,20 @@
 	<div class="class-list">
 		<ul class="class-list-ul">
 			<li v-for="item in classInfo">
-				<div class="color-bar" :class="{'color-bar-active': item.status==1}"></div>
-				<div class="class-item-content">
-					<div class="class-item-title">
-						<span class="class-item-name">{{item.courclassname}}</span>
-						<span class="class-item-desc">{{item.courclassdescription}}</span>
+				<router-link to="/class/1" >
+					<div class="color-bar" :class="{'color-bar-active': item.status==1}"></div>
+					<div class="class-item-content">
+						<div class="class-item-title">
+							<span class="class-item-name">{{item.courclassname}}</span>
+							<span class="class-item-desc">{{item.courclassdescription}}</span>
+						</div>
+						<div class="class-item-info">
+							<span>可容纳人数：<strong :class="{'class-open': item.status==1}">{{item.courclasssize}}</strong></span>
+							<span>已选人数：<strong :class="{'class-open': item.status==1}">{{item.courclassnum}}</strong></span>
+							<span>班级编号：{{item.courseclassid}}</span>
+						</div>
 					</div>
-					<div class="class-item-info">
-						<span>可容纳人数：<strong :class="{'class-open': item.status==1}">{{item.courclasssize}}</strong></span>
-						<span>已选人数：<strong :class="{'class-open': item.status==1}">{{item.courclassnum}}</strong></span>
-						<span>班级编号：{{item.courseclassid}}</span>
-					</div>
-				</div>
+				</router-link>
 			</li>
 		</ul>
 	</div>

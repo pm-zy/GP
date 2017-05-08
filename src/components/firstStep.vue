@@ -82,6 +82,7 @@ export default {
         h3 {
             color: #71B6B5;
             font-weight: bold;
+            margin-left: -20px;
         }
         .input-div {
             width: 350px;
@@ -90,7 +91,7 @@ export default {
             line-height: 40px;
             margin-top: 5px;
             border-bottom: 1px #ccc solid;
-            color: #555;
+            color: #777;
             font-size: 16px;
             i {
                 display: inline-block;
@@ -100,7 +101,7 @@ export default {
             input {
                 border: none;
                 height: 30px;
-                font-size: 16px;
+                font-size: 15px;
                 &:focus {
                     outline: none;
                 }
@@ -117,7 +118,10 @@ export default {
             &:focus {
                 outline: none;
             }
-            
+            &:hover {
+                background-color: #5AA2A0;
+            }
+
         }
         .info {
             color: red;

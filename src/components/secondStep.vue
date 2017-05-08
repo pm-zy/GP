@@ -125,10 +125,16 @@ export default {
         border: 1px #71B6B5 solid;
         color: #71B6B5;
         background-color: transparent;
+        &:hover {
+            background-color: rgba(136,202,201, 0.2);
+        }
     }
     .btn-submit {
         background-color: #71b6b5;
         color: #fff;
+        &:hover {
+            background-color: #5AA2A0;
+        }
     }
 }
 .label {
