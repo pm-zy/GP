@@ -1,19 +1,34 @@
 <template>
     <div class="register-content">
         <div class="base-info">
-            <p>账号信息</p>
-            <span class="label">昵称</span>
-            <Input v-model="step2.nickname" placeholder="请输入昵称" ></Input>
-            <span class="label">手机号</span>
-            <Input v-model="step2.telNum"  placeholder="请输入手机号" ></Input>
-            <span class="label">邮箱</span>
-            <Input v-model="step2.email" type="email" placeholder="请输入邮箱" ></Input>
-            <span class="label">密码</span>
-            <Input v-model="step2.password" type="password" placeholder="请输入密码" ></Input>
-            <span class="label">确认密码</span>
-            <Input v-model="ensurePassword" type="password" placeholder="请确认密码" ></Input>
+            <h3>账号信息</h3>
+            <div class="input-div">
+                <i class="fa fa-user fa-fw  fa-fw"></i>
+                <input v-model="step2.nickname" placeholder="请输入昵称" >
+            </div>
+
+            <div class="input-div">
+                <i class="fa fa-phone fa-fw"></i>
+                <input v-model="step2.telNum"  placeholder="请输入手机号" >
+            </div>
+
+            <div class="input-div">
+                <i class="fa fa-envelope fa-fw"></i>
+                <input v-model="step2.email" type="email" placeholder="请输入邮箱" >
+            </div>
+
+            <div class="input-div">
+                <i class="fa fa-unlock-alt  fa-fw"></i>
+                <input v-model="step2.password" type="password" placeholder="请输入密码" >
+            </div>
+
+            <div class="input-div">
+                <i class="fa fa-unlock  fa-fw"></i>
+                <input v-model="ensurePassword" type="password" placeholder="请确认密码" >
+            </div>
+
             <span class="info" >{{info}}</span>
-            <button class="btn btn-primary" @click="goNext">下一步</button>
+            <button class="btn" @click="goNext">下一步</button>
         </div>
     </div>
 
@@ -59,14 +74,57 @@ export default {
 .register-content {
     min-width: 400px;
     max-width: 700px;
-    margin: 20px auto;
-    button {
-        margin-top: 20px;
-        float: right;
-        width: 150px;
+    position: relative;
+    top: -330px;
+    left: 330px;
+    .base-info, .stu-info {
+        text-align: left;
+        h3 {
+            color: #71B6B5;
+            font-weight: bold;
+        }
+        .input-div {
+            width: 350px;
+            text-align: left;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 5px;
+            border-bottom: 1px #ccc solid;
+            color: #555;
+            font-size: 16px;
+            i {
+                display: inline-block;
+                margin-right: 15px;
+
+            }
+            input {
+                border: none;
+                height: 30px;
+                font-size: 16px;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+        .btn {
+            margin-top: 20px;
+            float: right;
+            margin-right: 150px;
+            width: 150px;
+            color: #fff;
+            border-radius: 15px;
+            background-color: #71B6B5;
+            &:focus {
+                outline: none;
+            }
+            
+        }
+        .info {
+            color: red;
+            display: inline-block;
+            margin-top: 5px;
+        }
     }
-    .info {
-        color: red;
-    }
+
 }
 </style>

@@ -1,17 +1,33 @@
 <template>
 	<div class="body-full-width">
-		<div class="register-nav">
-			<router-link to="firstStep" class="nav-1">
-				<div >1</div>
-			</router-link>
-			<router-link to="secondStep" class="nav-2">
-				<div >2</div>
-			</router-link>
-			<a href="javascript: void;" class="nav-3"><div>√</div></a>
-			<div class="line"></div>
-			<div class="mask"></div>
+		<div class="login-wrap">
+			<div class="circle"></div>
+			<div class="login-content">
+				<div class="top-img">
+					<img src="/static/assets/top.png" alt="">
+				</div>
+				<div class="left-img">
+					<img src="/static/assets/left-img.jpg" alt="">
+				</div>
+				<div class="register-nav">
+					<router-link to="firstStep" class="nav-1">
+						<div >1</div>
+					</router-link>
+					<router-link to="secondStep" class="nav-2">
+						<div >2</div>
+					</router-link>
+					<a href="javascript: void;" class="nav-3"><div><i class="fa fa-check"></i></div></a>
+					<div class="line"></div>
+					<div class="mask"></div>
+				</div>
+				<router-view></router-view>
+				<div class="bottom-img">
+					<img src="/static/assets/bottom.png" alt="">
+				</div>
+			</div>
 		</div>
-		<router-view></router-view>
+
+
 	</div>
 
 </template>
@@ -23,7 +39,7 @@ export default {
 	data() {
 		return {
 
-			
+
 		};
 	},
 	methods: {
@@ -39,7 +55,7 @@ export default {
 </script>
 <style lang="less">
 .register-nav {
-	margin-top: 50px;
+	top: -330px;
 	height: 100px;
 	width: 80%;
 	margin: 0 auto;
@@ -58,15 +74,15 @@ export default {
 		width: 30px;
 		height: 30px;
 		border-radius: 30px;
-		border: 1px #abcdef solid;
+		border: 1px #71B6B5 solid;
 		display: inline-block;
 		text-align: center;
 		line-height: 30px;
-		color: #abcdef;
+		color: #71B6B5;
 		background-color: #fff;
 	}
 	.router-link-active div {
-		background-color: #abcdef;
+		background-color: #71B6B5;
 		color: #fff;
 	}
 	.mask {
@@ -77,7 +93,7 @@ export default {
 	}
 	.line {
 		position: absolute;
-		background-color: #abcdef;
+		background-color: #71B6B5;
 		height: 1px;
 		width: 100%;
 

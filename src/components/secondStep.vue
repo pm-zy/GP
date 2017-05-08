@@ -2,29 +2,22 @@
     <div class="register-content">
         <form>
             <div class="stu-info">
-                <p>个人信息</p>
-                <span class="label">姓名</span>
-                <Input v-model="step2.name" placeholder="请输入姓名" ></Input>
+                <h3>个人信息</h3>
+                <input  v-model="step2.name" placeholder="姓名" >
                 <Radio-group v-model="userType">
                     <Radio label="学生" ></Radio>
                     <Radio label="教师" ></Radio>
                 </Radio-group><br />
-                <span class="label">学号/工号</span>
-                <Input v-model="step2.personId" placeholder="请输入学号或工号" ></Input>
-                <span class="label">学校</span>
-                <Input v-model="step2.school" placeholder="请输入学校" ></Input>
-                <span class="label">学院</span>
-                <Input v-model="step2.college" placeholder="请输入学院" ></Input>
-                <span class="label">专业</span>
-                <Input v-model="step2.major" placeholder="请输入专业" ></Input>
-                <span class="label">班级</span>
-                <Input v-model="step2.cls" placeholder="请输入行政班级" ></Input>
+                <input  v-model="step2.personId" placeholder="学号或工号" >
+                <input  v-model="step2.school" placeholder="学校" >
+                <input  v-model="step2.college" placeholder="学院" >
+                <input  v-model="step2.major" placeholder="专业" >
+                <input  v-model="step2.cls" placeholder="行政班级" >
             </div>
             <div class="btn-div">
-                <button class="btn btn-success" @click="goPrevious">上一步</button>
-                <input type="reset"  class="btn btn-info" name="" value="重置">
-                <input type="submit"  class="btn btn-primary" name="" value="提交">
-
+                <button class="btn btn-prev" @click="goPrevious">上一步</button>
+                <button type="reset" class="btn btn-danger">重置</button>
+                <button type="button" class="btn btn-submit" @click="submit">提交</button>
             </div>
         </form>
     </div>
@@ -63,7 +56,7 @@ export default {
             this.$router.replace('/register/firstStep')
         },
         submit(){
-            let step1 = this.$store.getNewUser1();
+            let step1 = this.$store.getNewUser1;
             let userData = {};
             for(let p in step1) {
                 userData[p] = step[p];
@@ -72,6 +65,8 @@ export default {
                 userData[p] = this.step2[p]
             }
             // ajax
+            console.log('fsdfs')
+            this.$router.replace('/login');
         }
     }
 }
@@ -87,15 +82,53 @@ export default {
     margin-left: -50px;
     font-size: 18px;
 }
+.stu-info {
+    padding-top: 0;
+    input {
+        display: block;
+        font-size: 15px;
+        height: 33px;
+        line-height: 33px;
+        width: 320px;
+        border: none;
+        border-bottom: 1px #ccc solid;
+        margin-top: 8px;
+        padding-left: 5px;
+        &:focus {
+            outline-color: #88cac9;
+        }
+    }
+}
 .btn-div {
-    float: right;
+    width: 400px;
+    margin-left: 100px;
+    // float: right;
+    display: flex;
+    justify-content: space-between;
     input {
         width: 150px;
         margin: 20px;
     }
     button {
         float: left;
+        width: 100px;
+        border-radius: 15px;
         margin-right: 20px;
+        &:focus {
+            outline: none;
+        }
+        &:active:focus {
+            outline: none;
+        }
+    }
+    .btn-prev {
+        border: 1px #71B6B5 solid;
+        color: #71B6B5;
+        background-color: transparent;
+    }
+    .btn-submit {
+        background-color: #71b6b5;
+        color: #fff;
     }
 }
 .label {
