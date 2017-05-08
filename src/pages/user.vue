@@ -45,7 +45,7 @@ export default {
 	},
 	methods: {
 		logout: function() {
-			this.$store.dispatch('logout');
+			this.$store.commit('logout');
 			this.$router.replace('/login');
 		},
 		modifyPassword: function() {

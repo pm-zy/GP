@@ -86,7 +86,7 @@ export default {
 		header {
 			height: 70px;
 			line-height: 70px;
-			background-color: #00cc66;
+			background-color: #70C4A4;
 			text-align: center;
 			h1, i.fa {
 				color: #fff;
@@ -99,13 +99,16 @@ export default {
 			.score {
 				p {
 					font-size: 40px;
-					color: #00cc66;
+					color: #70C4A4;
 					text-align: center;
 				}
 			}
 			.user {
 				padding-left: 20px;
-				border-bottom: 1px #00cc66 solid;
+				border-bottom: 1px #70C4A4 solid;
+				p {
+					word-wrap: break-word;
+				}
 			}
 		}
 

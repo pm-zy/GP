@@ -145,11 +145,11 @@ export default {
 		width: 150px;
 		float: left;
 		height: 100%;
-		border-right: 1px #3399ff solid;
+		border-right: 1px #F56E6E solid;
 		header {
 			height: 70px;
 			line-height: 70px;
-			background-color: #3399ff;
+			background-color: #F56E6E;
 			text-align: center;
 			h1, i.fa {
 				color: #fff;
@@ -163,7 +163,7 @@ export default {
 			.task-name {
 				text-align: center;
 				font-size: 18px;
-				color: #3399ff;
+				color: #F56E6E;
 			}
 		}
 

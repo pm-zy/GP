@@ -100,16 +100,16 @@ export default {
 		}
 	}
 	.first-line div:first-child {
-		background-color: #3d5a96;
+		background-color: #C2BBB6;
 	}
 	.first-line div:last-child {
-		background-color: #574f80;
+		background-color: #88cac9;
 	}
 	.secd-line div:first-child {
-		background-color: #00ADEF;
+		background-color: #65AB7B;
 	}
 	.secd-line div:last-child {
-		background-color: #FBBC09;
+		background-color: #F2B27A;
 	}
 }
 </style>

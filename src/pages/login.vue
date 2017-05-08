@@ -1,88 +1,205 @@
 <template>
 	<div class="body-full-width">
-		<div class="login-content">
-			<div class="login-logo">
-				<img src="/static/assets/logo.png" alt="">
+		<div class="login-wrap">
+			<div class="circle"></div>
+			<div class="login-content">
+				<div class="top-img">
+					<img src="/static/assets/top.png" alt="">
+				</div>
+				<div class="left-img">
+					<img src="/static/assets/left-img.jpg" alt="">
+				</div>
+				<form class="login-form form">
+					<div class="username input-div">
+						<Icon type="person"></Icon>
+						<input type="text"  name="" placeholder="用户名" v-model="userName" />
+					</div>
+					<div class="password input-div">
+						<Icon type="android-lock"></Icon>
+						<input type="password"  name="" placeholder="密码" v-model="password" />
+					</div>
+					<div class="tips">
+						<span class="info">{{info}}</span>
+						<a href="" class="role-a">教师登陆</a><br />
+					</div>
+					<div class="btn btn-login" name="button" @click="login">学生登陆</div>
+					<a href="/#/register" class="a-btn btn " name="button" >注册</a>
+				</form>
+				<div class="bottom-img">
+					<img src="/static/assets/bottom.png" alt="">
+				</div>
 			</div>
-			<form class="login-form form">
-				<input type="text" class="form-control" name="" placeholder="用户名" v-model="userName" />
-				<input type="password" class="form-control" name="" placeholder="密码" v-model="password" />
-				<a href="#" class="role-a">教师登陆</a><br />
-				<button class="btn btn-primary" name="button" @click="login">学生登陆</button>
-				<a href="/#/register" class="a-btn btn btn-success" name="button" >注册</a>
-			</form>
 		</div>
+
 	</div>
 
 </template>
 <script>
 import { login } from '../vuex/actions'
 import store from '../vuex/store'
-	export default {
-		data() {
-			console.log(this.$state)
-			if(store.getters.userInfo.email) {
-				alert('已登录');
-				this.$router.replace('/');
+export default {
+	data() {
+		if(store.getters.getLoginStatus.status) {
+			alert('已登录');
+			this.$router.replace('/');
+		}
+		return {
+			info: '',
+			userName: store.getters.getUserInfo.nickname,
+			password: '',
+
+		}
+	},
+	watch: {
+		'password': function() {
+			this.info = "";
+		}
+	},
+	methods: {
+		login: function() {
+			if(!this.userName || !this.password) {
+				this.info = '请输入用户名和密码'
+				return;
 			}
-			return {
-				userName: store.getters.getUserInfo.nickname,
-				password: ''
-			}
+			// 获取数据
+			let userData = {
+				nickname: this.userName + new Date().getTime(),
+		        email: 'i@varpm.com',
+		        telNum: '18829295436',
+		        personId: new Date().getTime(),
+		        org: '西安邮电大学 计算机学院 计科1303',
+		        userType: 1
+			};
+			let  userPic = `/static/assets/${userData.personId % 21}.jpg`;
+			userData.userPic = userPic;
+			let fakeLoginInfo = {
+	            status: 0,
+	            userToken: '770fed4ca2aabd20ae9a5dd774711de2',
+	            info: '登陆成功'
+	        }
+			store.commit('changeUser', {userInfo: userData, loginInfo: fakeLoginInfo});
+			this.$router.replace('/')
 		},
-		methods: {
-			login: function() {
-				// 获取数据
-				let userData = {
-					nickname: 'PM' + new Date().getTime(),
-			        email: 'i@varpm.com',
-			        telNum: '18829295436',
-			        personId: new Date().getTime(),
-			        org: '西安邮电大学 计算机学院 计科1303',
-			        userType: 1
-				};
-				let  userPic = `/static/assets/${userData.personId % 21}.jpg`;
-				userData.userPic = userPic;
-				let fakeLoginInfo = {
-		            status: 0,
-		            userToken: '770fed4ca2aabd20ae9a5dd774711de2',
-		            info: '登陆成功'
-		        }
-				store.commit('changeUser', {userInfo: userData, loginInfo: fakeLoginInfo});
-				this.$router.replace('/')
-			},
-		},
-	}
+	},
+}
 </script>
 <style lang="less">
-.role-a{
-	float: right;
-	margin-right: 40px;
-	text-decoration: none;
-}
-.login-content {
-	width: 400px;
-	margin: 10% auto;
-	text-align: center;
-	.login-form {
+.body-full-width {
+	.login-wrap {
+		background-color: #71B6B5;
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		.circle {
+			background-color: #88cac9;
+			position: absolute;
+			width: 5500px;
+			height: 2500px;
+			top: -1400px;
+			left: 0px;
+			border-radius: 50%;
+			z-index: -1;
+		}
+	}
+	.tips {
 		overflow: hidden;
-		input {
-			width: 320px;
-			font-size: 16px;
-			height: 40px;
-			margin: 10px auto;
+		text-align: left;
+		padding-left: 80px;
+		.role-a{
+			float: right;
+			// margin-left: 300px;
+			margin-right: 100px;
+			margin-top: 10px;
+			text-decoration: none;
+			display:inline-block;
 		}
-		button {
-			width: 320px;
-			height: 40px;
-			line-height: 26px;
-			font-size: 18px;
-			margin: 5px 10px;
+		.info {
+			display: inline-block;
+			margin-top: 10px;
+			// line-height: 20px;
+			color: red;
+
 		}
-		.a-btn {
-			font-size: 18px;
-    		width: 320px;
+	}
+
+	.login-content {
+		width: 900px;
+		height: 500px;
+		// margin: 10% auto;
+		text-align: center;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		margin: 0 auto;
+		background-color: #fff;
+		.top-img {
+			position: absolute;
+			top: -30px;
+		}
+		.bottom-img {
+			position: absolute;
+			bottom: -30px;
+			right: 0;
+		}
+		.left-img {
+			float: left;
+			margin: 0 20px 0 40px;
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		.login-form {
+			overflow: hidden;
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+
+			.input-div {
+				font-size: 18px;
+				color: #999;
+				border-bottom: 1px #ccc solid;
+				width: 350px;
+				margin-left: 100px;
+				.ivu-icon {
+					line-height: 45px;
+					font-size: 20px;
+					display: inline-block;
+					margin-right: 10px;
+				}
+			}
+			input {
+				width: 320px;
+				font-size: 16px;
+				height: 40px;
+				margin: 10px auto;
+				box-shadow: none;
+				border: none;
+				&:focus {
+					outline: none;
+				}
+				// border-bottom: 1px #ccc solid;
+			}
+			.btn {
+				width: 150px;
+				height: 40px;
+				line-height: 26px;
+				font-size: 18px;
+				margin: 5px 10px;
+				border-radius: 15px;
+				margin: 10px 20px 0 20px;
+			}
+			.btn-login {
+				background-color: #88cac9;
+				color: #fff;
+			}
+			.a-btn {
+				font-size: 18px;
+	    		width: 150px;
+				border: 1px #88cac9 solid;
+				color: #71B6B5;
+			}
 		}
 	}
 }
+
 </style>
