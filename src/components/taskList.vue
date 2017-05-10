@@ -336,7 +336,7 @@ export default {
 	.task-list-container {
 		.task-ul {
 			.type-test {
-				border-left: 3px #E65F59 solid;
+				border-left: 5px #E65F59 solid;
 				.task-type {
 					background-color: #F86761;
 				}
@@ -349,10 +349,11 @@ export default {
 				background-color: #fff;
 				margin: 15px auto;
 				position: relative;
-				border: 2px #65AB7B solid;
+				box-shadow: 1px 3px 3px #ccc;
+				// border: 2px #65AB7B solid;
 				border-top: none;
 				border-right: none;
-				border-left: 3px #65AB7B solid;
+				border-left: 4px #65AB7B solid;
 				padding: 10px 15px;
 				.task-type {
 					float: left;
