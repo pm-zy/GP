@@ -8,7 +8,6 @@
 			</span>
 			<div class="header-right">
 				<ul class="nav-right">
-					<li>1</li>
 					<li><router-link to="/about"><i class="fa fa-question-circle fa-lg"></i></router-link></li>
 					<li>
 						<router-link to="/user/123">
