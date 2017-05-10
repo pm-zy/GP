@@ -29,6 +29,8 @@ export default {
 </script>
 <style lang="less">
 .class-list {
+	// height: 90%;
+	// width: 100%;
 }
 .class-list-ul {
 	list-style: none;

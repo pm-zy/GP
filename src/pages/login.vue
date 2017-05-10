@@ -16,7 +16,7 @@
 					</div>
 					<div class="password input-div">
 						<Icon type="android-lock"></Icon>
-						<input type="password"  name="" placeholder="密码" v-model="password" />
+						<input type="password"  name="" placeholder="密码" v-model="password" @keyup.enter="login" />
 					</div>
 					<div class="tips">
 						<span class="info">{{info}}</span>

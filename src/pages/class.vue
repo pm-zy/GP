@@ -23,8 +23,11 @@
 				</router-link>
 			</div>
 		</div>
-		<div class="main-content">
-			<ClassList :class-info="classInfo"></ClassList>
+		<div class="main-container">
+			<div class="main-content">
+				<ClassList :class-info="classInfo"></ClassList>
+			</div>
+
 		</div>
 		<router-view></router-view>
 	</div>
@@ -53,6 +56,132 @@ export default {
 				courclassname: '计科1302',
 				courclasssize: 30,
 				status: 1,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
+				courclassdescription: '计科期中摸底考',
+				userid: 1,
+				code: 1,
+				courclassnum: 10
+			}, {
+				courseclassid: 1,
+				courclassname: '计科1302',
+				courclasssize: 30,
+				status: 0,
 				courclassdescription: '计科期中摸底考',
 				userid: 1,
 				code: 1,
@@ -130,14 +259,23 @@ export default {
         border-bottom: 1px solid #d5d5d5;
     }
 }
-.main-content {
-    width: 100%;
-    height: 100%;
-    ul {
-        margin-left: 180px;
-        margin-top: 50px;
-    }
+.main-container {
+	height: 90%;
+	margin-left: 180px;
+	box-sizing: content-box;
+	position: relative;
+	.main-content {
+		position: absolute;
+	    width: 100%;
+	    height: 100%;
+		overflow-y: scroll;
+	    ul {
+	        margin-top: 50px;
+			margin-bottom: 50px;
+	    }
+	}
 }
+
 .left-menu-content {
     list-style: none;
     padding: 0;
