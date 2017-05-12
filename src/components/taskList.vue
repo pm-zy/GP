@@ -342,7 +342,7 @@ export default {
 				}
 			}
 			li {
-				border-radius: 10px;
+				// border-radius: 10px;
 				display: block;
 				width: 80%;
 				height: 60px;
