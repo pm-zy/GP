@@ -41,7 +41,7 @@ export default {
 	data() {
 		if(store.getters.getLoginStatus.status) {
 			alert('已登录');
-			this.$router.replace('/');
+			this.$router.replace('/index');
 		}
 		return {
 			info: '',
@@ -78,7 +78,7 @@ export default {
 	            info: '登陆成功'
 	        }
 			store.commit('changeUser', {userInfo: userData, loginInfo: fakeLoginInfo});
-			this.$router.replace('/')
+			this.$router.replace('/index')
 		},
 	},
 }

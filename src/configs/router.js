@@ -27,7 +27,7 @@ import TEST from '../components/Hello.vue'
 // 配置路由
 export default [{
         path: '/',
-        redirect: '/index'
+        redirect: '/login'
     }, {
         path: '/index',
         component: pmIndex
