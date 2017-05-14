@@ -70,6 +70,8 @@ export default {
 		padding-left: 20px;
 		overflow: hidden;
 		background-color: #fff;
+		margin-top: 10px;
+		height: 150px;
 		h2 {
 			color: #666;
 		}
