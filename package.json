@@ -18,8 +18,10 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "vue": "^2.1.0",
+    "vue-brace": "^2.0.0",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.1.0",
+    "vue2-ace": "^1.0.6",
     "vuex": "^2.1.1"
   },
   "devDependencies": {
