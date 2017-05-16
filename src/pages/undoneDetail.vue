@@ -31,6 +31,7 @@
 							<Input v-model="answer[index].answer" placeholder="请输入答案" type="textarea" style="width: 300px" v-else />
 						</li>
 					</ul>
+					<Code></code>
 					<Button type="primary" @click="clickSubmit">提交答案</Button>
 				</div>
 			</div>
@@ -38,7 +39,11 @@
 	</div>
 </template>
 <script>
+import Code from '../components/code'
 export default {
+	components: {
+		Code
+	},
 	data() {
 		if(!this.$store.getters.getLoginStatus.status) {
 			alert('请先登录');
@@ -85,7 +90,7 @@ export default {
 				TaskScore: "",
 				TaskName: "计科1301班摸底考试",
 				TaskDescribe: "1111",
-				TaskTime: 0.1,
+				TaskTime: 100,
 				type: 0
 			}
 		},
