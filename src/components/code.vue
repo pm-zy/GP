@@ -4,7 +4,7 @@
 
         </div>
         <div class="code-container ">
-            <editor :content="请在此处写代码" :lang="'sql'" :theme="'chrome'" v-bind:content-update="XXX"></editor>
+            <editor :content="content" lang="javascript" theme="chrome" ></editor>
         </div>
         <div >
             {{content}}
@@ -21,18 +21,19 @@ export default {
     },
     data() {
         return {
-            content: {}
+            content: ""
         }
     },
     created() {
 
     },
+    watch: {
+        'content': function () {
+            console.log(this.content)
+        }
+    },
     methods: {
-       editorInit:function () {
-       },
-       XXX: function (v) {
-       console.log(v);
-     }
+
    },
 
 }

@@ -20,13 +20,13 @@
 				<div class="task">
 					<ul >
 						<li v-for="(question, index) of taskDetail">
-							<p class="title">{{ index+1 }}、 {{question.title}} (本题目{{question.score}}分)</p>
-							<Radio-group v-model="answer[index].answer" v-if="question.type === 1">
-								<Radio :label="i" v-for="i in question.item" />
+							<p class="title">{{ index+1 }}、 {{question.content}} (本题目{{question.point}}分)</p>
+							<Radio-group v-model="answer[index].answer" v-if="question.type == 1">
+								<Radio :label="i.key" v-for="i in question.options" />
 							</Radio-group>
 
-							<Checkbox-group v-model="answer[index].answer" v-else-if="question.type === 2">
-								<Checkbox :label="i" v-for="i in question.item" />
+							<Checkbox-group v-model="answer[index].answer" v-else-if="question.type == 2">
+								<Checkbox :label="i.key" v-for="i in question.options" />
 							</Checkbox-group>
 							<Input v-model="answer[index].answer" placeholder="请输入答案" type="textarea" style="width: 300px" v-else />
 						</li>
@@ -40,6 +40,7 @@
 </template>
 <script>
 import Code from '../components/code'
+let timeInterval;
 export default {
 	components: {
 		Code
@@ -61,12 +62,15 @@ export default {
 		}
 	},
 	created() {
-		console.log(window.location);
 		this.getTaskInfo();
 		this.getTaskDetail();
+		this.timer = {
+			min: 0,
+			s: 0
+		}
 		if(this.task.type == 0 && this.task.TaskTime > 0) {
 			let timeCount = this.task.TaskTime * 60;
-			let timeInterval = setInterval(() => {
+			timeInterval = setInterval(() => {
 				this.formatTimer(timeCount);
 				timeCount = timeCount - 1;
 				if(timeCount === -1) {
@@ -95,29 +99,89 @@ export default {
 			}
 		},
 		getTaskDetail() {
-			this.taskDetail = [
-				{
-					id: 1,
-					type: 1, // 单选
-					title: '如何使用multipart/form-data格式上传文件？',
-					item: ['选项1', '选项2', '选项3', '选项4'],
-					score: 5
-				}, {
-					id: 2,
-					type: 2, // 多选
-					title: '如何使用xxxx格式xxxx?',
-					item: ['选项1', '选项2', '选项3', '选项4'],
-					score: 5
-				}, {
-					id: 3,
-					type: 3, // 填空
-					title: '_____使用xxxx格式xxxx?',
-					score: 5
-				}
-			];
+			// let retData = {
+			// 	"code": "0",
+			// 	"tasks": [{
+			// 		"taskid": "111",
+			// 		"status": "0"
+			// 	}],
+			// 	"info": "成功"
+			// };
+			let retData = [
+			{
+				"outexam": "",
+				"answer": [],
+				"options": [
+					{
+						"key": "选项1"
+					}, {
+						"key": "选项2"
+					},{
+						"key": "选项3"
+					},{
+						"key": "选项4"
+					}
+				],
+				"quesid": "1",
+				"stuanswer": [],
+				"otheranswer": "",
+				"type": "1",
+				"point": "3",
+				"content": "1+1等于？",
+				"otherstuanswer": "",
+				"inputexam": ""
+			},
+			{
+				"outexam": "100",
+				"answer": [
+					{
+						"key": "2"
+					}
+				],
+				"options": [
+					{
+						"key": "选项1"
+					}, {
+						"key": "选项2"
+					},{
+						"key": "选项3"
+					},{
+						"key": "选项4"
+					}
+				],
+				"quesid": "2",
+				"stuanswer": [],
+				"otheranswer": "我最帅",
+				"type": "2",
+				"point": "3",
+				"content": "1+1等于？",
+				"otherstuanswer": "说的对",
+				"inputexam": "55,45"
+			}];
+			this.taskDetail = retData;
+			// this.taskDetail = [
+			// 	{
+			// 		id: 1,
+			// 		type: 1, // 单选
+			// 		title: '如何使用multipart/form-data格式上传文件？',
+			// 		item: ['选项1', '选项2', '选项3', '选项4'],
+			// 		score: 5
+			// 	}, {
+			// 		id: 2,
+			// 		type: 2, // 多选
+			// 		title: '如何使用xxxx格式xxxx?',
+			// 		item: ['选项1', '选项2', '选项3', '选项4'],
+			// 		score: 5
+			// 	}, {
+			// 		id: 3,
+			// 		type: 3, // 填空
+			// 		title: '_____使用xxxx格式xxxx?',
+			// 		score: 5
+			// 	}
+			// ];
 			this.taskDetail.forEach(item => {
 				this.answer.push({
-					id: item.id,
+					id: item.quesid,
 					answer: null
 				})
 			})
@@ -129,9 +193,11 @@ export default {
 		},
 		submit() {
 			// ajax
+			console.log('fsdrs');
 			console.log(this.answer);
+			clearInterval(timeInterval);
 			alert('提交成功');
-			this.$router.go(-1)
+			// this.$router.go(-1)
 		}
 	},
 }
