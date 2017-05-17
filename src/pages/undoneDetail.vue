@@ -13,6 +13,9 @@
 				<div class="user">
 					<p>{{user.nickname}}</p>
 				</div>
+				<div class="info">
+					<h4 class="tips">编程题请同学们记得提交代码</h4>
+				</div>
 			</section>
 		</div>
 		<div class="right">
@@ -28,10 +31,12 @@
 							<Checkbox-group v-model="answer[index].answer" v-else-if="question.type == 2">
 								<Checkbox :label="i.key" v-for="i in question.options" />
 							</Checkbox-group>
+
+							<Code v-else-if="question.type == 4" :question="question" ></Code>
+
 							<Input v-model="answer[index].answer" placeholder="请输入答案" type="textarea" style="width: 300px" v-else />
 						</li>
 					</ul>
-					<Code></code>
 					<Button type="primary" @click="clickSubmit">提交答案</Button>
 				</div>
 			</div>
@@ -157,6 +162,32 @@ export default {
 				"content": "1+1等于？",
 				"otherstuanswer": "说的对",
 				"inputexam": "55,45"
+			}, {
+				"outexam": "100",
+				"answer": [
+					{
+						"key": "2"
+					}
+				],
+				"options": [
+					{
+						"key": "选项1"
+					}, {
+						"key": "选项2"
+					},{
+						"key": "选项3"
+					},{
+						"key": "选项4"
+					}
+				],
+				"quesid": "2",
+				"stuanswer": [],
+				"otheranswer": "",
+				"type": "4",
+				"point": "3",
+				"content": "1+1等于？",
+				"otherstuanswer": "说的对",
+				"inputexam": "55,45"
 			}];
 			this.taskDetail = retData;
 			// this.taskDetail = [
@@ -229,12 +260,17 @@ export default {
 			}
 		}
 		section {
-			padding-top: 20px;
-			padding-left: 20px;
+			padding: 20px 5px 20px 5px;
 			.task-name {
 				text-align: center;
 				font-size: 18px;
 				color: #F56E6E;
+			}
+			.info {
+				.tips {
+					color: #d9534f;
+					font-weight: bold;
+				}
 			}
 		}
 
