@@ -31,6 +31,7 @@
 
 </template>
 <script>
+import axios from 'axios'
 export default {
 	mounted() {
 		this.changeData();
@@ -44,6 +45,17 @@ export default {
 		console.log('create')
 	},
 	methods: {
+		getList() {
+			axios.post('m=Home&c=task&a=apptask', {
+				userid: fdf
+			})
+			.then(response => {
+
+			})
+			.catch(error => {
+
+			}) 
+		},
 		changeData: function () {
 			let path = this.$route.path;
 	        if(path.match(/(task\/undone)$/)) {

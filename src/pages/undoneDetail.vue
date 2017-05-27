@@ -29,10 +29,10 @@
 							</Radio-group>
 
 							<Checkbox-group v-model="answer[index].answer" v-else-if="question.type == 2">
-								<Checkbox :label="i.key" v-for="i in question.options" />
+								<Checkbox :label="opt" v-for="opt in question.options" />
 							</Checkbox-group>
 
-							<Code v-else-if="question.type == 4" :question="question" ></Code>
+							<Code v-else-if="question.type == 4" :question="question" :codes="answer[index].answer"></Code>
 
 							<Input v-model="answer[index].answer" placeholder="请输入答案" type="textarea" style="width: 300px" v-else />
 						</li>
@@ -140,22 +140,12 @@ export default {
 			},
 			{
 				"outexam": "100",
-				"answer": [
+				"answer": [ 
 					{
 						"key": "2"
 					}
 				],
-				"options": [
-					{
-						"key": "选项1"
-					}, {
-						"key": "选项2"
-					},{
-						"key": "选项3"
-					},{
-						"key": "选项4"
-					}
-				],
+				"options": [ "选项1",  "选项2",  "选项3",  "选项4"],
 				"quesid": "2",
 				"stuanswer": [],
 				"otheranswer": "我最帅",
@@ -192,26 +182,7 @@ export default {
 				"inputexam": "55,45"
 			}];
 			this.taskDetail = retData;
-			// this.taskDetail = [
-			// 	{
-			// 		id: 1,
-			// 		type: 1, // 单选
-			// 		title: '如何使用multipart/form-data格式上传文件？',
-			// 		item: ['选项1', '选项2', '选项3', '选项4'],
-			// 		score: 5
-			// 	}, {
-			// 		id: 2,
-			// 		type: 2, // 多选
-			// 		title: '如何使用xxxx格式xxxx?',
-			// 		item: ['选项1', '选项2', '选项3', '选项4'],
-			// 		score: 5
-			// 	}, {
-			// 		id: 3,
-			// 		type: 3, // 填空
-			// 		title: '_____使用xxxx格式xxxx?',
-			// 		score: 5
-			// 	}
-			// ];
+			
 			this.taskDetail.forEach(item => {
 				this.answer.push({
 					id: item.quesid,
@@ -221,7 +192,7 @@ export default {
 		},
 		clickSubmit() {
 			if(confirm('确认提交？')) {
-				submit();
+				this.submit();
 			}
 		},
 		submit() {
@@ -233,6 +204,11 @@ export default {
 			// this.$router.go(-1)
 		}
 	},
+	watch: {
+		'reload': function () {
+
+		}
+	}
 }
 </script>
 <style lang="less">
