@@ -5,7 +5,7 @@
             <p class="out-exam"><span>输出: </span>{{question.outexam}}</p>
         </div>
         <div class="code-container ">
-            <editor :content="content" lang="javascript" theme="chrome" ></editor>
+            <editor :content="content" lang="c_cpp" theme="chrome" ></editor>
         </div>
         <div class="btn-container">
             <input type="button" class="btn btn-success" value="运行代码" @click="getValue">
@@ -15,7 +15,8 @@
 </template>
 <script>
 import editor from 'ace-vue2'
-// import 'brace/mode/javascript'
+import 'brace/mode/c_cpp'
+import 'brace/snippets/c_cpp'
 import 'brace/theme/chrome'
 export default {
     props: [ 'question' ],
@@ -29,16 +30,13 @@ export default {
         }
     },
     created() {
-        console.log(this.question);
     },
     watch: {
         'content': function () {
-            console.log(this.content)
         }
     },
     methods: {
-        getValue() {
-            // this.
+        getValue() {           
             console.log(this.$children);
             console.log(this.$children[0].getValue());
 

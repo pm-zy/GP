@@ -2,7 +2,7 @@
 	<div class="body of-hd" >
 		<TopBar path='任务'></TopBar>
 		<VerticalNav :nav-data="menu" title='我的任务'></VerticalNav>
-		<router-view ></router-view>
+		<router-view :reload="reload"></router-view>
 	</div>
 
 </template>
@@ -16,6 +16,7 @@ export default {
 		TopBar,
 		VerticalNav
 	},
+	props: ['reload'],
 	data() {
 		if(!store.getters.getLoginStatus.status) {
 			alert('请先登录');

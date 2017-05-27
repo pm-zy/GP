@@ -50,7 +50,9 @@ export default {
 	components: {
 		Code
 	},
+	props: ['reload'],
 	data() {
+		console.log("reload::::::" + this.reload);
 		if(!this.$store.getters.getLoginStatus.status) {
 			alert('请先登录');
 			this.$router.replace('/login');

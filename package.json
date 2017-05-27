@@ -12,7 +12,7 @@
     "lint": "eslint --ext .js,.vue src test/e2e/specs"
   },
   "dependencies": {
-    "ace-vue2": "0.1.1",
+    "ace-vue2": "^0.2.2",
     "axios": "^0.16.1",
     "iview": "^2.0.0-rc.12",
     "less": "^2.7.1",
