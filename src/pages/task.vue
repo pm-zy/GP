@@ -62,18 +62,18 @@ export default {
 			CourseID: "数据结构",
 			task: "",
 			UserID: "04131111",
-			taskID: 1,
-			taskScore: "76",
-			taskName: "计科1301班摸底考试",
-			taskDescribe: "1111"
+			taskid: 1,
+			taskscore: "76",
+			taskname: "计科1301班摸底考试",
+			taskdescribe: "1111"
 		}, {
 			CourseID: "数据结构2",
 			task: "",
 			UserID: "04131111",
-			taskID: 2,
-			taskScore: "76",
-			taskName: "计科1301班摸底考试",
-			taskDescribe: "1111"
+			taskiD: 2,
+			taskscore: "76",
+			taskname: "计科1301班摸底考试",
+			taskdescribe: "1111"
 		}];
 		this.taskInfo.forEach(task => {
 			task.url = `/undone/${task.taskID}`
