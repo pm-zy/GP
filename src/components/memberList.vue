@@ -10,7 +10,7 @@ export default {
     props: ['members']
 }
 </script>
-<style>
+<style lang="less">
 .member-list {
     li {
         border-left: 5px #abcdef solid;

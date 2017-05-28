@@ -2,25 +2,22 @@
 	<div class="main-container">
 		<div class="task-list-container main-content">
 			<ul class="task-ul">
-				<li v-for="item in taskInfo" :class="{'type-test': item.TaskType}">
-					<div class="task-type" v-if="item.TaskType">
-						E
-					</div>
-					<div class="task-type" v-else>
-						T
-					</div>
+				<li v-for="item in taskInfo" >
+				
 					<div class="list-content">
-						<router-link :to='item.url'>{{item.TaskName}}</router-link>
+						<router-link :to='item.url'>{{item.taskname}}</router-link>
 						<span class="infos">
-							{{item.TaskDescribe}}
+							{{item.taskdescribe}}
 						</span>
 						<div class="other-info">
 							<span class="tips">编号: </span>
-							<span class="infos">{{item.TaskID}}</span>
+							<span class="infos">{{item.taskid}}</span>
 							<span class="tips">类型: </span>
 							<span class="infos">{{item.Task}}</span>
 							<span class="tips">分数: </span>
-							<span class="infos">{{item.TaskScore}}</span>
+							<span class="infos">{{item.score}}</span>
+							<span class="tips">结束时间: </span>
+							<span class="infos">{{item.endtime}}</span>
 						</div>
 					</div>
 				</li>
@@ -35,9 +32,9 @@ export default {
 	mounted() {
 		this.changeData();
 	},
+	props: ['taskInfo'],
 	data() {
 		return {
-			taskInfo: []
 		}
 	},
 	created() {
@@ -46,258 +43,35 @@ export default {
 	methods: {
 		changeData: function () {
 			let path = this.$route.path;
-	        if(path.match(/(task\/undone)$/)) {
-	          	this.taskInfo = [{
-					CourseID: "数据结构",
-					Task: "",
-					UserID: "04131111",
-					TaskID: 1,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试",
-					TaskDescribe: "1111"
-				}, {
-					CourseID: "数据结构2",
-					Task: "",
-					UserID: "04131111",
-					TaskID: 2,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试",
-					TaskDescribe: "1111"
-				}]
-				this.taskInfo.forEach(task => {
-					task.url = `/undone/${task.TaskID}`
-				})
-	        } else {
-	          	this.taskInfo = [{
-					CourseID: "数据结构",
-					Task: "",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskDescribe: "已完成的考试",
-					TaskType: 0
-				}, {
-					CourseID: "数据结构",
-					Task: "考试",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskDescribe: "已完成的考试",
-					TaskType: 0
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskDescribe: "已完成的考试",
-					TaskType: 0
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskDescribe: "已完成的考试",
-					TaskType: 1
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 1,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 0,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 0,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 0,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 0,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 0,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 0,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 0,
-					TaskDescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					Task: "练习",
-					UserID: "04131111",
-					TaskID: 3,
-					TaskScore: "76",
-					TaskName: "计科1301班摸底考试已完成",
-					TaskType: 0,
-					TaskDescribe: "已完成的考试"
-				}];
-				this.taskInfo.forEach(task => {
-					task.url = `/done/${task.TaskID}`
-				})
-	        }
+	        // if(path.match(/(task)$/)) {
+	        //   	this.taskInfo = 
+			// 	this.taskInfo.forEach(task => {
+			// 		task.url = `/undone/${task.TaskID}`
+			// 	})
+	        // } else {
+	        //   	this.taskInfo = [{
+			// 		CourseID: "数据结构",
+			// 		Task: "",
+			// 		UserID: "04131111",
+			// 		TaskID: 3,
+			// 		TaskScore: "76",
+			// 		TaskName: "计科1301班摸底考试已完成",
+			// 		TaskType: 1,
+			// 		TaskDescribe: "已完成的考试"
+			// 	}, {
+			// 		CourseID: "数据结构",
+			// 		Task: "练习",
+			// 		UserID: "04131111",
+			// 		TaskID: 3,
+			// 		TaskScore: "76",
+			// 		TaskName: "计科1301班摸底考试已完成",
+			// 		TaskDescribe: "已完成的考试",
+			// 		TaskType: 0
+			// 	}];
+			// 	this.taskInfo.forEach(task => {
+			// 		task.url = `/done/${task.TaskID}`
+			// 	})
+	        // }
 		}
 	},
 	watch: {

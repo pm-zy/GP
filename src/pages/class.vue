@@ -35,6 +35,7 @@
 <script>
 import ClassList from '../components/classList'
 import TopBar from '../components/topBar'
+import axios from 'axios'
 import store from '../vuex/store'
 
 // import JoinClass from '../components/joinClass'
@@ -213,7 +214,7 @@ export default {
 				code: 1,
 				courclassnum: 10
 			}, {
-				courseclassid: 1,
+				courseclassid: 2,
 				courclassname: '计科1302',
 				courclasssize: 30,
 				status: 0,
@@ -235,6 +236,7 @@ export default {
 			var that = this;
 			if (type == 'join') {
 				this.classInfo = fakeData;
+				// axios.post('')
 			} else {
 				this.classInfo = fakeData2;
 			}

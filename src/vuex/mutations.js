@@ -16,5 +16,8 @@ export default {
 	},
 	changeNewUser(state, payload) {
 		state.newUser = payload
+	},
+	addClass(state, payload) {
+		state.courseClasses.push(payload)
 	}
 }

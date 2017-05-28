@@ -19,7 +19,8 @@
 </template>
 <script>
 import ClassJoinList from './classJoinList'
-
+import axios from 'axios'
+import store from '../vuex/store'
 export default {
 	components: {
 		ClassJoinList
@@ -42,6 +43,12 @@ export default {
 	methods: {
 		search() {
 			// ajax
+			axios.post('/m=Home&c=search&a=searchclass', {
+				userId: store.getters.getUserInfo.userid,
+				courclassid: this.searchId
+			}).then(res => {
+
+			})
 		}
 	}
 }

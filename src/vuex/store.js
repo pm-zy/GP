@@ -25,6 +25,9 @@ export default new Vuex.Store({
 		},
 		getNewUser2: state => {
 			return state.newUser2
+		},
+		getClasses: state => {
+			return state.courseClasses
 		}
 	}
 })

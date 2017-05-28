@@ -15,7 +15,7 @@
 </template>
 <script>
 import editor from 'ace-vue2'
-// import 'brace/mode/javascript'
+import 'brace/mode/javascript'
 import 'brace/theme/chrome'
 export default {
     props: [ 'question' ],

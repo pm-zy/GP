@@ -126,14 +126,14 @@ export default [{
     }, {
         path: '/task',
         component: pmTask,
-        children: [{
-            path: 'undone',
-            component: cmpTask
-        }, {
-            path: 'done',
-            component: cmpTask
-        }],
-        redirect: '/task/undone'
+        // children: [{
+        //     path: 'undone',
+        //     component: cmpTask
+        // }, {
+        //     path: 'done',
+        //     component: cmpTask
+        // }],
+        // redirect: '/task/undone'
     }, {
         path: '*',
         redirect: '/404'

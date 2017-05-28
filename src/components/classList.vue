@@ -2,7 +2,7 @@
 	<div class="class-list">
 		<ul class="class-list-ul">
 			<li v-for="item in classInfo">
-				<router-link to="/class/1" >
+				<router-link :to="'/class/' + item.courseclassid" >
 					<div class="color-bar" :class="{'color-bar-active': item.status==1}"></div>
 					<div class="class-item-content">
 						<div class="class-item-title">
