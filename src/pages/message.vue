@@ -1,7 +1,7 @@
 <template>
 	<div class="body of-hd" >
-		<TopBar path='我的消息'></TopBar>
-		<VerticalNav :nav-data="menu" title='我的消息'></VerticalNav>
+		<TopBar path='任务通知'></TopBar>
+		<VerticalNav :nav-data="menu" title='任务通知'></VerticalNav>
 		<router-view ></router-view>
 	</div>
 

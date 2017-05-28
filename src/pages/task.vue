@@ -1,6 +1,7 @@
 <template>
 	<div class="body of-hd">
 		<TopBar path='任务'></TopBar>
+<<<<<<< HEAD
 		<div class="left-menu of-hd">
 			<div class="left-menu-header">
 				<span>我的班级</span>
@@ -34,6 +35,7 @@ export default {
 		// VerticalNav,
 		taskList
 	},
+	props: ['reload'],
 	data() {
 		if (!store.getters.getLoginStatus.status) {
 			alert('请先登录');

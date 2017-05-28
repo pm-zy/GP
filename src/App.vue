@@ -2,7 +2,7 @@
   <div class="body">
     <LeftPanel v-show="showLeft"></LeftPanel>
     <div class="right-container">
-       <router-view
+       <router-view reload="false"
         class='view'
         keep-alive
         transition

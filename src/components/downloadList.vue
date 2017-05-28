@@ -1,17 +1,21 @@
 <template>
-    <div class="download-list">
-        <ul>
-            <li v-for="item in downloadList">
-                <a :href="item.url">
-                    <div class="pic">
-                        <img :src="item.img" alt="图片" />
-                    </div>
-                    <h4>{{item.name}}</h4>
-                    <p>{{item.size}}</p>
-                    <p class="desc">{{item.desc}}</p>
-                </a>
-            </li>
-        </ul>
+    <div class="main-container">
+        <div class="main-content">
+            <div class="download-list">
+                <ul>
+                    <li v-for="item in downloadList">
+                        <a :href="item.url">
+                            <div class="pic">
+                                <img :src="item.img" alt="图片" />
+                            </div>
+                            <h4>{{item.name}}</h4>
+                            <p>{{item.size}}</p>
+                            <p class="desc">{{item.desc}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 
