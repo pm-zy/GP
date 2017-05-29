@@ -8,15 +8,16 @@
 						<img :src="userPic" alt="">
 					</div>
 					<div class="other-info-container">
-						<p v-if="userType == 1" class="student">学生</p>
+						<p v-if="usertype == 1" class="student">学生</p>
 						<input type="button" class="logout" value="退出登录" @click='logout'><br/>
 						<a @click='modifyPassword'>修改密码</a>
 					</div>
 				</div>
 				<div class="user-info">
-					<h2>{{nickname}}</h2>
-					<p class="org">{{org}}</p>
-					<p class="stu-number">学号: {{personId}}</p>
+					<h2>{{nick}}</h2>
+					<p  class="org">{{name}}</p>
+					<p class="org">{{school}} {{college}} {{major}} </p>
+					<p class="stu-number">学号: {{userid}}</p>
 				</div>
 
 			</div>
@@ -31,6 +32,7 @@ import Vue from 'vue';
 import { logout } from '../vuex/actions'
 import { mapActions } from 'vuex'
 import store from '../vuex/store'
+import axios from 'axios'
 
 export default {
 	data() {
@@ -39,16 +41,40 @@ export default {
 			alert('请先登录');
 			this.$router.replace('/login');
 			return {};
-		}
+		} 
 		return store.getters.getUserInfo
 	},
 	components: {
 		TopBar
 	},
+	created() {
+		this.getUserData();
+	},
 	beforeUpdate: function() {
 		document.getElementsByClassName('body')[1].style.filter=""
 	},
 	methods: {
+		getUserData() {
+			let userInfo = store.getters.getUserInfo;
+			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=Home&c=student&a=studentdetail';
+			axios({
+				url: url,
+				method: 'post',
+				data: { userid: userInfo.userid },
+				transformRequest: [function (data) {
+					let ret = ''
+					for (let it in data) {
+						ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+					}
+					return ret
+				}],
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			}).then(res =>{
+				console.log(res)
+			})
+		},
 		logout: function() {
 			this.$store.commit('logout');
 			this.$router.replace('/login');
@@ -70,7 +96,6 @@ export default {
 		padding-left: 20px;
 		overflow: hidden;
 		background-color: #fff;
-		margin-top: 10px;
 		height: 150px;
 		h2 {
 			color: #666;
