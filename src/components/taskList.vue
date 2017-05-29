@@ -2,7 +2,7 @@
 	<div class="main-container">
 		<div class="task-list-container main-content">
 			<ul class="task-ul">
-				<li v-for="item in taskInfo" >
+				<li v-for="item in taskInfo" :class="item.status">
 				
 					<div class="list-content">
 						<router-link :to='item.url'>{{item.taskname}}</router-link>
@@ -12,10 +12,10 @@
 						<div class="other-info">
 							<span class="tips">编号: </span>
 							<span class="infos">{{item.taskid}}</span>
-							<span class="tips">类型: </span>
-							<span class="infos">{{item.Task}}</span>
 							<span class="tips">分数: </span>
 							<span class="infos">{{item.score}}</span>
+							<span class="tips">开始时间: </span>
+							<span class="infos">{{item.starttime}}</span>
 							<span class="tips">结束时间: </span>
 							<span class="infos">{{item.endtime}}</span>
 						</div>
@@ -55,35 +55,7 @@ export default {
 		},
 		changeData: function () {
 			let path = this.$route.path;
-	        // if(path.match(/(task)$/)) {
-	        //   	this.taskInfo = 
-			// 	this.taskInfo.forEach(task => {
-			// 		task.url = `/undone/${task.TaskID}`
-			// 	})
-	        // } else {
-	        //   	this.taskInfo = [{
-			// 		CourseID: "数据结构",
-			// 		Task: "",
-			// 		UserID: "04131111",
-			// 		TaskID: 3,
-			// 		TaskScore: "76",
-			// 		TaskName: "计科1301班摸底考试已完成",
-			// 		TaskType: 1,
-			// 		TaskDescribe: "已完成的考试"
-			// 	}, {
-			// 		CourseID: "数据结构",
-			// 		Task: "练习",
-			// 		UserID: "04131111",
-			// 		TaskID: 3,
-			// 		TaskScore: "76",
-			// 		TaskName: "计科1301班摸底考试已完成",
-			// 		TaskDescribe: "已完成的考试",
-			// 		TaskType: 0
-			// 	}];
-			// 	this.taskInfo.forEach(task => {
-			// 		task.url = `/done/${task.TaskID}`
-			// 	})
-	        // }
+	       
 		}
 	},
 	watch: {
@@ -127,6 +99,13 @@ export default {
 					background-color: #F86761;
 				}
 			}
+			.undone {
+				border-left: 7px rgb(255,110, 110) solid;
+			}
+			.done {
+				border-left: 7px #70a474 solid;
+				
+			}
 			li {
 				// border-radius: 10px;
 				display: block;
@@ -139,7 +118,7 @@ export default {
 				// border: 2px #65AB7B solid;
 				border-top: none;
 				border-right: none;
-				border-left: 4px #65AB7B solid;
+				// border-left: 4px #65AB7B solid;
 				padding: 10px 15px;
 				.task-type {
 					float: left;

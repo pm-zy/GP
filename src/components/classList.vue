@@ -2,7 +2,7 @@
 	<div class="class-list">
 		<ul class="class-list-ul">
 			<li v-for="item in classInfo">
-				<router-link :to="'/class/' + item.courseclassid" >
+				<router-link :to="'/class/' + item.courclassid" >
 					<div class="color-bar" :class="{'color-bar-active': item.status==1}"></div>
 					<div class="class-item-content">
 						<div class="class-item-title">
@@ -12,7 +12,7 @@
 						<div class="class-item-info">
 							<span>可容纳人数：<strong :class="{'class-open': item.status==1}">{{item.courclasssize}}</strong></span>
 							<span>已选人数：<strong :class="{'class-open': item.status==1}">{{item.courclassnum}}</strong></span>
-							<span>班级编号：{{item.courseclassid}}</span>
+							<span>班级编号：{{item.courclassid}}</span>
 						</div>
 					</div>
 				</router-link>

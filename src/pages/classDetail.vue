@@ -1,23 +1,37 @@
 <template>
-    <div class="class-detail">
-        <header>
-            <h2>班级成员</h2>
-            <hr /> 
-        </header>
-        <section>
-            <MemberList :members="classMember" />
-        </section>
+    <div class="body of-hd">
+        <TopBar path='班级详情'></TopBar>
+        <div class="class-detail">
+            <header>
+                <h2>班级成员</h2>
+                <hr />
+            </header>
+            <section>
+                <MemberList :members="classMember" />
+            </section>
+            <header>
+                <h2>班级Task</h2>
+                <hr />
+            </header>
+            <section>
+                <taskListMemberList :task-info="taskInfo" />
+            </section>
+        </div>
+    
     </div>
 </template>
 <script>
 import MemberList from '../components/memberList'
+import TopBar from '../components/topBar'
+
+import taskList from '../components/taskList'
 import axios from 'axios'
 import store from '../vuex/store'
 export default {
     components: {
         MemberList
-    }, 
-    
+    },
+
     data() {
         console.log(this.$router.history.current.params.id)
         let id = this.$router.history.current.params.id;
@@ -25,88 +39,76 @@ export default {
         return {
             classMember: [
             ],
-            tasks: [],
+            taskInfo: [],
             classId: id,
             userid: userid
         }
     },
     created() {
         this.getClassMembers();
+        this.getTasks();
     },
     methods: {
         getClassDetail() {
 
         },
         getClassMembers() {
-            // axios.post('m=Home&c=search&a=getClassFiriends', {
-            //     userid: store.getters.getUserInfo.userid,
-            //     courclassid: this.clasId
-            // }).then(res => {
-            //     this.classMember = res.friends
-            // })
-            this.classMember = [
-                {
-                    "nickname": "小明",
-                    "score": "90"
-
-                }, {
-                    "nickname": "小白",
-                    "score": "90"
-
-                }, {
-                    "nickname": "小发",
-                    "score": "90"
-
-                }, {
-                    "nickname": "小分为",
-                    "score": "90"
-
-                }, {
-                    "nickname": "谔谔",
-                    "score": "90"
-
-                }, {
-                    "nickname": "规范",
-                    "score": "90"
-
-                }, {
-                    "nickname": "个人",
-                    "score": "90"
-
-                }, {
-                    "nickname": "公司",
-                    "score": "90"
-
-                }, {
-                    "nickname": "额个",
-                    "score": "90"
-
-                }, {
-                    "nickname": "位法",
-                    "score": "90"
-
-                }, {
-                    "nickname": "收费额",
-                    "score": "90"
-
-                }, {
-                    "nickname": "发瑟夫",
-                    "score": "90"
-
-                }, {
-                    "nickname": "为人分",
-                    "score": "90"
-
-                },
-            ]
+            let userid = this.userid;
+            let courclassid = this.classId;
+            let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=search&a=getClassmates';
+            axios({
+                url: url,
+                method: 'post',
+                data: { userid: userid, courclassid: courclassid },
+                transformRequest: [function (data) {
+                    let ret = ''
+                    for (let it in data) {
+                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    }
+                    return ret
+                }],
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(res => {
+                console.log(res)
+                if (res.status == 200) {
+                    let ret = res.data;
+                    if (ret.code == 0) {
+                        this.classMember = ret.friends;
+                        console.log(this.classMember)
+                    }
+                }
+            })
         },
         getTasks() {
-            // axios.post('/m=Home&c=task&a=apptask', {
-            //     userid: this.userid,
-            //     courclass: this.courclassid
-            // }).then(res => {
-            //     this.tasks = res.tasks
-            // })
+            let userid = this.userid;
+            let courclassid = this.classId;
+            let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=task&a=apptask';
+            axios({
+                url: url,
+                method: 'post',
+                data: { userid: userid, courclassid: courclassid },
+                transformRequest: [function (data) {
+                    let ret = ''
+                    for (let it in data) {
+                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    }
+                    return ret
+                }],
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(res => {
+                console.log(res)
+                if (res.status == 200) {
+                    let ret = res.data;
+                    if (ret.code == 0) {
+                        this.taskInfo = ret.tasks;
+                        // console.log(res)
+                    }
+                }
+            })
         }
     },
 

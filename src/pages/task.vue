@@ -24,21 +24,18 @@
 <script>
 import TopBar from '../components/topBar'
 import taskList from '../components/taskList'
-// import VerticalNav from '../components/verticalNav'
 import axios from 'axios'
 import store from '../vuex/store'
 
 export default {
 	components: {
 		TopBar,
-		// VerticalNav,
 		taskList
 	},
 	props: ['reload'],
 	data() {
 		if (!store.getters.getLoginStatus.status) {
 			alert('请先登录');
-			console.log(store.getters.getLoginStatus.status);
 			this.$router.replace('/login');
 		}
 		return {
@@ -48,114 +45,60 @@ export default {
 			classes: store.getters.getClasses
 		}
 	},
-	created() {
-		// axios.post('/m=Home&c=task&a=apptask', {
-		// 	userid: this.userId,
-		// 	courclass: this.classes,
-		// 	type: 1
-		// }).then(res => {
-		// 	let list = res.courclass;
-		// 	for(var cls of list) {
-		// 		this.taskInfo.push(cls.tasks)
-		// 	}
-		// })
-		this.taskInfo = [{
-			CourseID: "数据结构",
-			task: "",
-			UserID: "04131111",
-			taskid: 1,
-			taskscore: "76",
-			taskname: "计科1301班摸底考试",
-			taskdescribe: "1111"
-		}, {
-			CourseID: "数据结构2",
-			task: "",
-			UserID: "04131111",
-			taskid: 2,
-			taskscore: "76",
-			taskname: "计科1301班摸底考试",
-			taskdescribe: "1111"
-		}];
-		this.taskInfo.forEach(task => {
-			task.url = `/undone/${task.taskid}`
-		})
+	created() { 
+		this.gettasks(1) 
 	},
 	methods: {
-		gettasks() {
-
+		gettasks(type) {
+			let userid = this.$store.getters.getUserInfo.userid; 
+			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=task&a=apptasks';
+			axios({
+				url: url,
+				method: 'post',
+				data: { userid: userid,type: type },
+				transformRequest: [function (data) {
+					let ret = ''
+					for (let it in data) {
+						ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+					}
+					return ret
+				}],
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			}).then(res => {
+				// console.log(res.data)
+				if (res.status == 200) {
+					let ret = res.data;
+					console.log(res)
+					if (ret.code == 0) {
+						let taskList = []; 
+						for(let cls of ret.courseclass){
+							for(let t of cls.tasks) {
+								t.courseclass = cls.courclassid;
+								if(type == 1) {
+									t.url = `/undone/${t.taskid}`
+									t.status = 'undone';
+								} else {
+									t.url = `/done/${t.taskid}`
+									t.status = 'done'
+								}
+								taskList.push(t)
+							}
+						}
+						this.taskInfo = taskList;
+					}
+				}
+			})
 		}
 	},
 	watch: {
 		'doneType': function () {
 			if (this.doneType == 'undone') {
-				// axios.post('/m=Home&c=task&a=apptask', {
-				// 	userid: this.userId,
-				// 	courclass: this.classes,
-				// 	type: 1
-				// }).then(res => {
-				// 	let list = res.courclass;
-				// 	let ts = [];
-				// 	for (var cls of list) {
-				// 		ts.push(cls.tasks)
-				// 	}
-				// 	this.taskInfo = ts;
-				// })
-				// axios.post()
-				this.taskInfo = [{
-					CourseID: "数据结构",
-					task: "",
-					UserID: "04131111",
-					taskid: 1,
-					taskscore: "76",
-					taskname: "计科1301班摸底考试",
-					taskdescribe: "1111"
-				}, {
-					CourseID: "数据结构2",
-					task: "",
-					UserID: "04131111",
-					taskid: 2,
-					taskscore: "76",
-					taskname: "计科1301班摸底考试",
-					taskdescribe: "1111"
-				}];
-				this.taskInfo.forEach(task => {
-					task.url = `/undone/${task.taskid}`
-				})
+				this.gettasks(1)
 			} else {
-				// axios.post('/m=Home&c=task&a=apptask', {
-				// 	userid: this.userId,
-				// 	courclass: this.classes,
-				// 	type: 0
-				// }).then(res => {
-				// 	let list = res.courclass;
-				// 	let ts = [];
-				// 	for (var cls of list) {
-				// 		ts.push(cls.tasks)
-				// 	}
-				// 	this.taskInfo = ts;
-				// })
-				this.taskInfo = [{
-					CourseID: "数据结构",
-					task: "",
-					UserID: "04131111",
-					taskid: 3,
-					taskscore: "76",
-					taskname: "计科1301班摸底考试已完成",
-					tasktype: 1,
-					taskdescribe: "已完成的考试"
-				}, {
-					CourseID: "数据结构",
-					task: "练习",
-					UserID: "04131111",
-					taskid: 4,
-					taskscore: "76",
-					taskname: "计科1301班摸底考试已完成",
-					taskdescribe: "已完成的考试",
-					tasktype: 0
-				}];
-				this.taskInfo.forEach(task => {
-					task.url = `/done/${task.taskid}`
-				})
+				
+				this.gettasks(0)
 			}
 		}
 	}
