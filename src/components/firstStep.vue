@@ -54,9 +54,9 @@ export default {
         },
         goNext() {
             let isGoNext = true;
-            for (let p in this.step2)　{
-                console.log(this.step2[p]);
-                if(!(this.step2[p] && this.step2[p].length)) {
+            for (let p in this.step1)　{
+                console.log(this.step1[p]);
+                if(!(this.step1[p] && this.step1[p].length)) {
                     this.info = `请填写全部项`;
                     isGoNext = false;
                     break;

@@ -23,6 +23,8 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
+import store from '../vuex/store'
 export default {
     data() {
         return {
@@ -56,6 +58,7 @@ export default {
             this.$router.replace('/register/firstStep')
         },
         submit(){
+            this.setState();
             let step1 = this.$store.getNewUser1;
             let userData = {};
             for(let p in step1) {
@@ -64,9 +67,16 @@ export default {
             for(let p in this.step2) {
                 userData[p] = this.step2[p]
             }
+            let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=personnal&a=regist'
+			console.log("url::::" + url);
+            axios.post(url, userData).then(res => {
+                console.log("res::::" )
+
+                console.log(res)
+                this.$router.replace('/login');
+            })
             // ajax
-            console.log('fsdfs')
-            this.$router.replace('/login');
+            
         }
     }
 }

@@ -32,6 +32,8 @@
 
 </template>
 <script>
+import axios from 'axios'
+import store from '../vuex/store'
 export default {
 	components: {
 
@@ -47,7 +49,7 @@ export default {
 			this.newUser.userType = this.userType;
 		},
 		register() {
-			// ajax
+
 		},
 
 	}

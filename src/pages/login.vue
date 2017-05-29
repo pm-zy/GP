@@ -12,73 +12,107 @@
 				<form class="login-form form">
 					<div class="username input-div">
 						<Icon type="person"></Icon>
-						<input type="text"  name="" placeholder="用户名" v-model="userName" />
+						<input type="text" name="" placeholder="用户ID" v-model="userid" />
 					</div>
 					<div class="password input-div">
 						<Icon type="android-lock"></Icon>
-						<input type="password"  name="" placeholder="密码" v-model="password" @keyup.enter="login" />
+						<input type="password" name="" placeholder="密码" v-model="password" @keyup.enter="login" />
 					</div>
 					<div class="tips">
 						<span class="info">{{info}}</span>
-						<a href="" class="role-a">教师登陆</a><br />
+						<a href="" class="role-a">教师登陆</a>
+						<br />
 					</div>
 					<div class="btn btn-login" name="button" @click="login">学生登陆</div>
-					<a href="/#/register" class="a-btn btn " name="button" >注册</a>
+					<a href="/#/register" class="a-btn btn " name="button">注册</a>
 				</form>
 				<div class="bottom-img">
 					<img src="/static/assets/bottom.png" alt="">
 				</div>
 			</div>
 		</div>
-
+	
 	</div>
-
 </template>
 <script>
 import { login } from '../vuex/actions'
+import axios from 'axios'
 import store from '../vuex/store'
 export default {
 	data() {
-		if(store.getters.getLoginStatus.status) {
+		if (store.getters.getLoginStatus.status) {
 			alert('已登录');
 			this.$router.replace('/index');
 		}
 		return {
 			info: '',
-			userName: store.getters.getUserInfo.nickname,
+			userName: '',
+			userid: '',
 			password: '',
 
 		}
 	},
 	watch: {
-		'password': function() {
+		'password': function () {
 			this.info = "";
 		}
 	},
 	methods: {
-		login: function() {
-			if(!this.userName || !this.password) {
+		login: function () {
+			if (!this.userid || !this.password) {
 				this.info = '请输入用户名和密码'
 				return;
 			}
 			// 获取数据
-			let userData = {
-				nickname: this.userName + new Date().getTime(),
-		        email: 'i@varpm.com',
-		        telNum: '18829295436',
-		        personId: new Date().getTime(),
-		        org: '西安邮电大学 计算机学院 计科1303',
-		        userType: 1
-			};
-			let  userPic = `/static/assets/${userData.personId % 21}.jpg`;
-			userData.userPic = userPic;
-			let fakeLoginInfo = {
-	            status: 0,
-	            userToken: '770fed4ca2aabd20ae9a5dd774711de2',
-	            info: '登陆成功'
-	        }
-			store.commit('changeUser', {userInfo: userData, loginInfo: fakeLoginInfo});
-			this.$router.replace('/index')
+
+			let postData = {
+				userid: this.userid,
+				password: this.password
+			}
+			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=Home&c=personnal&a=login'
+			this.info = "";
+			axios({
+				url: url,
+				method: 'post',
+				data: postData,
+				transformRequest: [function (data) {
+					let ret = ''
+					for (let it in data) {
+						ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+					}
+					return ret
+				}],
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			}).then(res => {
+				console.log("res::::")
+				console.log(res)
+				if (res.status == 200) {
+					let retData = res.data;
+					let pic = `/static/assets/${this.userid % 21}.jpg`
+					if (retData.status == 0) {
+						let userData = {
+							class: retData.class,
+							college: retData.college,
+							major: retData.major,
+							name: retData.name,
+							nick: retData.nick,
+							school: retData.school,
+							userPic: pic,
+							userid: this.userid
+						};
+						console.log("login")
+						store.commit('changeUser', { userInfo: userData, loginInfo: { status: 0 } })
+						this.$router.replace('/index')
+
+					} else {
+						this.info = retData.info
+					}
+				} else {
+					this.info = "错误代码：" + res.status
+				}
+			})
 		},
 	},
 }
@@ -105,27 +139,23 @@ export default {
 		overflow: hidden;
 		text-align: left;
 		padding-left: 80px;
-		.role-a{
-			float: right;
-			// margin-left: 300px;
+		.role-a {
+			float: right; // margin-left: 300px;
 			margin-right: 100px;
 			margin-top: 10px;
 			text-decoration: none;
-			display:inline-block;
+			display: inline-block;
 		}
 		.info {
 			display: inline-block;
-			margin-top: 10px;
-			// line-height: 20px;
+			margin-top: 10px; // line-height: 20px;
 			color: red;
-
 		}
 	}
 
 	.login-content {
 		width: 900px;
-		height: 500px;
-		// margin: 10% auto;
+		height: 500px; // margin: 10% auto;
 		text-align: center;
 		position: relative;
 		top: 50%;
@@ -176,8 +206,7 @@ export default {
 				border: none;
 				&:focus {
 					outline: none;
-				}
-				// border-bottom: 1px #ccc solid;
+				} // border-bottom: 1px #ccc solid;
 			}
 			.btn {
 				width: 150px;
@@ -194,12 +223,11 @@ export default {
 			}
 			.a-btn {
 				font-size: 18px;
-	    		width: 150px;
+				width: 150px;
 				border: 1px #88cac9 solid;
 				color: #71B6B5;
 			}
 		}
 	}
 }
-
 </style>
