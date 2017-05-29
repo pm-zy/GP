@@ -5,14 +5,17 @@
 			<p>输入要加入班级的编号，点击「找一找」按钮，核实班级信息无误后点击「申请加入」按钮就行。</p>
 			<p>申请发送后，该班级的管理员选择「同意」加入，则你会成为该班级的成员。</p>
 			<p>如果班级属性设置为「允许任何人加入该班」，则无需班级管理员同意就可以「直接加入」该班级。</p>
+			<p>加入成功后返回列表请点击「刷新列表」进行刷新</p>
 			<div class="join-search">
 				<input type="text" class="input-large" v-model="searchId" placeholder="请输入班级编号" />
 				<button class="btn btn-primary" name="" @click="search">找一找</button>
 				<router-link class='join-return' to="/class">返回</router-link>
 			</div>
+			<span class="info">{{info}}</span>
 			<div class="search-result">
-				<ClassJoinList :class-info="classInfo" ></ClassJoinList>
+				<ClassJoinList :class-info="classInfo"></ClassJoinList>
 			</div>
+
 		</div>
 		<router-view></router-view>
 	</div>
@@ -27,27 +30,47 @@ export default {
 	},
 	data() {
 		return {
-			classInfo: [{
-				courseclassid: 1,
-				courclassname: '计科1302',
-				courclasssize: 30,
-				status: 0,
-				courclassdescription: '计科期中摸底考',
-				userid: 1,
-				code: 1,
-				courclassnum: 10
-			}],
-			searchId: ''
+			classInfo: [],
+			searchId: '',
+			info: ""
 		}
 	},
 	methods: {
 		search() {
 			// ajax
-			axios.post('/m=Home&c=search&a=searchclass', {
-				userId: store.getters.getUserInfo.userid,
-				courclassid: this.searchId
+			this.info = "";
+			let userid = store.getters.getUserInfo.userid;
+			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=Home&c=search&a=searchclass';
+			axios({
+				url: url,
+				method: 'post',
+				data: { userid: userid, courclassid: this.searchId },
+				transformRequest: [function (data) {
+					let ret = ''
+					for (let it in data) {
+						ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+					}
+					return ret
+				}],
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
 			}).then(res => {
-
+				let ret = res.data;
+				if (ret.code == 0) {
+					let cls = {
+						courseclassid: ret.courseclassid,
+						courclassname: ret.courclassname,
+						courclasssize: ret.courclasssize,
+						status: 0,
+						userid: store.getters.getUserInfo.userid,
+						code: 0,
+						courclassnum: ret.courclassnum
+					}; 
+					this.classInfo = cls;
+				} else {
+					this.info = ret.info
+				}
 			})
 		}
 	}
@@ -61,10 +84,10 @@ export default {
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: rgba(0,0,0,0.5);
+	background-color: rgba(0, 0, 0, 0.5);
 	padding: 50px;
 	.join-content {
-		background-color: rgba(0,0,0,0.4);
+		background-color: rgba(0, 0, 0, 0.4);
 		padding: 40px;
 		width: 700px;
 		text-align: left;
@@ -93,9 +116,8 @@ export default {
 				line-height: 15px;
 			}
 		}
-		.search-result{
+		.search-result {
 			width: 700px;
-
 		}
 	}
 }

@@ -21,12 +21,12 @@
 					<span>任务</span>
 				</li>
 			</router-link>
-			<router-link to="/info">
+			<!--<router-link to="/info">
 				<li>
 					<i class="fa fa-cube fa-lg fa-fw"></i>
 					<span>资料库</span>
 				</li>
-			</router-link>
+			</router-link>-->
 		</ul>
 		<router-link class='panel-user' :to="'/user/'+ user.userId">
 			<i class="fa fa-user-circle-o fa-lg fa-fw"></i>

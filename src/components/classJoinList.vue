@@ -1,31 +1,65 @@
 <template>
 	<div class="class-join-list">
-		<ul v-show="classInfo && classInfo.length > 0" class="class-join-list-ul">
-			<li v-for="item in classInfo">
-				<div class="color-bar" :class="{'color-bar-active': item.status==1}"></div>
+		<ul  class="class-join-list-ul" >
+			<li >
+				<div class="color-bar" :class="{'color-bar-active': classInfo.status==1}"></div>
 				<div class="class-item-content">
 					<div class="class-item-title">
-						<span class="class-item-name">{{item.courclassname}}</span>
-						<span class="class-item-desc">{{item.courclassdescription}}</span>
+						<span class="class-item-name">{{classInfo.courclassname}}</span>
 					</div>
 					<div class="class-item-info">
-						<span>可容纳人数：<strong :class="{'class-open': item.status==1}">{{item.courclasssize}}</strong></span>
-						<span>已选人数：<strong :class="{'class-open': item.status==1}">{{item.courclassnum}}</strong></span>
-						<span>班级编号：{{item.courseclassid}}</span>
+						<span>可容纳人数：
+							<strong :class="{'class-open': classInfo.status==1}">{{classInfo.courclasssize}}</strong>
+						</span>
+						<span>已选人数：
+							<strong :class="{'class-open': classInfo.status==1}">{{classInfo.courclassnum}}</strong>
+						</span>
+						<span>班级编号：{{classInfo.courseclassid}}</span>
 					</div>
 				</div>
-				<button class="btn btn-primary" @click="joinClass(item.courclassid)">加入班级</button>
+				<button class="btn btn-primary" @click="joinClass(classInfo.courclassid)">加入班级</button>
 			</li>
 		</ul>
 	</div>
-
 </template>
 <script>
+import axios from 'axios'
+import store from '../vuex/store'
 export default {
 	props: ['classInfo'],
 	methods: {
 		joinClass(id) {
-			// ajax
+			let userid = store.getters.getUserInfo.userid;
+			let postData = {
+				userid: userid,
+				courclassid: this.classInfo.courseclassid,
+				commet: "申请加入"
+			}
+			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=ban&a=join';
+			axios({
+				url: url,
+				method: 'post',
+				data: postData,
+				transformRequest: [function (data) {
+					let ret = ''
+					for (let it in data) {
+						ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+					}
+					return ret
+				}],
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			}).then(res => {
+				alert(res.data.info);
+				this.$store.commit('addClasses', classInfo)
+				// console.log(this.$store.getters.getReload)
+				// store.commit('reload', !(this.$store.getters.getReload))
+			})
+		}
+	},
+	watch: {
+		'classInfo': function () {
 		}
 	}
 
@@ -49,6 +83,7 @@ export default {
 		}
 	}
 }
+
 .class-item-content {
 	margin-left: 15px;
 	.class-item-title {
@@ -69,6 +104,7 @@ export default {
 		}
 	}
 }
+
 .class-open {
 	color: #3798e9
 }

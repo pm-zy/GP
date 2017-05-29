@@ -4,44 +4,43 @@
             <h3>账号信息</h3>
             <div class="input-div">
                 <i class="fa fa-user fa-fw  fa-fw"></i>
-                <input v-model="step2.nickname" placeholder="请输入昵称" >
+                <input v-model="step1.nickname" placeholder="请输入昵称">
             </div>
-
+    
             <div class="input-div">
                 <i class="fa fa-phone fa-fw"></i>
-                <input v-model="step2.telNum"  placeholder="请输入手机号" >
+                <input v-model="step1.telnum" placeholder="请输入手机号">
             </div>
-
+    
             <div class="input-div">
                 <i class="fa fa-envelope fa-fw"></i>
-                <input v-model="step2.email" type="email" placeholder="请输入邮箱" >
+                <input v-model="step1.email" type="email" placeholder="请输入邮箱">
             </div>
-
+    
             <div class="input-div">
                 <i class="fa fa-unlock-alt  fa-fw"></i>
-                <input v-model="step2.password" type="password" placeholder="请输入密码" >
+                <input v-model="step1.password" type="password" placeholder="请输入密码">
             </div>
-
+    
             <div class="input-div">
                 <i class="fa fa-unlock  fa-fw"></i>
-                <input v-model="ensurePassword" type="password" placeholder="请确认密码" >
+                <input v-model="ensurePassword" type="password" placeholder="请确认密码">
             </div>
-
-            <span class="info" >{{info}}</span>
+    
+            <span class="info">{{info}}</span>
             <button class="btn" @click="goNext">下一步</button>
         </div>
     </div>
-
 </template>
 <script>
 export default {
     data() {
         return {
-            step2: {
+            step1: {
                 nickname: '',
                 password: '',
                 email: '',
-                telNum: '',
+                telnum: '',
             },
             ensurePassword: '',
             info: ''
@@ -49,21 +48,21 @@ export default {
     },
     methods: {
         setState() {
-            this.step1.class = this.step1.cls;
-            this.$store.commit('changeNewUser1', this.step1)
+            this.$store.commit('changeNewUser', this.step1)
         },
         goNext() {
+            console.log(this.step1)
+            this.$store.commit('changeNewUser', this.step1)
             let isGoNext = true;
-            for (let p in this.step1)　{
-                console.log(this.step1[p]);
-                if(!(this.step1[p] && this.step1[p].length)) {
+            for (let p in this.step1) 　{
+                if (!(this.step1[p] && this.step1[p].length)) {
                     this.info = `请填写全部项`;
                     isGoNext = false;
                     break;
                 }
             }
 
-            if(isGoNext) {
+            if (isGoNext) {
                 this.$router.replace('/register/secondStep')
             }
         }
@@ -77,7 +76,8 @@ export default {
     position: relative;
     top: -330px;
     left: 330px;
-    .base-info, .stu-info {
+    .base-info,
+    .stu-info {
         text-align: left;
         h3 {
             color: #71B6B5;
@@ -96,7 +96,6 @@ export default {
             i {
                 display: inline-block;
                 margin-right: 15px;
-
             }
             input {
                 border: none;
@@ -121,14 +120,13 @@ export default {
             &:hover {
                 background-color: #5AA2A0;
             }
-
-        }
-        .info {
-            color: red;
-            display: inline-block;
-            margin-top: 5px;
         }
     }
+}
 
+.info {
+    color: red;
+    display: inline-block;
+    margin-top: 5px;
 }
 </style>

@@ -28,6 +28,9 @@ export default new Vuex.Store({
 		},
 		getClasses: state => {
 			return state.courseClasses
+		},
+		getReload: state => {
+			return state.reload
 		}
 	}
 })

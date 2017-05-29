@@ -3,17 +3,19 @@
         <form>
             <div class="stu-info">
                 <h3>个人信息</h3>
-                <input  v-model="step2.name" placeholder="姓名" >
-                <Radio-group v-model="userType">
-                    <Radio label="学生" ></Radio>
-                    <Radio label="教师" ></Radio>
-                </Radio-group><br />
-                <input  v-model="step2.personId" placeholder="学号或工号" >
-                <input  v-model="step2.school" placeholder="学校" >
-                <input  v-model="step2.college" placeholder="学院" >
-                <input  v-model="step2.major" placeholder="专业" >
-                <input  v-model="step2.cls" placeholder="行政班级" >
+                <input v-model="step2.name" placeholder="姓名">
+                <Radio-group v-model="usertype">
+                    <Radio label="学生"></Radio>
+                    <Radio label="教师"></Radio>
+                </Radio-group>
+                <br />
+                <input v-model="step2.userid" placeholder="学号或工号">
+                <input v-model="step2.school" placeholder="学校">
+                <input v-model="step2.college" placeholder="学院">
+                <input v-model="step2.major" placeholder="专业">
+                <input v-model="step2.class" placeholder="行政班级">
             </div>
+            <span class="info" >{{info}}</span>
             <div class="btn-div">
                 <button class="btn btn-prev" @click="goPrevious">上一步</button>
                 <button type="reset" class="btn btn-danger">重置</button>
@@ -30,68 +32,93 @@ export default {
         return {
             step2: {
                 name: '',
-                personId: '',
+                userid: '',
                 school: '',
                 college: '',
                 major: '',
-                cls: ''
+                class: ''
             },
-            userType: 0,
+            usertype: 1,
+            info: " "
         }
     },
     watch: {
-        'userType': function() {
-            if(this.userType == '学生') {
-                this.step2.userType = 1;
+        'usertype': function () {
+            if (this.usertype == '学生') {
+                this.step2.usertype = 1;
             }
             else {
-                this.step2.userType = 0;
+                this.step2.usertype = 0;
             }
         }
     },
     methods: {
         setState() {
-            this.step2.class = this.step2.cls;
             this.$store.commit('changeNewUser2', this.step2)
         },
         goPrevious() {
             this.$router.replace('/register/firstStep')
         },
-        submit(){
+        submit() {
             this.setState();
-            let step1 = this.$store.getNewUser1;
+            let step1 = this.$store.getters.getNewUser1;
+            console.log(step1)
             let userData = {};
-            for(let p in step1) {
-                userData[p] = step[p];
+            for (let p in step1) {
+                userData[p] = step1[p];
             }
-            for(let p in this.step2) {
+            for (let p in this.step2) {
                 userData[p] = this.step2[p]
             }
             let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=personnal&a=regist'
-			console.log("url::::" + url);
-            axios.post(url, userData).then(res => {
-                console.log("res::::" )
+           console.log(userData)
+           axios({
+				url: url,
+				method: 'post',
+				data: userData,
+				transformRequest: [function (data) {
+					let ret = ''
+					for (let it in data) {
+						ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+					}
+					return ret
+				}],
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			}).then(res => {
+                console.log("res::::")
 
                 console.log(res)
-                this.$router.replace('/login');
+                let ret = res.data;
+                if (ret.status == 0) {
+                    alert("注册成功，请登录");
+                    this.$router.replace('/login');
+                } else {
+                    this.info = ret.info
+                }
             })
             // ajax
-            
+
         }
     }
 }
 </script>
 <style lang="less">
-.base-info, .stu-info {
+.base-info,
+.stu-info {
     padding: 20px 80px;
     .ivu-radio-group {
         margin-top: 10px;
     }
 }
-.base-info > p, .stu-info > p {
+
+.base-info>p,
+.stu-info>p {
     margin-left: -50px;
     font-size: 18px;
 }
+
 .stu-info {
     padding-top: 0;
     input {
@@ -109,10 +136,10 @@ export default {
         }
     }
 }
+
 .btn-div {
     width: 400px;
-    margin-left: 100px;
-    // float: right;
+    margin-left: 100px; // float: right;
     display: flex;
     justify-content: space-between;
     input {
@@ -136,7 +163,7 @@ export default {
         color: #71B6B5;
         background-color: transparent;
         &:hover {
-            background-color: rgba(136,202,201, 0.2);
+            background-color: rgba(136, 202, 201, 0.2);
         }
     }
     .btn-submit {
@@ -147,11 +174,11 @@ export default {
         }
     }
 }
+
 .label {
     color: #333;
     font-size: 16px;
     line-height: 28px;
     font-weight: normal;
 }
-
 </style>
