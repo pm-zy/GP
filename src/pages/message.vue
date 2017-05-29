@@ -25,13 +25,9 @@ export default {
 		}
 		return {
 			menu: [{
-				title: '未读消息',
+				title: '消息通知',
 				icon: 'fa-envelope',
 				to: '/message/unread'
-			}, {
-				title: '已读消息',
-				icon: 'fa-envelope-open',
-				to: '/message/read'
 			}]
 		}
 	}
