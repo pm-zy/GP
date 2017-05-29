@@ -25,7 +25,7 @@
 		</div>
 		<div class="main-container">
 			<div :class="loading">
-				<Spin size="large"></Spin>
+				<Button type="primary" loading>Loading...</Button>
 			</div>
 			<div class="main-content">
 				<button class="btn btn-primary reload-btn " @click="reload">刷新列表</button>
