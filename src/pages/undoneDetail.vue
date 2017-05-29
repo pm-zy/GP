@@ -23,7 +23,7 @@
 				<div class="task">
 					<ul >
 						<li v-for="(question, index) of taskDetail">
-							<p class="title">{{ index+1 }}、 {{question.content}} (本题目{{question.point}}分)</p>
+							<p class="title">{{ index+1 }}、 {{ question.content }} (本题目{{question.point}}分)</p>
 							<Radio-group v-model="answer[index].answer" v-if="question.type == 1">
 								<Radio :label="i.key" v-for="i in question.options" />
 							</Radio-group>

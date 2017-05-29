@@ -1,7 +1,6 @@
 <template>
 	<div class="body of-hd">
 		<TopBar path='任务'></TopBar>
-<<<<<<< HEAD
 		<div class="left-menu of-hd">
 			<div class="left-menu-header">
 				<span>我的班级</span>
@@ -72,13 +71,13 @@ export default {
 			CourseID: "数据结构2",
 			task: "",
 			UserID: "04131111",
-			taskiD: 2,
+			taskid: 2,
 			taskscore: "76",
 			taskname: "计科1301班摸底考试",
 			taskdescribe: "1111"
 		}];
 		this.taskInfo.forEach(task => {
-			task.url = `/undone/${task.taskID}`
+			task.url = `/undone/${task.taskid}`
 		})
 	},
 	methods: {
@@ -114,13 +113,13 @@ export default {
 					CourseID: "数据结构2",
 					task: "",
 					UserID: "04131111",
-					taskiD: 2,
+					taskid: 2,
 					taskscore: "76",
 					taskname: "计科1301班摸底考试",
 					taskdescribe: "1111"
 				}];
 				this.taskInfo.forEach(task => {
-					task.url = `/undone/${task.taskID}`
+					task.url = `/undone/${task.taskid}`
 				})
 			} else {
 				// axios.post('/m=Home&c=task&a=apptask', {
@@ -148,14 +147,14 @@ export default {
 					CourseID: "数据结构",
 					task: "练习",
 					UserID: "04131111",
-					taskiD: 3,
+					taskid: 4,
 					taskscore: "76",
 					taskname: "计科1301班摸底考试已完成",
 					taskdescribe: "已完成的考试",
 					tasktype: 0
 				}];
 				this.taskInfo.forEach(task => {
-					task.url = `/done/${task.taskID}`
+					task.url = `/done/${task.taskid}`
 				})
 			}
 		}

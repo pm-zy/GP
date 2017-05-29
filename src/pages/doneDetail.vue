@@ -15,35 +15,43 @@
 			</section>
 		</div>
 		<div class="right">
-			fwer fnjwen
-			<Radio-group v-model="phone">
-        <Radio label="apple">
-            <Icon type="social-apple"></Icon>
-            <span>Apple</span>
-        </Radio>
-        <Radio label="android">
-            <Icon type="social-android"></Icon>
-            <span>Android</span>
-        </Radio>
-        <Radio label="windows">
-            <Icon type="social-windows"></Icon>
-            <span>Windows</span>
-        </Radio>
-    </Radio-group>
-    <Radio-group v-model="animal">
-        <Radio label="金斑蝶"></Radio>
-        <Radio label="爪哇犀牛"></Radio>
-        <Radio label="印度黑羚"></Radio>
-    </Radio-group>
+			<div class="content">
+				<div class="task">
+					<ul>
+						<li v-for="(question, index) of taskDetail">
+							<p class="title">{{ index+1 }}、 {{question.content}} (本题目{{question.point}}分)</p>
+							<div><span>答案： </span>
+								<p v-for="an of question.answer">{{an}}</p>
+							</div>
+							<div>
+								<span>我的回答： </span>
+								<p v-for="san of question.stuanswer">{{san}}</p>
+
+							</div>
+
+							<!--<Radio-group v-model="answer[index].answer" v-if="question.type == 1">
+									<Radio :label="i.key" v-for="i in question.options" />
+								</Radio-group>
+		
+								<Checkbox-group v-model="answer[index].answer" v-else-if="question.type == 2">
+									<Checkbox :label="opt" v-for="opt in question.options" />
+								</Checkbox-group>
+		
+								<Code v-else-if="question.type == 4" :question="question" :codes="answer[index].answer"></Code>
+		
+								<Input v-model="answer[index].answer" placeholder="请输入答案" type="textarea" style="width: 300px" v-else />-->
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
-
 </template>
 <script>
 
 export default {
 	data() {
-		if(!this.$store.getters.getLoginStatus.status) {
+		if (!this.$store.getters.getLoginStatus.status) {
 			alert('请先登录');
 			this.$router.replace('/login');
 		}
@@ -52,11 +60,12 @@ export default {
 			task: {},
 			taskDetail: {},
 			phone: '',
-		                  animal: ''
+			animal: ''
 		}
 	},
 	created() {
 		this.getTaskInfo();
+		this.getTaskDetail();
 	},
 	methods: {
 		getTaskInfo() {
@@ -71,7 +80,68 @@ export default {
 			}
 		},
 		getTaskDetail() {
-
+			let retData = [
+				{
+					"outexam": "",
+					"answer": ["选项1"],
+					"options": [
+						{
+							"key": "选项1"
+						}, {
+							"key": "选项2"
+						}, {
+							"key": "选项3"
+						}, {
+							"key": "选项4"
+						}
+					],
+					"quesid": "1",
+					"stuanswer": ["选项2"],
+					"otheranswer": "",
+					"type": "1",
+					"point": "3",
+					"content": "1+1等于？",
+					"otherstuanswer": "",
+					"inputexam": ""
+				},
+				{
+					"outexam": "100",
+					"answer": [
+						"选项1", "选项2"
+					],
+					"options": ["选项1", "选项2", "选项3", "选项4"],
+					"quesid": "2",
+					"stuanswer": ["选项1", "选项2"],
+					"otheranswer": "我最帅",
+					"type": "2",
+					"point": "3",
+					"content": "1+1等于？",
+					"otherstuanswer": "说的对",
+					"inputexam": "55,45"
+				}, {
+					"outexam": "100",
+					"answer": [],
+					"options": [
+						{
+							"key": "选项1"
+						}, {
+							"key": "选项2"
+						}, {
+							"key": "选项3"
+						}, {
+							"key": "选项4"
+						}
+					],
+					"quesid": "2",
+					"stuanswer": [],
+					"otheranswer": "",
+					"type": "4",
+					"point": "3",
+					"content": "1+1等于？",
+					"otherstuanswer": "说的对",
+					"inputexam": "55,45"
+				}];
+			this.taskDetail = retData;
 		}
 	},
 }
@@ -88,10 +158,11 @@ export default {
 			line-height: 70px;
 			background-color: #70C4A4;
 			text-align: center;
-			h1, i.fa {
+			h1,
+			i.fa {
 				color: #fff;
 				display: inline-block;
-				font-size:18px;
+				font-size: 18px;
 			}
 		}
 		section {
@@ -111,7 +182,6 @@ export default {
 				}
 			}
 		}
-
 	}
 	.right {
 		width: 100%;
