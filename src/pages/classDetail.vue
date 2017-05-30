@@ -1,5 +1,5 @@
 <template>
-    <div class="body of-hd">
+    <div class="body of-hd " id="classDetail">
         <TopBar path='班级详情'></TopBar>
         <div class="class-detail">
             <header>
@@ -13,8 +13,8 @@
                 <h2>班级Task</h2>
                 <hr />
             </header>
-            <section>
-                <taskListMemberList :task-info="taskInfo" />
+            <section class="task-list">
+                <taskList :task-info="taskInfo" />
             </section>
         </div>
     
@@ -23,13 +23,15 @@
 <script>
 import MemberList from '../components/memberList'
 import TopBar from '../components/topBar'
-
+import urlConfig from '../configs/urlConfig'
 import taskList from '../components/taskList'
 import axios from 'axios'
 import store from '../vuex/store'
 export default {
     components: {
-        MemberList
+        MemberList,
+        taskList,
+        TopBar
     },
 
     data() {
@@ -55,7 +57,7 @@ export default {
         getClassMembers() {
             let userid = this.userid;
             let courclassid = this.classId;
-            let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=search&a=getClassmates';
+            let url = urlConfig.APIRoot + '?m=home&c=search&a=getClassmates';
             axios({
                 url: url,
                 method: 'post',
@@ -84,7 +86,7 @@ export default {
         getTasks() {
             let userid = this.userid;
             let courclassid = this.classId;
-            let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=task&a=apptask';
+            let url = urlConfig.APIRoot + '?m=home&c=task&a=apptask';
             axios({
                 url: url,
                 method: 'post',
@@ -97,7 +99,7 @@ export default {
                     return ret
                 }],
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    // 'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(res => {
                 console.log(res)
@@ -105,7 +107,21 @@ export default {
                     let ret = res.data;
                     if (ret.code == 0) {
                         this.taskInfo = ret.tasks;
+                        let classTask = [];
                         // console.log(res)
+                        for (let t of ret.tasks) {
+                            t.courclassid = this.classId;
+                            if (t.status == 1) {
+                                t.url = `/undone/${t.courclassid}/${t.taskid}`
+                                t.type = 'undone';
+                            } else {
+                                t.url = `/done/${t.courclassid}/${t.taskid}`
+                                t.type = 'done'
+                            }
+                            classTask.push(t);
+                        }
+                        this.taskInfo = classTask;
+                        console.log(this.taskInfo)
                     }
                 }
             })
@@ -116,10 +132,30 @@ export default {
 }
 </script>
 <style lang="less">
+#classDetail{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
 .class-detail {
     h2 {
         margin: 0;
         padding: 0;
+    }
+    section.task-list {
+        .main-container {
+            margin-left: 0;
+            .task-list-container.main-content {
+                position: relative;
+                height: auto;
+                overflow: hidden;
+                ul.task-ul {
+                    margin: 0;
+                    li {
+                        margin: 10px 20px;
+                    }
+                }
+            }
+        }
     }
 }
 </style>

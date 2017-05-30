@@ -7,7 +7,7 @@
 			</header>
 			<section>
 				<div class="task-name">
-					<p>{{task.TaskName}}</p>
+					<p>{{task.classtaskname}}</p>
 					<p>{{timer.min}} : {{timer.s}}</p>
 				</div>
 				<div class="user">
@@ -21,23 +21,30 @@
 		<div class="right">
 			<div class="content">
 				<div class="task">
-					<ul >
+					<ul>
 						<li v-for="(question, index) of taskDetail">
-							<p class="title">{{ index+1 }}、 {{ question.content }} (本题目{{question.point}}分)</p>
-							<Radio-group v-model="answer[index].answer" v-if="question.type == 1">
+							<p class="title">{{ index+1 }}、 {{ question.name }} (本题目{{question.point}}分)</p>
+							<Radio-group v-model="answer[index].stuanswer" v-if="question.type == 1">
 								<Radio :label="i.key" v-for="i in question.options" />
 							</Radio-group>
-
-							<Checkbox-group v-model="answer[index].answer" v-else-if="question.type == 2">
+							<Radio-group v-model="answer[index].stuanswer" v-else-if="question.type == 3">
+								<Radio :label="String(true)" />
+								<Radio :label="String(false)" />
+							</Radio-group>
+	
+							<Checkbox-group v-model="answer[index].stuanswer" v-else-if="question.type == 2">
 								<Checkbox :label="opt" v-for="opt in question.options" />
 							</Checkbox-group>
-
-							<Code v-else-if="question.type == 4" :question="question" :codes="answer[index].answer"></Code>
-
-							<Input v-model="answer[index].answer" placeholder="请输入答案" type="textarea" style="width: 300px" v-else />
+	
+							<Code v-else-if="question.type == 4" :question="question" :codes="answer[index].stuanswer"></Code>
+	
+							<Input v-model="answer[index].stuanswer" placeholder="请输入答案" type="textarea" style="width: 300px" v-else />
 						</li>
 					</ul>
 					<Button type="primary" @click="clickSubmit">提交答案</Button>
+				</div>
+				<div :class="loading">
+					<Button type="primary" loading>正在提交...</Button>
 				</div>
 			</div>
 		</div>
@@ -45,6 +52,9 @@
 </template>
 <script>
 import Code from '../components/code'
+import store from '../vuex/store'
+import urlConfig from '../configs/urlConfig'
+import axios from 'axios'
 let timeInterval;
 export default {
 	components: {
@@ -53,7 +63,7 @@ export default {
 	props: ['reload'],
 	data() {
 		console.log("reload::::::" + this.reload);
-		if(!this.$store.getters.getLoginStatus.status) {
+		if (!this.$store.getters.getLoginStatus.status) {
 			alert('请先登录');
 			this.$router.replace('/login');
 		}
@@ -62,6 +72,7 @@ export default {
 			task: {},
 			taskDetail: [],
 			answer: [],
+			loading: 'loaded',
 			timer: {
 				min: 0,
 				s: 0
@@ -69,18 +80,17 @@ export default {
 		}
 	},
 	created() {
-		this.getTaskInfo();
 		this.getTaskDetail();
 		this.timer = {
 			min: 0,
 			s: 0
 		}
-		if(this.task.type == 0 && this.task.TaskTime > 0) {
+		if (this.task.type == 0 && this.task.TaskTime > 0) {
 			let timeCount = this.task.TaskTime * 60;
 			timeInterval = setInterval(() => {
 				this.formatTimer(timeCount);
 				timeCount = timeCount - 1;
-				if(timeCount === -1) {
+				if (timeCount === -1) {
 					clearInterval(timeInterval)
 					this.submit();
 				}
@@ -92,20 +102,54 @@ export default {
 			this.timer.min = Math.floor(timer / 60);
 			this.timer.s = timer % 60;
 		},
-		getTaskInfo() {
-			this.task = {
-				CourseID: "数据结构啊",
-				Task: "",
-				UserID: "04131111",
-				TaskID: 1,
-				TaskScore: "",
-				TaskName: "计科1301班摸底考试",
-				TaskDescribe: "1111",
-				TaskTime: 100,
-				type: 0
-			}
-		},
 		getTaskDetail() {
+			let userid = store.getters.getUserInfo.userid;
+			let taskid = this.$router.history.current.params.id;
+			console.log(this.$router.history.current.params)
+			let courclassid = this.$router.history.current.params.class;
+			let url = urlConfig.APIRoot + '?m=home&c=task&a=taskdetail'
+
+			axios({
+				url: url,
+				method: 'post',
+				data: { userid: userid, taskid: taskid, courclassid: courclassid },
+				transformRequest: [function (data) {
+					let ret = ''
+					for (let it in data) {
+						ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+					}
+					return ret
+				}],
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			}).then(res => {
+				console.log(res);
+				if (res.status == 200) {
+					if (res.data.code === 0) {
+						if (res.data.task.length) {
+							this.task = res.data.task[0];
+							this.task.questions.forEach(que => {
+								if(que.content) {
+									try {
+										que.options = JSON.parse(que.content);
+										console.log(que.options)
+									} catch (error) {
+										
+									}
+								}
+							})
+							this.taskDetail = this.task.questions;
+							this.taskDetail.forEach(item => {
+								this.answer.push({
+									quesid: item.quesid,
+									stuanswer: null
+								})
+							})
+						}
+					}
+				}
+			})
 			// let retData = {
 			// 	"code": "0",
 			// 	"tasks": [{
@@ -114,92 +158,120 @@ export default {
 			// 	}],
 			// 	"info": "成功"
 			// };
-			let retData = [
-			{
-				"outexam": "",
-				"answer": [],
-				"options": [
-					{
-						"key": "选项1"
-					}, {
-						"key": "选项2"
-					},{
-						"key": "选项3"
-					},{
-						"key": "选项4"
-					}
-				],
-				"quesid": "1",
-				"stuanswer": [],
-				"otheranswer": "",
-				"type": "1",
-				"point": "3",
-				"content": "1+1等于？",
-				"otherstuanswer": "",
-				"inputexam": ""
-			},
-			{
-				"outexam": "100",
-				"answer": [ 
-					{
-						"key": "2"
-					}
-				],
-				"options": [ "选项1",  "选项2",  "选项3",  "选项4"],
-				"quesid": "2",
-				"stuanswer": [],
-				"otheranswer": "我最帅",
-				"type": "2",
-				"point": "3",
-				"content": "1+1等于？",
-				"otherstuanswer": "说的对",
-				"inputexam": "55,45"
-			}, {
-				"outexam": "100",
-				"answer": [
-					{
-						"key": "2"
-					}
-				],
-				"options": [
-					{
-						"key": "选项1"
-					}, {
-						"key": "选项2"
-					},{
-						"key": "选项3"
-					},{
-						"key": "选项4"
-					}
-				],
-				"quesid": "2",
-				"stuanswer": [],
-				"otheranswer": "",
-				"type": "4",
-				"point": "3",
-				"content": "1+1等于？",
-				"otherstuanswer": "说的对",
-				"inputexam": "55,45"
-			}];
-			this.taskDetail = retData;
-			
-			this.taskDetail.forEach(item => {
-				this.answer.push({
-					id: item.quesid,
-					answer: null
-				})
-			})
+			// let retData = [
+			// {
+			// 	"outexam": "",
+			// 	"answer": [],
+			// 	"options": [
+			// 		{
+			// 			"key": "选项1"
+			// 		}, {
+			// 			"key": "选项2"
+			// 		},{
+			// 			"key": "选项3"
+			// 		},{
+			// 			"key": "选项4"
+			// 		}
+			// 	],
+			// 	"quesid": "1",
+			// 	"stuanswer": [],
+			// 	"otheranswer": "",
+			// 	"type": "1",
+			// 	"point": "3",
+			// 	"content": "1+1等于？",
+			// 	"otherstuanswer": "",
+			// 	"inputexam": ""
+			// },
+			// {
+			// 	"outexam": "100",
+			// 	"answer": "2"
+			// ,
+			// 	
+			// 	"options": [ "选项1",  "选项2",  "选项3",  "选项4"],
+			// 	"quesid": "2",
+			// 	"stuanswer": [],
+			// 	"otheranswer": "我最帅",
+			// 	"type": "2",
+			// 	"point": "3",
+			// 	"content": "1+1等于？",
+			// 	"otherstuanswer": "说的对",
+			// 	"inputexam": "55,45"
+			// }, {
+			// 	"outexam": "100",
+			// 	"answer": [
+			// 		{
+			// 			"key": "2"
+			// 		}
+			// 	],
+			// 	"options": [
+			// 		{
+			// 			"key": "选项1"
+			// 		}, {
+			// 			"key": "选项2"
+			// 		},{
+			// 			"key": "选项3"
+			// 		},{
+			// 			"key": "选项4"
+			// 		}
+			// 	],
+			// 	"quesid": "2",
+			// 	"stuanswer": [],
+			// 	"otheranswer": "",
+			// 	"type": "4",
+			// 	"point": "3",
+			// 	"content": "1+1等于？",
+			// 	"otherstuanswer": "说的对",
+			// 	"inputexam": "55,45"
+			// }];
+			// this.taskDetail = retData;
+
+			// this.taskDetail.forEach(item => {
+			// 	this.answer.push({
+			// 		id: item.quesid,
+			// 		answer: null
+			// 	})
+			// })
 		},
 		clickSubmit() {
-			if(confirm('确认提交？')) {
+			if (confirm('确认提交？')) {
 				this.submit();
 			}
 		},
 		submit() {
 			// ajax
-			console.log('fsdrs');
-			console.log(this.answer);
+			this.loading = 'loading';
 			clearInterval(timeInterval);
+			let userid = store.getters.getUserInfo.userid;
+			let taskid = this.$router.history.current.params.id;
+			let courclassid = this.$router.history.current.params.class;
+			let url = urlConfig.APIRoot + '?m=home&c=exam&a=commit';
+			let postData = {
+				userid: userid,
+				taskid: taskid,
+				courclassid: courclassid,
+				taskques: this.answer
+			}
+			// console.log(JSON.stringify(postData));
+			let ss = JSON.stringify(postData);
+			axios({
+				url: url,
+				method: 'post',
+				data: {temp: ss},
+				transformRequest: [function (data) {
+					let ret = ''
+					for (let it in data) {
+						ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+					}
+					// let ret = JSON.stringify(data)
+					return ret
+				}],
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			}).then(res => {
+				this.loading = "loaded";
+				console.log(res);
+			})
 			alert('提交成功');
 			// this.$router.go(-1)
 		}
@@ -220,6 +292,7 @@ export default {
 	top: 0;
 	left: 0;
 }
+
 .detail-page.undone {
 	.left {
 		width: 150px;
@@ -231,10 +304,11 @@ export default {
 			line-height: 70px;
 			background-color: #F56E6E;
 			text-align: center;
-			h1, i.fa {
+			h1,
+			i.fa {
 				color: #fff;
 				display: inline-block;
-				font-size:18px;
+				font-size: 18px;
 			}
 		}
 		section {
@@ -251,7 +325,6 @@ export default {
 				}
 			}
 		}
-
 	}
 	.right {
 		width: 100%;
@@ -271,7 +344,7 @@ export default {
 				.title {
 					font-size: 16px;
 				}
-				.title + div {
+				.title+div {
 					margin-left: 20px;
 				}
 			}

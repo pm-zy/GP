@@ -83,11 +83,11 @@ export default [{
         }]
     },
     {
-        path: '/undone/:id',
+        path: '/undone/:class/:id',
         component: pmUndoneDetail
     },
     {
-        path: '/done/:id',
+        path: '/done/:class/:id',
         component: pmDoneDetail
     }, {
         path: '/about',

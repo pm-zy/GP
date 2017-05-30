@@ -26,6 +26,8 @@ export default {
     margin: 10px 20px;
     border-left: #a1ceeb 5px solid;
     padding: 5px 10px;
+    display: inline-block;
+    width: 300px;
     .tips {
         color: rgb(47, 108, 168);
         font-weight: bold;

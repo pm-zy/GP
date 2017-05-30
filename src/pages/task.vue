@@ -73,15 +73,15 @@ export default {
 					console.log(res)
 					if (ret.code == 0) {
 						let taskList = []; 
-						for(let cls of ret.courseclass){
+						for(let cls of ret.courclass){
 							for(let t of cls.tasks) {
-								t.courseclass = cls.courclassid;
-								if(type == 1) {
-									t.url = `/undone/${t.taskid}`
-									t.status = 'undone';
+								t.courclassid = cls.courclassid;
+								if(t.status ==1) {
+									t.url = `/undone/${t.courclassid}/${t.taskid}`
+									t.type = 'undone';
 								} else {
-									t.url = `/done/${t.taskid}`
-									t.status = 'done'
+									t.url = `/done/${t.courclassid}/${t.taskid}`
+									t.type = 'done'
 								}
 								taskList.push(t)
 							}

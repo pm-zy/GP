@@ -4,7 +4,7 @@
 			<div class="tip-content" v-show="!taskInfo.length">没有符合当前条件的任务</div>
 			<ul class="task-ul message-list-ul">
 				<li v-for="item in taskInfo">
-					<div class="color-bar" :class="{'color-bar-active': messageStatus}"></div>
+					<div class="color-bar" :class="{'color-bar-active': true}"></div>
 					<div class="list-content message-item-content">
 	
 						<span class="message-item-title">
@@ -16,8 +16,8 @@
 						<div class="other-info">
 							<span class="tips">编号: </span>
 							<span class="infos">{{item.taskid}}</span>
-							<span class="tips">分数: </span>
-							<span class="infos">{{item.score}}</span>
+							<span class="tips" v-show="item.totalscore !== null">分数: </span>
+							<span class="infos" v-show="item.totalscore !== null">{{item.totalscore}}</span>
 							<span class="tips">开始时间: </span>
 							<span class="infos">{{item.starttime}}</span>
 							<span class="tips">结束时间: </span>

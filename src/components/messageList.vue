@@ -3,11 +3,11 @@
 		<ul class="class-list">
 			<li v-for="cls of classMessage">
 				<h4>{{cls.courclassname}}</h4>
-				<p class="tip-content" v-show="!cls.tasks.lenght">该课程班暂无消息通知</p>
+				<p class="tip-content" v-show="cls.tasks.lenght==0">该课程班暂无消息通知</p>
 				<ul class="message-list-ul">
 					<li v-for="item in cls.tasks">
 						<a @click="changeMessage(item)">
-							<div class="color-bar" :class="{'color-bar-active': messageStatus}"></div>
+							<div class="color-bar" :class="{'color-bar-active': true}"></div>
 							<div class="message-item-content">
 								<span class="message-item-title">{{item.taskname}}，你还没有提交答案</span> 
 							</div>
@@ -70,26 +70,26 @@ export default {
 			this.$router.replace('/task')
 		},
 		changeData: function () {
-			let path = this.$route.path;
-			if (path.match(/(message\/unread)$/)) {
-				this.messages = [{
-					title: '作为开发者我是如何跟上时代脚步的',
-					id: '001',
-					content: '作为佛巍峨魔法快乐巍峨册封为罗马代脚步的'
-				}, {
-					title: 'JavaScript 深入之从原型到原型链',
-					id: '002',
-					content: 'JavaScript 深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧'
-				}];
-				this.messageStatus = false;
-			} else {
-				this.messages = [{
-					title: '一个非常适合入门学习的 React-Native 博客项目',
-					id: '003',
-					content: '作为佛巍峨魔法快乐巍峨册封为罗马代脚步的一个非常适合入门学习的 React-Native 博客项目，代码清晰、结构合理'
-				}];
-				this.messageStatus = true;
-			}
+			// let path = this.$route.path;
+			// if (path.match(/(message\/unread)$/)) {
+			// 	this.messages = [{
+			// 		title: '作为开发者我是如何跟上时代脚步的',
+			// 		id: '001',
+			// 		content: '作为佛巍峨魔法快乐巍峨册封为罗马代脚步的'
+			// 	}, {
+			// 		title: 'JavaScript 深入之从原型到原型链',
+			// 		id: '002',
+			// 		content: 'JavaScript 深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧'
+			// 	}];
+			// 	this.messageStatus = false;
+			// } else {
+			// 	this.messages = [{
+			// 		title: '一个非常适合入门学习的 React-Native 博客项目',
+			// 		id: '003',
+			// 		content: '作为佛巍峨魔法快乐巍峨册封为罗马代脚步的一个非常适合入门学习的 React-Native 博客项目，代码清晰、结构合理'
+			// 	}];
+			// 	this.messageStatus = true;
+			// }
 		}
 	},
 	watch: {

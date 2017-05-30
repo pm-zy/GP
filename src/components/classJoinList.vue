@@ -14,7 +14,7 @@
 						<span>已选人数：
 							<strong :class="{'class-open': classInfo.status==1}">{{classInfo.courclassnum}}</strong>
 						</span>
-						<span>班级编号：{{classInfo.courseclassid}}</span>
+						<span>班级编号：{{classInfo.courclassid}}</span>
 					</div>
 				</div>
 				<button class="btn btn-primary" @click="joinClass(classInfo.courclassid)">加入班级</button>
@@ -32,9 +32,11 @@ export default {
 			let userid = store.getters.getUserInfo.userid;
 			let postData = {
 				userid: userid,
-				courclassid: this.classInfo.courseclassid,
+				courclassid: this.classInfo.courclassid,
 				commet: "申请加入"
 			}
+			console.log("post:::::");
+			console.log(this.classInfo);
 			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=ban&a=join';
 			axios({
 				url: url,
@@ -52,7 +54,7 @@ export default {
 				}
 			}).then(res => {
 				alert(res.data.info);
-				this.$store.commit('addClasses', classInfo)
+				// this.$store.commit('addClasses', this.classInfo)
 				// console.log(this.$store.getters.getReload)
 				// store.commit('reload', !(this.$store.getters.getReload))
 			})

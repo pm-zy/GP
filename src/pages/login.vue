@@ -102,7 +102,6 @@ export default {
 							userPic: pic,
 							userid: this.userid
 						};
-						console.log("login")
 						store.commit('changeUser', { userInfo: userData, loginInfo: { status: 0 } })
 						this.$router.replace('/index')
 

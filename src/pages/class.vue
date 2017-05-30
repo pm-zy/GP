@@ -106,7 +106,7 @@ export default {
 					this.classInfo = this.$store.getters.getClasses;
 					let ids = [];
 					for(let cl of classArr) {
-						ids.push(cl.courseclassid)
+						ids.push(cl.courclassid)
 					}
 				}
 				console.log(res)
@@ -114,7 +114,7 @@ export default {
 		},
 		switchType: function (type) {
 			var fakeData = [{
-				courseclassid: 1,
+				courclassid: 1,
 				courclassname: '计科1302',
 				courclasssize: 30,
 				status: 1,
@@ -123,7 +123,7 @@ export default {
 				code: 1,
 				courclassnum: 10
 			}, {
-				courseclassid: 2,
+				courclassid: 2,
 				courclassname: '计科1302',
 				courclasssize: 30,
 				status: 0,
@@ -133,7 +133,7 @@ export default {
 				courclassnum: 10
 			}];
 			var fakeData2 = [{
-				courseclassid: 1,
+				courclassid: 1,
 				courclassname: '计科1302',
 				courclasssize: 30,
 				status: 1,

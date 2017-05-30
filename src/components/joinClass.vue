@@ -59,7 +59,7 @@ export default {
 				let ret = res.data;
 				if (ret.code == 0) {
 					let cls = {
-						courseclassid: ret.courseclassid,
+						courclassid: ret.courclassid,
 						courclassname: ret.courclassname,
 						courclasssize: ret.courclasssize,
 						status: 0,
