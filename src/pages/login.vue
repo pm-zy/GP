@@ -97,7 +97,7 @@ export default {
 							college: retData.college,
 							major: retData.major,
 							name: retData.name,
-							nick: retData.nick,
+							nickname: retData.nickname,
 							school: retData.school,
 							userPic: pic,
 							userid: this.userid

@@ -6,11 +6,13 @@
 				<h1>已完成</h1>
 			</header>
 			<section>
+				<p class="task-name">{{task.classtaskname}}</p>
+				<p>总得分: </p>
 				<div class="score">
-					<p>{{task.TaskScore}}</p>
+					<p>{{task.score}}</p>
 				</div>
 				<div class="user">
-					<p>{{user.nickname}}</p>
+					<p>学生姓名: {{user.name}}</p>
 				</div>
 			</section>
 		</div>
@@ -20,14 +22,22 @@
 					<ul>
 						<li v-for="(question, index) of taskDetail">
 							<p class="title">{{ index+1 }}、 {{ question.name }} (本题目{{question.point}}分)</p>
-							<div>
-								<span>答案： </span>
-								<p v-for="an of question.answer">{{an}}</p>
+							<div v-if="typeof question.answer == 'object'">
+								<span>参考答案： </span>
+								<p v-for="an of question.answer" >{{an}}</p>
 							</div>
-							<div>
+							<div v-else>
+								<span>参考答案： </span>
+								<p >{{question.answer}}</p>
+							</div>
+							<div  v-if="typeof question.answer == 'object'">
 								<span>我的回答： </span>
 								<p v-for="san of question.stuanswer">{{san}} </p>
 	
+							</div>
+							<div v-else>
+								<span>我的回答： </span>
+								<p >{{question.answer}}</p>
 							</div>
 						</li>
 					</ul>
@@ -37,7 +47,8 @@
 	</div>
 </template>
 <script>
-
+import urlConfig from '../configs/urlConfig'
+import axios from 'axios'
 export default {
 	data() {
 		if (!this.$store.getters.getLoginStatus.status) {
@@ -49,7 +60,8 @@ export default {
 			task: {},
 			taskDetail: {},
 			phone: '',
-			animal: ''
+			animal: '',
+			answer: []
 		}
 	},
 	created() {
@@ -61,10 +73,8 @@ export default {
 		getTaskDetail() {
 			let userid = this.$store.getters.getUserInfo.userid;
 			let taskid = this.$router.history.current.params.id;
-			console.log(this.$router.history.current.params)
 			let courclassid = this.$router.history.current.params.class;
 			let url = urlConfig.APIRoot + '?m=home&c=task&a=taskdetail'
-
 			axios({
 				url: url,
 				method: 'post',
@@ -80,11 +90,13 @@ export default {
 					'Content-Type': 'application/x-www-form-urlencoded'
 				}
 			}).then(res => {
-				console.log(res);
+				console.log(res.data.task[0].questions);
 				if (res.status == 200) {
 					if (res.data.code === 0) {
 						if (res.data.task.length) {
 							this.task = res.data.task[0];
+							console.log("task:::::");
+							console.log(this.task)
 							this.task.questions.forEach(que => {
 								if(que.content) {
 									try {
@@ -195,6 +207,10 @@ export default {
 		}
 		section {
 			padding-top: 20px;
+			.task-name {
+				margin: 10px auto;
+				text-align: center;
+			}
 			.score {
 				p {
 					font-size: 40px;

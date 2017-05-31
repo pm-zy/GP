@@ -85,9 +85,20 @@ export default {
 			min: 0,
 			s: 0
 		}
-		if (this.task.type == 0 && this.task.TaskTime > 0) {
-			let timeCount = this.task.TaskTime * 60;
-			timeInterval = setInterval(() => {
+		// this.task.TaskTime = 90;
+		// if (this.task.type == 0 && this.task.TaskTime > 0) {
+		// 	let timeCount = this.task.TaskTime * 60;
+		// 	timeInterval = setInterval(() => {
+		// 		this.formatTimer(timeCount);
+		// 		timeCount = timeCount - 1;
+		// 		if (timeCount === -1) {
+		// 			clearInterval(timeInterval)
+		// 			this.submit();
+		// 		}
+		// 	}, 1000);
+		// }
+		let timeCount = 5400;
+		timeInterval = setInterval(() => {
 				this.formatTimer(timeCount);
 				timeCount = timeCount - 1;
 				if (timeCount === -1) {
@@ -95,7 +106,6 @@ export default {
 					this.submit();
 				}
 			}, 1000);
-		}
 	},
 	methods: {
 		formatTimer(timer) {
@@ -133,7 +143,6 @@ export default {
 								if(que.content) {
 									try {
 										que.options = JSON.parse(que.content);
-										console.log(que.options)
 									} catch (error) {
 										
 									}
@@ -251,7 +260,6 @@ export default {
 				courclassid: courclassid,
 				taskques: this.answer
 			}
-			// console.log(JSON.stringify(postData));
 			let ss = JSON.stringify(postData);
 			axios({
 				url: url,
@@ -273,7 +281,7 @@ export default {
 				console.log(res);
 			})
 			alert('提交成功');
-			// this.$router.go(-1)
+			this.$router.replace('/task')
 		}
 	},
 	watch: {
