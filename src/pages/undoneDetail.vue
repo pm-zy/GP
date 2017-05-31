@@ -32,6 +32,8 @@
 								<Radio :label="String(false)" />
 							</Radio-group>
 	
+							<Input v-model="answer[index].stuanswer" placeholder="请输入答案" type="textarea" style="width: 300px" v-else-if="question.type == 2" />
+
 							<Checkbox-group v-model="answer[index].stuanswer" v-else-if="question.type == 2">
 								<Checkbox :label="opt" v-for="opt in question.options" />
 							</Checkbox-group>
