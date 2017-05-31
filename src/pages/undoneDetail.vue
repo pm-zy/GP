@@ -99,13 +99,17 @@ export default {
 		// }
 		let timeCount = 5400;
 		timeInterval = setInterval(() => {
-				this.formatTimer(timeCount);
-				timeCount = timeCount - 1;
-				if (timeCount === -1) {
-					clearInterval(timeInterval)
-					this.submit();
-				}
-			}, 1000);
+			this.formatTimer(timeCount);
+			timeCount = timeCount - 1;
+			if (timeCount === -1) {
+				clearInterval(timeInterval)
+				// this.submit();
+			}
+		}, 1000);
+		let timeOut = setTimeout(function () {
+			clearInterval(timeInterval)
+			this.submit();
+		}, 5400000);
 	},
 	methods: {
 		formatTimer(timer) {
@@ -140,11 +144,11 @@ export default {
 						if (res.data.task.length) {
 							this.task = res.data.task[0];
 							this.task.questions.forEach(que => {
-								if(que.content) {
+								if (que.content) {
 									try {
 										que.options = JSON.parse(que.content);
 									} catch (error) {
-										
+
 									}
 								}
 							})
@@ -264,7 +268,7 @@ export default {
 			axios({
 				url: url,
 				method: 'post',
-				data: {temp: ss},
+				data: { temp: ss },
 				transformRequest: [function (data) {
 					let ret = ''
 					for (let it in data) {

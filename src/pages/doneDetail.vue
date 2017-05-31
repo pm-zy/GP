@@ -24,20 +24,20 @@
 							<p class="title">{{ index+1 }}、 {{ question.name }} (本题目{{question.point}}分)</p>
 							<div v-if="typeof question.answer == 'object'">
 								<span>参考答案： </span>
-								<p v-for="an of question.answer" >{{an}}</p>
+								<p v-for="an of question.answer">{{an}}</p>
 							</div>
 							<div v-else>
 								<span>参考答案： </span>
-								<p >{{question.answer}}</p>
+								<p>{{question.answer}}</p>
 							</div>
-							<div  v-if="typeof question.answer == 'object'">
+							<div v-if="typeof question.answer == 'object'">
 								<span>我的回答： </span>
 								<p v-for="san of question.stuanswer">{{san}} </p>
 	
 							</div>
 							<div v-else>
 								<span>我的回答： </span>
-								<p >{{question.answer}}</p>
+								<p>{{question.answer}}</p>
 							</div>
 						</li>
 					</ul>
@@ -98,12 +98,12 @@ export default {
 							console.log("task:::::");
 							console.log(this.task)
 							this.task.questions.forEach(que => {
-								if(que.content) {
+								if (que.content) {
 									try {
 										que.options = JSON.parse(que.content);
 										console.log(que.options)
 									} catch (error) {
-										
+
 									}
 								}
 							})
@@ -117,72 +117,72 @@ export default {
 						}
 					}
 				}
-			}) 
+			})
 		},
-	// 	getTaskDetail() {
-	// 		let retData = [
-	// 			{
-	// 				"outexam": "",
-	// 				"answer": ["选项1"],
-	// 				"options": [
-	// 					{
-	// 						"key": "选项1"
-	// 					}, {
-	// 						"key": "选项2"
-	// 					}, {
-	// 						"key": "选项3"
-	// 					}, {
-	// 						"key": "选项4"
-	// 					}
-	// 				],
-	// 				"quesid": "1",
-	// 				"stuanswer": ["选项2"],
-	// 				"otheranswer": "",
-	// 				"type": "1",
-	// 				"point": "3",
-	// 				"content": "1+1等于？",
-	// 				"otherstuanswer": "",
-	// 				"inputexam": ""
-	// 			},
-	// 			{
-	// 				"outexam": "100",
-	// 				"answer": [
-	// 					"选项1", "选项2"
-	// 				],
-	// 				"options": ["选项1", "选项2", "选项3", "选项4"],
-	// 				"quesid": "2",
-	// 				"stuanswer": ["选项1", "选项2"],
-	// 				"otheranswer": "我最帅",
-	// 				"type": "2",
-	// 				"point": "3",
-	// 				"content": "1+1等于？",
-	// 				"otherstuanswer": "说的对",
-	// 				"inputexam": "55,45"
-	// 			}, {
-	// 				"outexam": "100",
-	// 				"answer": [],
-	// 				"options": [
-	// 					{
-	// 						"key": "选项1"
-	// 					}, {
-	// 						"key": "选项2"
-	// 					}, {
-	// 						"key": "选项3"
-	// 					}, {
-	// 						"key": "选项4"
-	// 					}
-	// 				],
-	// 				"quesid": "2",
-	// 				"stuanswer": [],
-	// 				"otheranswer": "",
-	// 				"type": "4",
-	// 				"point": "3",
-	// 				"content": "1+1等于？",
-	// 				"otherstuanswer": "说的对",
-	// 				"inputexam": "55,45"
-	// 			}];
-	// 		this.taskDetail = retData;
-	// 	}
+		// 	getTaskDetail() {
+		// 		let retData = [
+		// 			{
+		// 				"outexam": "",
+		// 				"answer": ["选项1"],
+		// 				"options": [
+		// 					{
+		// 						"key": "选项1"
+		// 					}, {
+		// 						"key": "选项2"
+		// 					}, {
+		// 						"key": "选项3"
+		// 					}, {
+		// 						"key": "选项4"
+		// 					}
+		// 				],
+		// 				"quesid": "1",
+		// 				"stuanswer": ["选项2"],
+		// 				"otheranswer": "",
+		// 				"type": "1",
+		// 				"point": "3",
+		// 				"content": "1+1等于？",
+		// 				"otherstuanswer": "",
+		// 				"inputexam": ""
+		// 			},
+		// 			{
+		// 				"outexam": "100",
+		// 				"answer": [
+		// 					"选项1", "选项2"
+		// 				],
+		// 				"options": ["选项1", "选项2", "选项3", "选项4"],
+		// 				"quesid": "2",
+		// 				"stuanswer": ["选项1", "选项2"],
+		// 				"otheranswer": "我最帅",
+		// 				"type": "2",
+		// 				"point": "3",
+		// 				"content": "1+1等于？",
+		// 				"otherstuanswer": "说的对",
+		// 				"inputexam": "55,45"
+		// 			}, {
+		// 				"outexam": "100",
+		// 				"answer": [],
+		// 				"options": [
+		// 					{
+		// 						"key": "选项1"
+		// 					}, {
+		// 						"key": "选项2"
+		// 					}, {
+		// 						"key": "选项3"
+		// 					}, {
+		// 						"key": "选项4"
+		// 					}
+		// 				],
+		// 				"quesid": "2",
+		// 				"stuanswer": [],
+		// 				"otheranswer": "",
+		// 				"type": "4",
+		// 				"point": "3",
+		// 				"content": "1+1等于？",
+		// 				"otherstuanswer": "说的对",
+		// 				"inputexam": "55,45"
+		// 			}];
+		// 		this.taskDetail = retData;
+		// 	}
 	},
 }
 </script>

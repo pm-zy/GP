@@ -1,5 +1,5 @@
 <template>
-	<div >
+	<div>
 		<TopBar path='我的空间'></TopBar>
 		<div class="body">
 			<div class="user-container">
@@ -9,22 +9,22 @@
 					</div>
 					<div class="other-info-container">
 						<p v-if="usertype == 1" class="student">学生</p>
-						<input type="button" class="logout" value="退出登录" @click='logout'><br/>
+						<input type="button" class="logout" value="退出登录" @click='logout'>
+						<br/>
 						<a @click='modifyPassword'>修改密码</a>
 					</div>
 				</div>
 				<div class="user-info">
 					<h2>{{nick}}</h2>
-					<p  class="org">{{name}}</p>
+					<p class="org">{{name}}</p>
 					<p class="org">{{school}} {{college}} {{major}} </p>
 					<p class="stu-number">学号: {{userid}}</p>
 				</div>
-
+	
 			</div>
 		</div>
 		<router-view></router-view>
 	</div>
-
 </template>
 <script type="text/javascript">
 import TopBar from '../components/topBar'
@@ -36,12 +36,12 @@ import axios from 'axios'
 
 export default {
 	data() {
-		document.getElementsByClassName('body')[1].style.filter=""
-		if(!store.getters.getLoginStatus.status) {
+		document.getElementsByClassName('body')[1].style.filter = ""
+		if (!store.getters.getLoginStatus.status) {
 			alert('请先登录');
 			this.$router.replace('/login');
 			return {};
-		} 
+		}
 		return store.getters.getUserInfo
 	},
 	components: {
@@ -50,8 +50,8 @@ export default {
 	created() {
 		this.getUserData();
 	},
-	beforeUpdate: function() {
-		document.getElementsByClassName('body')[1].style.filter=""
+	beforeUpdate: function () {
+		document.getElementsByClassName('body')[1].style.filter = ""
 	},
 	methods: {
 		getUserData() {
@@ -71,15 +71,15 @@ export default {
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded'
 				}
-			}).then(res =>{
+			}).then(res => {
 				console.log(res)
 			})
 		},
-		logout: function() {
+		logout: function () {
 			this.$store.commit('logout');
 			this.$router.replace('/login');
 		},
-		modifyPassword: function() {
+		modifyPassword: function () {
 			let url = `/user/${this.personId}/modifyPassword`;
 			this.$router.replace(url)
 		}
@@ -92,7 +92,7 @@ export default {
 	width: 80%;
 	margin: 20px auto;
 	overflow: hidden;
-	.user-info  {
+	.user-info {
 		padding-left: 20px;
 		overflow: hidden;
 		background-color: #fff;
@@ -154,7 +154,5 @@ export default {
 			}
 		}
 	}
-
 }
-
 </style>

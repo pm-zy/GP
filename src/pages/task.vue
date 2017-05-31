@@ -45,17 +45,17 @@ export default {
 			classes: store.getters.getClasses
 		}
 	},
-	created() { 
-		this.gettasks(1) 
+	created() {
+		this.gettasks(1)
 	},
 	methods: {
 		gettasks(type) {
-			let userid = this.$store.getters.getUserInfo.userid; 
+			let userid = this.$store.getters.getUserInfo.userid;
 			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=task&a=apptasks';
 			axios({
 				url: url,
 				method: 'post',
-				data: { userid: userid,type: type },
+				data: { userid: userid, type: type },
 				transformRequest: [function (data) {
 					let ret = ''
 					for (let it in data) {
@@ -72,11 +72,11 @@ export default {
 					let ret = res.data;
 					console.log(res)
 					if (ret.code == 0) {
-						let taskList = []; 
-						for(let cls of ret.courclass){
-							for(let t of cls.tasks) {
+						let taskList = [];
+						for (let cls of ret.courclass) {
+							for (let t of cls.tasks) {
 								t.courclassid = cls.courclassid;
-								if(t.status ==1) {
+								if (t.status == 1) {
 									t.url = `/undone/${t.courclassid}/${t.taskid}`
 									t.type = 'undone';
 								} else {
@@ -97,7 +97,7 @@ export default {
 			if (this.doneType == 'undone') {
 				this.gettasks(1)
 			} else {
-				
+
 				this.gettasks(0)
 			}
 		}

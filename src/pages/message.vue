@@ -1,10 +1,9 @@
 <template>
-	<div class="body of-hd" >
+	<div class="body of-hd">
 		<TopBar path='任务通知'></TopBar>
 		<VerticalNav :nav-data="menu" title='任务通知'></VerticalNav>
-		<router-view ></router-view>
+		<router-view></router-view>
 	</div>
-
 </template>
 <script>
 import TopBar from '../components/topBar'
@@ -18,7 +17,7 @@ export default {
 		VerticalNav
 	},
 	data() {
-		if(!store.getters.getLoginStatus.status) {
+		if (!store.getters.getLoginStatus.status) {
 			alert('请先登录');
 			console.log(store.getters.getLoginStatus.status);
 			this.$router.replace('/login');

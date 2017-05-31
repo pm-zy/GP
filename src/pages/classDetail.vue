@@ -132,10 +132,11 @@ export default {
 }
 </script>
 <style lang="less">
-#classDetail{
+#classDetail {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+
 .class-detail {
     h2 {
         margin: 0;

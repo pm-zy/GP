@@ -9,7 +9,7 @@
 						<a @click="changeMessage(item)">
 							<div class="color-bar" :class="{'color-bar-active': true}"></div>
 							<div class="message-item-content">
-								<span class="message-item-title">{{item.taskname}}，你还没有提交答案</span> 
+								<span class="message-item-title">{{item.taskname}}，你还没有提交答案</span>
 							</div>
 						</a>
 					</li>

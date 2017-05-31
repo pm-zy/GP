@@ -99,7 +99,6 @@ export default {
 			color: #509876;
 			margin: 20px auto;
 			text-align: center;
-
 		}
 	}
 	.task-list-container {
