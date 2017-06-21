@@ -37,6 +37,8 @@
 <script>
 import { login } from '../vuex/actions'
 import axios from 'axios'
+import urlConfig from '../configs/urlConfig'
+
 import store from '../vuex/store'
 export default {
 	data() {
@@ -69,7 +71,7 @@ export default {
 				userid: this.userid,
 				password: this.password
 			}
-			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=Home&c=personnal&a=login'
+			let url =urlConfig.APIRoot + '?m=Home&c=personnal&a=login'
 			this.info = "";
 			axios({
 				url: url,

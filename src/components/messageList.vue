@@ -23,6 +23,7 @@
 
 <script>
 import store from '../vuex/store'
+import urlConfig from '../configs/urlConfig'
 import axios from 'axios'
 export default {
 	// mounted() {
@@ -40,7 +41,7 @@ export default {
 	methods: {
 		getMessages() {
 			let userid = store.getters.getUserInfo.userid;
-			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=message&a=getmessage'
+			let url = urlConfig.APIRoot + '?m=home&c=message&a=getmessage'
 
 			axios({
 				url: url,

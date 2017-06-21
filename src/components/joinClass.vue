@@ -22,6 +22,7 @@
 </template>
 <script>
 import ClassJoinList from './classJoinList'
+import urlConfig from '../configs/urlConfig'
 import axios from 'axios'
 import store from '../vuex/store'
 export default {
@@ -40,7 +41,7 @@ export default {
 			// ajax
 			this.info = "";
 			let userid = store.getters.getUserInfo.userid;
-			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=Home&c=search&a=searchclass';
+			let url = urlConfig.APIRoot + '?m=Home&c=search&a=searchclass';
 			axios({
 				url: url,
 				method: 'post',

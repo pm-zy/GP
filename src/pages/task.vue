@@ -26,6 +26,7 @@ import TopBar from '../components/topBar'
 import taskList from '../components/taskList'
 import axios from 'axios'
 import store from '../vuex/store'
+import urlConfig from '../configs/urlConfig'
 
 export default {
 	components: {
@@ -51,7 +52,7 @@ export default {
 	methods: {
 		gettasks(type) {
 			let userid = this.$store.getters.getUserInfo.userid;
-			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=task&a=apptasks';
+			let url = urlConfig.APIRoot + '?m=home&c=task&a=apptasks';
 			axios({
 				url: url,
 				method: 'post',

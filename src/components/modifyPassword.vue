@@ -21,7 +21,7 @@
 <script>
 import store from '../vuex/store'
 import axios from 'axios'
-
+import urlConfig from '../configs/urlConfig'
 
 export default {
     created: function () {
@@ -79,7 +79,7 @@ export default {
                 this.tips = '两次输入的新密码不一致'
             } else if (this.oldPassword.length && this.verify.length && this.newPassword.length) {
                 this.tips = '正在提交';
-                let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=Home&c=student&a=changepassword'; 
+                let url = urlConfig.APIRoot + '?m=Home&c=student&a=changepassword'; 
                 let postData = {
                      userid: this.$store.getters.getUserInfo.userid,
                      oldpassword: this.oldPassword,

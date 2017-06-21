@@ -38,7 +38,7 @@
 								<Checkbox :label="opt" v-for="opt in question.options" />
 							</Checkbox-group>
 	
-							<Code v-else-if="question.type == 4" :question="question" :codes="answer[index].stuanswer"></Code>
+							<AceCode v-else-if="question.type == 4" :question="question" :codes="answer[index].stuanswer"></AceCode>
 	
 							<Input v-model="answer[index].stuanswer" placeholder="请输入答案" type="textarea" style="width: 300px" v-else />
 						</li>
@@ -53,14 +53,14 @@
 	</div>
 </template>
 <script>
-import Code from '../components/code'
+import AceCode from '../components/code'
 import store from '../vuex/store'
 import urlConfig from '../configs/urlConfig'
 import axios from 'axios'
 let timeInterval;
 export default {
 	components: {
-		Code
+		AceCode
 	},
 	props: ['reload'],
 	data() {

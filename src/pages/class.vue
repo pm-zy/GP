@@ -40,6 +40,8 @@
 import ClassList from '../components/classList'
 import TopBar from '../components/topBar'
 import axios from 'axios'
+import urlConfig from '../configs/urlConfig'
+
 import store from '../vuex/store'
 
 export default {
@@ -82,7 +84,7 @@ export default {
 		},
 		getClasses() {
 			let userid = store.getters.getUserInfo.userid;
-			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=search&a=getmyClass'
+			let url = urlConfig.APIRoot + '?m=home&c=search&a=getmyClass'
 
 			axios({
 				url: url,

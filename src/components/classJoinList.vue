@@ -25,6 +25,8 @@
 <script>
 import axios from 'axios'
 import store from '../vuex/store'
+import urlConfig from '../configs/urlConfig'
+
 export default {
 	props: ['classInfo'],
 	methods: {
@@ -37,7 +39,7 @@ export default {
 			}
 			console.log("post:::::");
 			console.log(this.classInfo);
-			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=ban&a=join';
+			let url = urlConfig.APIRoot + '?m=home&c=ban&a=join';
 			axios({
 				url: url,
 				method: 'post',

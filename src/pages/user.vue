@@ -33,6 +33,7 @@ import { logout } from '../vuex/actions'
 import { mapActions } from 'vuex'
 import store from '../vuex/store'
 import axios from 'axios'
+import urlConfig from '../configs/urlConfig'
 
 export default {
 	data() {
@@ -56,7 +57,7 @@ export default {
 	methods: {
 		getUserData() {
 			let userInfo = store.getters.getUserInfo;
-			let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=Home&c=student&a=studentdetail';
+			let url = urlConfig.APIRoot + '?m=Home&c=student&a=studentdetail';
 			axios({
 				url: url,
 				method: 'post',

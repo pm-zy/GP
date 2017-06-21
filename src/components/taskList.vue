@@ -31,6 +31,8 @@
 </template>
 <script>
 import axios from 'axios'
+import urlConfig from '../configs/urlConfig'
+
 export default {
 	mounted() {
 		this.changeData();
@@ -45,7 +47,7 @@ export default {
 	},
 	methods: {
 		getList() {
-			axios.post('m=Home&c=task&a=apptask', {
+			axios.post(`${urlConfig.APIRoot}?m=Home&c=task&a=apptask`, {
 				userid: fdf
 			})
 				.then(response => {

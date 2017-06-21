@@ -27,6 +27,8 @@
 <script>
 import axios from 'axios'
 import store from '../vuex/store'
+import urlConfig from '../configs/urlConfig'
+
 export default {
     data() {
         return {
@@ -62,7 +64,6 @@ export default {
         submit() {
             this.setState();
             let step1 = this.$store.getters.getNewUser1;
-            console.log(step1)
             let userData = {};
             for (let p in step1) {
                 userData[p] = step1[p];
@@ -70,7 +71,7 @@ export default {
             for (let p in this.step2) {
                 userData[p] = this.step2[p]
             }
-            let url = "http://" + window.location.hostname + ':8800' + '/api/ThinkPHP.php?m=home&c=personnal&a=regist'
+            let url = urlConfig.APIRoot + '?m=home&c=personnal&a=regist'
            console.log(userData)
            axios({
 				url: url,
